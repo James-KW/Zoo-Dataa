@@ -314,7 +314,95 @@
             z-index: 1000;
         }
         
-        /* Rest of your original CSS remains exactly the same */
+        /* FIXED TABLE STYLES (zooinfo.html এর মতো) */
+        .table-editable {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        
+        /* Species Name (বড় কলাম) */
+        .table-editable th:nth-child(1),
+        .table-editable td:nth-child(1) {
+            width: 30%;
+            text-align: left;
+        }
+        
+        /* Male (ছোট কলাম) */
+        .table-editable th:nth-child(2),
+        .table-editable td:nth-child(2) {
+            width: 13%;
+            text-align: center;
+        }
+        
+        /* Female (ছোট কলাম) */
+        .table-editable th:nth-child(3),
+        .table-editable td:nth-child(3) {
+            width: 13%;
+            text-align: center;
+        }
+        
+        /* Gender Unknown (সবচেয়ে বড় কলাম) */
+        .table-editable th:nth-child(4),
+        .table-editable td:nth-child(4) {
+            width: 20%;
+            text-align: center;
+        }
+        
+        /* Total (ছোট কলাম) */
+        .table-editable th:nth-child(5),
+        .table-editable td:nth-child(5) {
+            width: 14%;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            color: #2e8b57;
+            text-align: left;
+            padding: 10px 8px;
+            font-weight: 600;
+            border-bottom: 2px solid #eaeaea;
+            font-size: 12px;
+        }
+        
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 12px;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .species-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .emoji {
+            font-size: 16px;
+        }
+        
+        /* Table Design 1 (Green Theme) - zooinfo.html এর মতো */
+        .table-design-1 {
+            background-color: #f8f9fa;
+            border: 1px solid #2e8b57;
+            border-radius: 6px;
+        }
+        
+        .table-design-1 th {
+            background: linear-gradient(135deg, #2e8b57 0%, #1a6d38 100%);
+            color: white;
+        }
+        
+        .table-wrapper {
+            margin-top: 10px;
+        }
+        
         header {
             background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
             color: white;
@@ -369,10 +457,77 @@
             gap: 8px;
         }
         
-        /* ... Continue with all your original CSS exactly as is ... */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #eaeaea;
+        }
+        
+        .stat-card h3 {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2e8b57;
+        }
+        
+        .note {
+            background-color: #fff9e6;
+            border-left: 3px solid #ffc107;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 0 4px 4px 0;
+            font-size: 12px;
+        }
+        
+        .note i {
+            color: #ff9800;
+            margin-right: 6px;
+        }
+        
+        footer {
+            position: absolute;
+            bottom: 1.5cm;
+            left: 1.5cm;
+            right: 1.5cm;
+            text-align: center;
+            padding-top: 15px;
+            color: #666;
+            font-size: 12px;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        .zoo-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            justify-content: center;
+        }
+        
+        .zoo-logo i {
+            color: #2e8b57;
+            font-size: 16px;
+        }
         
         /* Just disable interactions */
-        button {
+        button:not(.refresh-btn):not(.close-projects-btn) {
             pointer-events: none;
             opacity: 0.5;
         }
@@ -380,6 +535,26 @@
         textarea {
             pointer-events: none;
             background: #f8f9fa !important;
+        }
+        
+        .size-controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .size-btn {
+            background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
+            color: #666;
+            border: none;
+            padding: 8px 5px;
+            border-radius: 6px;
+            cursor: not-allowed;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            opacity: 0.5;
         }
     </style>
 </head>
@@ -490,7 +665,8 @@
                     <div class="card">
                         <h2><i class="fas fa-list-ul"></i> Species Population Overview</h2>
                         
-                        <div class="table-wrapper table-design-1 active">
+                        <!-- FIXED TABLE STRUCTURE (zooinfo.html এর মতো) -->
+                        <div class="table-wrapper table-design-1">
                             <table class="table-editable">
                                 <thead>
                                     <tr>
@@ -681,29 +857,62 @@
         // PUBLIC VIEW - ALL EDITING DISABLED
         // ============================================
         
-        // NEW: Load Saved Projects
+        // NEW: Load Saved Projects - FIXED VERSION
         function loadSavedProjects() {
+            console.log("Loading saved projects...");
+            
             const projectsList = document.getElementById('projectsList');
             const savedProjectsView = document.getElementById('savedProjectsView');
-            const projects = JSON.parse(localStorage.getItem('savedProjects') || '[]');
+            
+            // localStorage থেকে প্রজেক্টস লোড করুন
+            let projects = [];
+            try {
+                const savedData = localStorage.getItem('savedProjects');
+                if (savedData) {
+                    projects = JSON.parse(savedData);
+                }
+            } catch (error) {
+                console.error("Error loading projects:", error);
+            }
+            
+            console.log("Found projects:", projects);
             
             if (projects.length === 0) {
                 projectsList.innerHTML = '<div style="text-align: center; padding: 20px; color: #666;">No saved projects found.<br><small>Login as admin to save projects</small></div>';
             } else {
                 projectsList.innerHTML = '';
-                projects.forEach(project => {
+                
+                // শুধুমাত্র সাম্প্রতিক 5টি প্রজেক্ট দেখান
+                const recentProjects = projects.slice(0, 5);
+                
+                recentProjects.forEach((project, index) => {
                     const projectItem = document.createElement('div');
                     projectItem.className = 'project-item';
                     projectItem.innerHTML = `
-                        <div class="project-name">${project.name}</div>
-                        <div class="project-time">Saved: ${project.timestamp}</div>
+                        <div class="project-name">${project.name || `Project ${index + 1}`}</div>
+                        <div class="project-time">Saved: ${project.timestamp || 'Unknown date'}</div>
                     `;
                     projectsList.appendChild(projectItem);
                 });
+                
+                // যদি ৫টির বেশি প্রজেক্ট থাকে
+                if (projects.length > 5) {
+                    const moreItem = document.createElement('div');
+                    moreItem.className = 'project-item';
+                    moreItem.style.textAlign = 'center';
+                    moreItem.style.fontSize = '11px';
+                    moreItem.style.color = '#666';
+                    moreItem.innerHTML = `... and ${projects.length - 5} more projects`;
+                    projectsList.appendChild(moreItem);
+                }
             }
             
             // Show the projects view
             savedProjectsView.classList.add('active');
+            
+            // স্ক্রোল টপে নিয়ে যান
+            const sidePanel = document.querySelector('.side-panel');
+            sidePanel.scrollTop = 0;
         }
         
         // Disable all editing functionality
@@ -717,6 +926,7 @@
             
             if (refreshBtn) {
                 refreshBtn.addEventListener('click', function() {
+                    console.log("Refresh button clicked");
                     loadSavedProjects();
                 });
             }
