@@ -253,6 +253,14 @@
             margin-bottom: 8px;
             border: 1px solid #eaeaea;
             font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-color: #3498db;
         }
         
         .project-name {
@@ -266,7 +274,7 @@
             color: #666;
         }
         
-        /* Main Content Area */
+        /* Main Content Area - UPDATED */
         .main-content-area {
             flex: 1;
             margin-left: 280px;
@@ -279,7 +287,7 @@
             min-height: 100vh;
         }
         
-        /* A4 Container */
+        /* A4 Container - UPDATED */
         .a4-container {
             width: 21cm;
             height: 29.7cm;
@@ -288,6 +296,203 @@
             padding: 1.5cm;
             transform: scale(0.85);
             transform-origin: center center;
+            position: relative;
+        }
+        
+        /* NEW: When projects view is active, hide A4 container */
+        body.projects-view-active .a4-container {
+            display: none;
+        }
+        
+        body.projects-view-active .main-content-area {
+            align-items: flex-start;
+            padding-top: 20px;
+        }
+        
+        /* NEW: Project Preview Container */
+        .project-preview-container {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        body.projects-view-active .project-preview-container {
+            display: block;
+        }
+        
+        .preview-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2e8b57;
+        }
+        
+        .preview-header h2 {
+            color: #2e8b57;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        
+        .preview-header p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .preview-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .preview-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #eaeaea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .preview-card h3 {
+            color: #2e8b57;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Preview Table Styles */
+        .preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+        
+        .preview-table th {
+            background: linear-gradient(135deg, #2e8b57 0%, #1a6d38 100%);
+            color: white;
+            text-align: left;
+            padding: 12px 10px;
+            font-weight: 600;
+            border: 1px solid #1a6d38;
+        }
+        
+        .preview-table td {
+            padding: 10px 8px;
+            border: 1px solid #eaeaea;
+            text-align: center;
+        }
+        
+        .preview-table td:first-child {
+            text-align: left;
+            padding-left: 15px;
+        }
+        
+        .preview-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .preview-table tr:hover {
+            background-color: #f0f8f0;
+        }
+        
+        .preview-species-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .preview-emoji {
+            font-size: 18px;
+        }
+        
+        .preview-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .preview-stat-card {
+            background: white;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #eaeaea;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        
+        .preview-stat-card h4 {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .preview-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2e8b57;
+        }
+        
+        .preview-note {
+            background-color: #fff9e6;
+            border-left: 3px solid #ffc107;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 0 4px 4px 0;
+            font-size: 12px;
+        }
+        
+        .preview-footer {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #eaeaea;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .preview-footer h4 {
+            color: #2e8b57;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        /* Back to Main View Button */
+        .back-to-main-btn {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 20px auto 0;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-main-btn:hover {
+            background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
+            transform: translateY(-2px);
         }
         
         /* Disable editing styles */
@@ -527,7 +732,7 @@
         }
         
         /* Just disable interactions */
-        button:not(.refresh-btn):not(.close-projects-btn) {
+        button:not(.refresh-btn):not(.close-projects-btn):not(.back-to-main-btn) {
             pointer-events: none;
             opacity: 0.5;
         }
@@ -648,6 +853,7 @@
     
     <!-- Main Content Area -->
     <div class="main-content-area">
+        <!-- Regular A4 View -->
         <div class="a4-container">
             <div class="content-wrapper">
                 <header>
@@ -845,6 +1051,61 @@
                 </footer>
             </div>
         </div>
+        
+        <!-- NEW: Project Preview Container (Hidden by default) -->
+        <div class="project-preview-container" id="projectPreview">
+            <div class="preview-header">
+                <h2><i class="fas fa-file-alt"></i> Project Preview</h2>
+                <p>Viewing saved project data (Read Only)</p>
+            </div>
+            
+            <div class="preview-content">
+                <div class="preview-card">
+                    <h3><i class="fas fa-list-ul"></i> Species Population</h3>
+                    <table class="preview-table">
+                        <thead>
+                            <tr>
+                                <th>Species Name</th>
+                                <th>Male</th>
+                                <th>Female</th>
+                                <th>Gender Unknown</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="previewTableBody">
+                            <!-- Project data will be loaded here -->
+                        </tbody>
+                    </table>
+                    <div class="preview-note" id="previewNote">
+                        <i class="fas fa-info-circle"></i> <strong>Note:</strong> Vervet includes one baby (Gender unknown).
+                    </div>
+                </div>
+                
+                <div class="preview-card">
+                    <h3><i class="fas fa-chart-bar"></i> Population Statistics</h3>
+                    <div class="preview-stats-grid" id="previewStatsGrid">
+                        <!-- Stats will be loaded here -->
+                    </div>
+                    <div style="margin-top: 20px; padding: 12px; background: #f8f9fa; border-radius: 6px;">
+                        <h4 style="color: #2e8b57; margin-bottom: 8px; font-size: 14px;">
+                            <i class="fas fa-chart-pie"></i> Population Summary
+                        </h4>
+                        <p style="font-size: 12px; line-height: 1.5;" id="previewSummary">
+                            Loading project data...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-footer">
+                <h4><i class="fas fa-tree"></i> Kuwait Zoo Management System</h4>
+                <p id="previewFooter">Project data preview</p>
+            </div>
+            
+            <button class="back-to-main-btn" id="backToMainBtn">
+                <i class="fas fa-arrow-left"></i> Back to Main View
+            </button>
+        </div>
     </div>
     
     <!-- Public Footer -->
@@ -857,6 +1118,8 @@
         // PUBLIC VIEW - ALL EDITING DISABLED
         // ============================================
         
+        let currentProjects = [];
+        
         // NEW: Load Saved Projects - FIXED VERSION
         function loadSavedProjects() {
             console.log("Loading saved projects...");
@@ -865,46 +1128,40 @@
             const savedProjectsView = document.getElementById('savedProjectsView');
             
             // localStorage থেকে প্রজেক্টস লোড করুন
-            let projects = [];
+            currentProjects = [];
             try {
                 const savedData = localStorage.getItem('savedProjects');
                 if (savedData) {
-                    projects = JSON.parse(savedData);
+                    currentProjects = JSON.parse(savedData);
                 }
             } catch (error) {
                 console.error("Error loading projects:", error);
             }
             
-            console.log("Found projects:", projects);
+            console.log("Found projects:", currentProjects);
             
-            if (projects.length === 0) {
+            if (currentProjects.length === 0) {
                 projectsList.innerHTML = '<div style="text-align: center; padding: 20px; color: #666;">No saved projects found.<br><small>Login as admin to save projects</small></div>';
             } else {
                 projectsList.innerHTML = '';
                 
-                // শুধুমাত্র সাম্প্রতিক 5টি প্রজেক্ট দেখান
-                const recentProjects = projects.slice(0, 5);
-                
-                recentProjects.forEach((project, index) => {
+                // সব প্রজেক্ট দেখান
+                currentProjects.forEach((project, index) => {
                     const projectItem = document.createElement('div');
                     projectItem.className = 'project-item';
+                    projectItem.dataset.index = index;
                     projectItem.innerHTML = `
                         <div class="project-name">${project.name || `Project ${index + 1}`}</div>
                         <div class="project-time">Saved: ${project.timestamp || 'Unknown date'}</div>
                     `;
+                    
+                    // ক্লিক ইভেন্ট যোগ করুন
+                    projectItem.addEventListener('click', function() {
+                        loadProjectPreview(project);
+                    });
+                    
                     projectsList.appendChild(projectItem);
                 });
-                
-                // যদি ৫টির বেশি প্রজেক্ট থাকে
-                if (projects.length > 5) {
-                    const moreItem = document.createElement('div');
-                    moreItem.className = 'project-item';
-                    moreItem.style.textAlign = 'center';
-                    moreItem.style.fontSize = '11px';
-                    moreItem.style.color = '#666';
-                    moreItem.innerHTML = `... and ${projects.length - 5} more projects`;
-                    projectsList.appendChild(moreItem);
-                }
             }
             
             // Show the projects view
@@ -915,6 +1172,157 @@
             sidePanel.scrollTop = 0;
         }
         
+        // NEW: Load Project Preview
+        function loadProjectPreview(project) {
+            console.log("Loading project preview:", project);
+            
+            // Enable projects view mode
+            document.body.classList.add('projects-view-active');
+            
+            // Update preview header
+            document.querySelector('.preview-header h2').innerHTML = `<i class="fas fa-file-alt"></i> ${project.name || 'Project Preview'}`;
+            
+            // Load table data
+            const tableBody = document.getElementById('previewTableBody');
+            const statsGrid = document.getElementById('previewStatsGrid');
+            const previewSummary = document.getElementById('previewSummary');
+            const previewNote = document.getElementById('previewNote');
+            const previewFooter = document.getElementById('previewFooter');
+            
+            if (project.content) {
+                // ডিফল্ট ডেটা লোড করুন
+                const defaultData = getDefaultProjectData();
+                
+                // টেবিল ডেটা আপডেট করুন
+                let tableHTML = '';
+                const speciesData = project.content.species || defaultData.species;
+                
+                speciesData.forEach(species => {
+                    tableHTML += `
+                        <tr>
+                            <td>
+                                <div class="preview-species-name">
+                                    <span class="preview-emoji">${species.emoji || '🐒'}</span>
+                                    <strong>${species.name}</strong>
+                                </div>
+                            </td>
+                            <td>${species.male}</td>
+                            <td>${species.female}</td>
+                            <td>${species.unknown}</td>
+                            <td>${species.total}</td>
+                        </tr>
+                    `;
+                });
+                tableBody.innerHTML = tableHTML;
+                
+                // স্ট্যাটস ডেটা আপডেট করুন
+                const statsData = project.content.stats || defaultData.stats;
+                let statsHTML = '';
+                
+                statsData.forEach(stat => {
+                    statsHTML += `
+                        <div class="preview-stat-card">
+                            <h4>${stat.title}</h4>
+                            <div class="preview-stat-value">${stat.value}</div>
+                        </div>
+                    `;
+                });
+                statsGrid.innerHTML = statsHTML;
+                
+                // সামারি আপডেট করুন
+                const summary = project.content.summary || defaultData.summary;
+                previewSummary.innerHTML = summary;
+                
+                // নোট আপডেট করুন
+                const note = project.content.note || defaultData.note;
+                previewNote.innerHTML = `<i class="fas fa-info-circle"></i> <strong>Note:</strong> ${note}`;
+                
+                // ফুটার আপডেট করুন
+                const footer = project.content.footer || defaultData.footer;
+                previewFooter.textContent = footer;
+                
+            } else {
+                // যদি কন্টেন্ট না থাকে, ডিফল্ট ডেটা দেখান
+                loadDefaultPreview();
+            }
+            
+            // স্ক্রোল টপে নিয়ে যান
+            window.scrollTo(0, 0);
+        }
+        
+        // NEW: Default Project Data
+        function getDefaultProjectData() {
+            return {
+                species: [
+                    { name: 'Lemur', emoji: '🐒', male: 3, female: 4, unknown: 0, total: 7 },
+                    { name: 'Squirrel Monkey', emoji: '🐵', male: 4, female: 4, unknown: 0, total: 8 },
+                    { name: 'Baboon', emoji: '🐒', male: 2, female: 3, unknown: 0, total: 5 },
+                    { name: 'Vervets', emoji: '🐒', male: 4, female: 7, unknown: 1, total: 12 },
+                    { name: 'Rhesus', emoji: '🐒', male: 3, female: 4, unknown: 0, total: 7 },
+                    { name: 'Rhesus (Single)', emoji: '🐒', male: 0, female: 1, unknown: 0, total: 1 },
+                    { name: 'Mona', emoji: '🐒', male: 0, female: 1, unknown: 0, total: 1 },
+                    { name: 'Chimpanzee (Big)', emoji: '🦍', male: 1, female: 0, unknown: 0, total: 1 },
+                    { name: 'Chimpanzee (Small)', emoji: '🦧', male: 3, female: 1, unknown: 0, total: 4 }
+                ],
+                stats: [
+                    { title: 'Species', value: '9' },
+                    { title: 'Total Monkeys', value: '46' },
+                    { title: 'Male Population', value: '20' },
+                    { title: 'Female Population', value: '25' },
+                    { title: 'Unknown Gender', value: '1' },
+                    { title: 'Chimpanzees', value: '5' }
+                ],
+                summary: 'The Kuwait Zoo currently houses <strong>9 species</strong> of primates with a total population of <strong>46 monkeys</strong>. The gender distribution shows <strong>20 males</strong>, <strong>25 females</strong>, and <strong>1</strong> of unknown gender.',
+                note: 'Vervet includes one baby (Gender unknown).',
+                footer: 'Prepared on December 2025 | Official Document'
+            };
+        }
+        
+        // NEW: Load Default Preview
+        function loadDefaultPreview() {
+            const defaultData = getDefaultProjectData();
+            let tableHTML = '';
+            
+            defaultData.species.forEach(species => {
+                tableHTML += `
+                    <tr>
+                        <td>
+                            <div class="preview-species-name">
+                                <span class="preview-emoji">${species.emoji}</span>
+                                <strong>${species.name}</strong>
+                            </div>
+                        </td>
+                        <td>${species.male}</td>
+                        <td>${species.female}</td>
+                        <td>${species.unknown}</td>
+                        <td>${species.total}</td>
+                    </tr>
+                `;
+            });
+            
+            document.getElementById('previewTableBody').innerHTML = tableHTML;
+            
+            let statsHTML = '';
+            defaultData.stats.forEach(stat => {
+                statsHTML += `
+                    <div class="preview-stat-card">
+                        <h4>${stat.title}</h4>
+                        <div class="preview-stat-value">${stat.value}</div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('previewStatsGrid').innerHTML = statsHTML;
+            document.getElementById('previewSummary').innerHTML = defaultData.summary;
+            document.getElementById('previewNote').innerHTML = `<i class="fas fa-info-circle"></i> <strong>Note:</strong> ${defaultData.note}`;
+            document.getElementById('previewFooter').textContent = defaultData.footer;
+        }
+        
+        // NEW: Back to Main View
+        function backToMainView() {
+            document.body.classList.remove('projects-view-active');
+        }
+        
         // Disable all editing functionality
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Public View Mode Active - All editing disabled');
@@ -922,6 +1330,7 @@
             // NEW: Add click handlers for refresh button
             const refreshBtn = document.getElementById('refreshBtn');
             const closeProjectsBtn = document.getElementById('closeProjectsBtn');
+            const backToMainBtn = document.getElementById('backToMainBtn');
             const savedProjectsView = document.getElementById('savedProjectsView');
             
             if (refreshBtn) {
@@ -934,6 +1343,12 @@
             if (closeProjectsBtn) {
                 closeProjectsBtn.addEventListener('click', function() {
                     savedProjectsView.classList.remove('active');
+                });
+            }
+            
+            if (backToMainBtn) {
+                backToMainBtn.addEventListener('click', function() {
+                    backToMainView();
                 });
             }
             
@@ -951,7 +1366,7 @@
             });
             
             // Disable all buttons except our new ones
-            const buttons = document.querySelectorAll('button:not(.refresh-btn):not(.close-projects-btn)');
+            const buttons = document.querySelectorAll('button:not(.refresh-btn):not(.close-projects-btn):not(.back-to-main-btn)');
             buttons.forEach(btn => {
                 btn.disabled = true;
                 btn.style.cursor = 'not-allowed';
@@ -989,6 +1404,9 @@
                     showReadOnlyMessage();
                 }
             });
+            
+            // Load default preview initially
+            loadDefaultPreview();
         });
         
         function showReadOnlyMessage() {
