@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuwait Zoo - Monkey Population 2025 (Public View)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.4;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Public View Banner - ENHANCED */
+        .public-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #2e8b57 0%, #1a6d38 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .banner-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+        
+        /* ADMIN LOGIN BUTTON - HIGHLIGHTED */
+        .admin-login-btn {
+            background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .admin-login-btn:hover {
+            background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.4);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3); }
+            50% { box-shadow: 0 4px 20px rgba(255, 87, 34, 0.6); }
+            100% { box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3); }
+        }
+        
+        /* NEW: REFRESH BUTTON */
+        .refresh-btn {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        .refresh-btn:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* NEW: BANNER BUTTONS CONTAINER */
+        .banner-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Side Panel - Read Only */
+        .side-panel {
+            width: 280px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
+            left: 0;
+            top: 60px;
+        }
+        
+        /* NEW: WELCOME MESSAGE */
+        .welcome-message {
+            background: linear-gradient(135deg, #2e8b57 0%, #1a6d38 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(46, 139, 87, 0.2);
+        }
+        
+        .welcome-message h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .welcome-message p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .panel-header {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2e8b57;
+            margin-bottom: 10px;
+        }
+        
+        .panel-header h2 {
+            color: #2e8b57;
+            font-size: 18px;
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .control-group h3 {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
+            color: #666;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            cursor: not-allowed;
+        }
+        
+        /* Read Only Notice */
+        .readonly-notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #856404;
+        }
+        
+        /* NEW: SAVED PROJECTS VIEW */
+        .saved-projects-view {
+            background: #e6f3ff;
+            border: 1px solid #3498db;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .saved-projects-view.active {
+            display: block;
+        }
+        
+        .projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #b3d9ff;
+        }
+        
+        .projects-header h4 {
+            color: #2980b9;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .close-projects-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .project-item {
+            background: white;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #eaeaea;
+            font-size: 12px;
+        }
+        
+        .project-name {
+            font-weight: 600;
+            color: #2e8b57;
+            margin-bottom: 3px;
+        }
+        
+        .project-time {
+            font-size: 10px;
+            color: #666;
+        }
+        
+        /* Main Content Area */
+        .main-content-area {
+            flex: 1;
+            margin-left: 280px;
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+        
+        /* A4 Container */
+        .a4-container {
+            width: 21cm;
+            height: 29.7cm;
+            background: white;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+            padding: 1.5cm;
+            transform: scale(0.85);
+            transform-origin: center center;
+        }
+        
+        /* Disable editing styles */
+        .editable {
+            cursor: default !important;
+        }
+        
+        .editable:hover, .editable:focus {
+            background-color: transparent !important;
+            outline: none !important;
+        }
+        
+        /* Footer */
+        .public-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        
+        /* Rest of your original CSS remains exactly the same */
+        header {
+            background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .header-content p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .date-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+        
+        .document-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+            height: calc(100% - 120px);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 18px;
+            border: 1px solid #eaeaea;
+        }
+        
+        .card h2 {
+            color: #2e8b57;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* ... Continue with all your original CSS exactly as is ... */
+        
+        /* Just disable interactions */
+        button {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        textarea {
+            pointer-events: none;
+            background: #f8f9fa !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Public View Banner -->
+    <div class="public-banner">
+        <div class="banner-title">
+            <i class="fas fa-eye"></i>
+            <span>Public View - Read Only</span>
+        </div>
+        <div class="banner-buttons">
+            <!-- NEW: Refresh Button -->
+            <button class="refresh-btn" id="refreshBtn">
+                <i class="fas fa-sync-alt"></i> View Saved Projects
+            </button>
+            <!-- Enhanced Admin Button -->
+            <a href="admin-login.html" class="admin-login-btn">
+                <i class="fas fa-lock"></i> Admin Login
+            </a>
+        </div>
+    </div>
+    
+    <!-- Side Panel (Read Only Version) -->
+    <div class="side-panel">
+        <!-- NEW: Welcome Message -->
+        <div class="welcome-message">
+            <h3><i class="fas fa-tree"></i> Welcome to Kuwait Zoo</h3>
+            <p>Data Management System</p>
+        </div>
+        
+        <div class="panel-header">
+            <h2><i class="fas fa-eye"></i> View Only Mode</h2>
+            <p style="font-size: 12px; color: #666; margin-top: 5px;">Editing Disabled</p>
+        </div>
+        
+        <div class="readonly-notice">
+            <i class="fas fa-info-circle"></i>
+            <strong>Read Only Mode</strong><br>
+            This is a public view. Admin login required for editing.
+        </div>
+        
+        <!-- NEW: Saved Projects View (Hidden by default) -->
+        <div class="saved-projects-view" id="savedProjectsView">
+            <div class="projects-header">
+                <h4><i class="fas fa-folder-open"></i> Saved Projects</h4>
+                <button class="close-projects-btn" id="closeProjectsBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="projectsList">
+                <!-- Projects will be loaded here -->
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <h3><i class="fas fa-download"></i> Export Options</h3>
+            <button class="control-btn">
+                <i class="fas fa-image"></i> Download as Image (Disabled)
+            </button>
+            <button class="control-btn">
+                <i class="fas fa-print"></i> Print Document (Disabled)
+            </button>
+        </div>
+        
+        <div class="control-group">
+            <h3><i class="fas fa-edit"></i> Edit Mode</h3>
+            <button class="control-btn">
+                <i class="fas fa-edit"></i> Edit Mode (Disabled)
+            </button>
+        </div>
+        
+        <div class="control-group">
+            <h3><i class="fas fa-expand-arrows-alt"></i> Document Size</h3>
+            <div class="size-controls">
+                <button class="size-btn">Small</button>
+                <button class="size-btn">Medium</button>
+                <button class="size-btn">Large</button>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <h3><i class="fas fa-info-circle"></i> Information</h3>
+            <div style="font-size: 12px; color: #666; line-height: 1.4;">
+                <p>• This is a read-only view</p>
+                <p>• Admin login required for editing</p>
+                <p>• All data is view-only</p>
+                <p>• Contact administrator for access</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content Area -->
+    <div class="main-content-area">
+        <div class="a4-container">
+            <div class="content-wrapper">
+                <header>
+                    <div class="header-content">
+                        <h1><i class="fas fa-paw"></i> Kuwait Zoo - Monkeys & Chimpanzees Population</h1>
+                        <p>Comprehensive overview of primate species population</p>
+                        <div class="date-badge">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>December 2025</span>
+                        </div>
+                    </div>
+                </header>
+                
+                <div class="document-content">
+                    <div class="card">
+                        <h2><i class="fas fa-list-ul"></i> Species Population Overview</h2>
+                        
+                        <div class="table-wrapper table-design-1 active">
+                            <table class="table-editable">
+                                <thead>
+                                    <tr>
+                                        <th>Species Name</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Gender Unknown</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Lemur</strong>
+                                            </div>
+                                        </td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>0</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐵</span>
+                                                <strong>Squirrel Monkey</strong>
+                                            </div>
+                                        </td>
+                                        <td>4</td>
+                                        <td>4</td>
+                                        <td>0</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Baboon</strong>
+                                            </div>
+                                        </td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>0</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Vervets</strong>
+                                            </div>
+                                        </td>
+                                        <td>4</td>
+                                        <td>7</td>
+                                        <td>1</td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Rhesus</strong>
+                                            </div>
+                                        </td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>0</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Rhesus (Single)</strong>
+                                            </div>
+                                        </td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Mona</strong>
+                                            </div>
+                                        </td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🦍</span>
+                                                <strong>Chimpanzee (Big)</strong>
+                                            </div>
+                                        </td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🦧</span>
+                                                <strong>Chimpanzee (Small)</strong>
+                                            </div>
+                                        </td>
+                                        <td>3</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="note">
+                            <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Vervet includes one baby (Gender unknown).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h2><i class="fas fa-chart-bar"></i> Population Statistics</h2>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h3>Species</h3>
+                                <div class="stat-value">9</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Total Monkeys</h3>
+                                <div class="stat-value">46</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Male Population</h3>
+                                <div class="stat-value">20</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Female Population</h3>
+                                <div class="stat-value">25</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Unknown Gender</h3>
+                                <div class="stat-value">1</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Chimpanzees</h3>
+                                <div class="stat-value">5</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding: 12px; background: #f8f9fa; border-radius: 6px;">
+                            <h3 style="color: #2e8b57; margin-bottom: 8px; font-size: 14px;">
+                                <i class="fas fa-chart-pie"></i> Population Summary
+                            </h3>
+                            <p style="font-size: 12px; line-height: 1.5;">
+                                The Kuwait Zoo currently houses <strong>9 species</strong> of primates with a total population of <strong>46 monkeys</strong>. The gender distribution shows <strong>20 males</strong>, <strong>25 females</strong>, and <strong>1</strong> of unknown gender.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <footer>
+                    <div class="zoo-logo">
+                        <i class="fas fa-tree"></i>
+                        <h3>Kuwait Zoo Management System</h3>
+                    </div>
+                    <p>Prepared on December 2025 | Official Document</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Public Footer -->
+    <div class="public-footer">
+        <i class="fas fa-eye"></i> Public Read-Only View | Admin Login Required for Editing
+    </div>
+    
+    <script>
+        // ============================================
+        // PUBLIC VIEW - ALL EDITING DISABLED
+        // ============================================
+        
+        // NEW: Load Saved Projects
+        function loadSavedProjects() {
+            const projectsList = document.getElementById('projectsList');
+            const savedProjectsView = document.getElementById('savedProjectsView');
+            const projects = JSON.parse(localStorage.getItem('savedProjects') || '[]');
+            
+            if (projects.length === 0) {
+                projectsList.innerHTML = '<div style="text-align: center; padding: 20px; color: #666;">No saved projects found.<br><small>Login as admin to save projects</small></div>';
+            } else {
+                projectsList.innerHTML = '';
+                projects.forEach(project => {
+                    const projectItem = document.createElement('div');
+                    projectItem.className = 'project-item';
+                    projectItem.innerHTML = `
+                        <div class="project-name">${project.name}</div>
+                        <div class="project-time">Saved: ${project.timestamp}</div>
+                    `;
+                    projectsList.appendChild(projectItem);
+                });
+            }
+            
+            // Show the projects view
+            savedProjectsView.classList.add('active');
+        }
+        
+        // Disable all editing functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Public View Mode Active - All editing disabled');
+            
+            // NEW: Add click handlers for refresh button
+            const refreshBtn = document.getElementById('refreshBtn');
+            const closeProjectsBtn = document.getElementById('closeProjectsBtn');
+            const savedProjectsView = document.getElementById('savedProjectsView');
+            
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', function() {
+                    loadSavedProjects();
+                });
+            }
+            
+            if (closeProjectsBtn) {
+                closeProjectsBtn.addEventListener('click', function() {
+                    savedProjectsView.classList.remove('active');
+                });
+            }
+            
+            // Disable all click events on editable content
+            const editables = document.querySelectorAll('.editable, [contenteditable="true"]');
+            editables.forEach(el => {
+                el.setAttribute('contenteditable', 'false');
+                el.style.cursor = 'default';
+                
+                el.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showReadOnlyMessage();
+                });
+            });
+            
+            // Disable all buttons except our new ones
+            const buttons = document.querySelectorAll('button:not(.refresh-btn):not(.close-projects-btn)');
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.style.cursor = 'not-allowed';
+                btn.style.opacity = '0.5';
+                
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showReadOnlyMessage();
+                });
+            });
+            
+            // Disable all form elements
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.disabled = true;
+                input.style.cursor = 'not-allowed';
+            });
+            
+            // Override any edit functions
+            window.toggleEditMode = showReadOnlyMessage;
+            window.downloadAsImage = showReadOnlyMessage;
+            window.saveCurrentProject = showReadOnlyMessage;
+            window.resetToDefault = showReadOnlyMessage;
+            window.changeSize = showReadOnlyMessage;
+            window.selectTableDesign = showReadOnlyMessage;
+            window.selectBackground = showReadOnlyMessage;
+            
+            // Prevent right-click
+            document.addEventListener('contextmenu', function(e) {
+                if (e.target.classList.contains('editable') || 
+                    e.target.closest('.control-btn') || 
+                    e.target.closest('.side-panel')) {
+                    e.preventDefault();
+                    showReadOnlyMessage();
+                }
+            });
+        });
+        
+        function showReadOnlyMessage() {
+            alert('This is a read-only public view.\n\nPlease login as administrator to edit content.');
+            return false;
+        }
+        
+        // Prevent keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Disable Ctrl+S, Ctrl+P, etc.
+            if (e.ctrlKey && (e.key === 's' || e.key === 'p' || e.key === 'e')) {
+                e.preventDefault();
+                showReadOnlyMessage();
+            }
+            
+            // Disable F12 for dev tools
+            if (e.key === 'F12') {
+                e.preventDefault();
+                showReadOnlyMessage();
+            }
+        });
+    </script>
+</body>
+</html>
