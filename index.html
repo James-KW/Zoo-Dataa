@@ -828,7 +828,7 @@
         <div class="banner-buttons">
             <!-- NEW: Refresh Button -->
             <button class="refresh-btn" id="refreshBtn">
-                <i class="fas fa-sync-alt"></i> View Saved Projects
+                <i class="fas fa-history"></i> View Last Saved Project
             </button>
             <!-- Enhanced Admin Button -->
             <a href="admin-login.html" class="admin-login-btn">
@@ -859,13 +859,13 @@
         <!-- NEW: Saved Projects View (Hidden by default) -->
         <div class="saved-projects-view" id="savedProjectsView">
             <div class="projects-header">
-                <h4><i class="fas fa-folder-open"></i> Saved Projects</h4>
+                <h4><i class="fas fa-folder-open"></i> Last Saved Project</h4>
                 <button class="close-projects-btn" id="closeProjectsBtn">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div id="projectsList">
-                <!-- Projects will be loaded here -->
+                <!-- Last project will be loaded here -->
             </div>
         </div>
         
@@ -1328,103 +1328,132 @@
             };
         }
         
-        // NEW: Load Saved Projects
-        function loadSavedProjects() {
-            console.log("Loading saved projects...");
+        // NEW: Load ONLY the last saved project
+        function loadLastSavedProject() {
+            console.log("Loading last saved project...");
             
-            const projectsList = document.getElementById('projectsList');
             const savedProjectsView = document.getElementById('savedProjectsView');
+            const projectsList = document.getElementById('projectsList');
             
             // Load projects from localStorage
-            currentProjects = [];
+            let projects = [];
             try {
                 const savedData = localStorage.getItem('savedProjects');
                 if (savedData) {
-                    currentProjects = JSON.parse(savedData);
-                    console.log("Found projects:", currentProjects.length);
+                    projects = JSON.parse(savedData);
+                    console.log("Total projects found:", projects.length);
                 }
             } catch (error) {
                 console.error("Error loading projects:", error);
+                showNotification('Error loading projects. Please try again.', 'error');
+                return;
             }
             
-            if (currentProjects.length === 0) {
-                projectsList.innerHTML = '<div style="text-align: center; padding: 20px; color: #666;">No saved projects found.<br><small>Login as admin to save projects</small></div>';
-            } else {
-                projectsList.innerHTML = '';
-                
-                // Show all projects
-                currentProjects.forEach((project, index) => {
-                    const projectItem = document.createElement('div');
-                    projectItem.className = 'project-item';
-                    projectItem.dataset.index = index;
-                    
-                    // Parse content for quick preview
-                    const parsedContent = parseProjectContent(project.content || {});
-                    
-                    projectItem.innerHTML = `
-                        <div class="project-name">${project.name || `Project ${index + 1}`}</div>
-                        <div class="project-time">Saved: ${project.timestamp || 'Unknown date'}</div>
-                        <div class="project-content-display" id="content-${index}">
-                            <div class="content-preview">
-                                <h5><i class="fas fa-table"></i> Quick Preview:</h5>
-                                <table class="content-preview-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Species</th>
-                                            <th>Male</th>
-                                            <th>Female</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ${parsedContent.species.slice(0, 3).map(species => `
-                                            <tr>
-                                                <td>${species.name}</td>
-                                                <td>${species.male}</td>
-                                                <td>${species.female}</td>
-                                                <td>${species.total}</td>
-                                            </tr>
-                                        `).join('')}
-                                        ${parsedContent.species.length > 3 ? `
-                                            <tr>
-                                                <td colspan="4" style="text-align: center; font-style: italic;">
-                                                    ... and ${parsedContent.species.length - 3} more species
-                                                </td>
-                                            </tr>
-                                        ` : ''}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    `;
-                    
-                    // Add click event
-                    projectItem.addEventListener('click', function() {
-                        loadProjectPreview(project);
-                    });
-                    
-                    // Add hover to show/hide preview
-                    let previewTimer;
-                    projectItem.addEventListener('mouseenter', function() {
-                        clearTimeout(previewTimer);
-                        const preview = document.getElementById(`content-${index}`);
-                        if (preview) {
-                            preview.classList.add('active');
-                        }
-                    });
-                    
-                    projectItem.addEventListener('mouseleave', function() {
-                        previewTimer = setTimeout(() => {
-                            const preview = document.getElementById(`content-${index}`);
-                            if (preview) {
-                                preview.classList.remove('active');
-                            }
-                        }, 300);
-                    });
-                    
-                    projectsList.appendChild(projectItem);
-                });
+            if (projects.length === 0) {
+                projectsList.innerHTML = `
+                    <div style="text-align: center; padding: 20px; color: #666;">
+                        <i class="fas fa-folder-open" style="font-size: 24px; margin-bottom: 10px;"></i><br>
+                        No saved projects found.<br>
+                        <small style="font-size: 11px;">Login as admin to save projects</small>
+                    </div>
+                `;
+                showNotification('No saved projects found.', 'info');
+                savedProjectsView.classList.add('active');
+                return;
             }
+            
+            // Get the LAST saved project (most recent)
+            const lastProject = projects[projects.length - 1];
+            console.log("Last project:", lastProject.name);
+            
+            // Update banner to show we're viewing the last project
+            const bannerTitle = document.querySelector('.banner-title');
+            if (bannerTitle) {
+                bannerTitle.innerHTML = `
+                    <i class="fas fa-eye"></i>
+                    <span>Viewing: ${lastProject.name || "Last Project"}</span>
+                `;
+            }
+            
+            // Show only the last project in side panel
+            projectsList.innerHTML = '';
+            
+            const projectItem = document.createElement('div');
+            projectItem.className = 'project-item';
+            
+            // Parse content for quick preview
+            const parsedContent = parseProjectContent(lastProject.content || {});
+            
+            projectItem.innerHTML = `
+                <div class="project-name">${lastProject.name || `Last Saved Project`}</div>
+                <div class="project-time">Saved: ${lastProject.timestamp || 'Recently'}</div>
+                <div class="project-content-display" id="content-last">
+                    <div class="content-preview">
+                        <h5><i class="fas fa-clock"></i> Most Recent Project</h5>
+                        <p style="font-size: 11px; margin: 8px 0; color: #666;">
+                            <i class="fas fa-info-circle"></i> This is the last saved project. Click to view full details.
+                        </p>
+                        <h5><i class="fas fa-table"></i> Quick Preview:</h5>
+                        <table class="content-preview-table">
+                            <thead>
+                                <tr>
+                                    <th>Species</th>
+                                    <th>Male</th>
+                                    <th>Female</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${parsedContent.species.slice(0, 3).map(species => `
+                                    <tr>
+                                        <td>${species.name}</td>
+                                        <td>${species.male}</td>
+                                        <td>${species.female}</td>
+                                        <td>${species.total}</td>
+                                    </tr>
+                                `).join('')}
+                                ${parsedContent.species.length > 3 ? `
+                                    <tr>
+                                        <td colspan="4" style="text-align: center; font-style: italic;">
+                                            ... and ${parsedContent.species.length - 3} more species
+                                        </td>
+                                    </tr>
+                                ` : ''}
+                            </tbody>
+                        </table>
+                        <div style="margin-top: 10px; padding: 8px; background: #e6f3ff; border-radius: 4px; font-size: 11px;">
+                            <i class="fas fa-database"></i> Total Species: ${parsedContent.species.length} | Total Animals: ${parsedContent.species.reduce((sum, s) => sum + (s.total || 0), 0)}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add click event - load the last project directly
+            projectItem.addEventListener('click', function() {
+                loadProjectPreview(lastProject);
+                showNotification(`Loaded: ${lastProject.name}`, 'success');
+            });
+            
+            // Add hover to show/hide preview
+            let previewTimer;
+            projectItem.addEventListener('mouseenter', function() {
+                clearTimeout(previewTimer);
+                const preview = document.getElementById('content-last');
+                if (preview) {
+                    preview.classList.add('active');
+                }
+            });
+            
+            projectItem.addEventListener('mouseleave', function() {
+                previewTimer = setTimeout(() => {
+                    const preview = document.getElementById('content-last');
+                    if (preview) {
+                        preview.classList.remove('active');
+                    }
+                }, 300);
+            });
+            
+            projectsList.appendChild(projectItem);
             
             // Show the projects view
             savedProjectsView.classList.add('active');
@@ -1432,6 +1461,12 @@
             // Scroll to top
             const sidePanel = document.querySelector('.side-panel');
             sidePanel.scrollTop = 0;
+            
+            // AUTO-LOAD: Automatically show the preview of the last project
+            setTimeout(() => {
+                loadProjectPreview(lastProject);
+                showNotification(`Loaded last project: ${lastProject.name}`, 'success');
+            }, 300);
         }
         
         // NEW: Load Project Preview
@@ -1443,6 +1478,7 @@
             
             // Update preview header
             document.querySelector('.preview-header h2').innerHTML = `<i class="fas fa-file-alt"></i> ${project.name || 'Project Preview'}`;
+            document.querySelector('.preview-header p').textContent = `Viewing saved project data (Read Only) - ${project.timestamp || 'Recently saved'}`;
             
             // Parse project content
             const parsedContent = parseProjectContent(project.content || {});
@@ -1494,7 +1530,7 @@
             previewNote.innerHTML = `<i class="fas fa-info-circle"></i> <strong>Note:</strong> ${parsedContent.note || 'Data from saved project.'}`;
             
             // Update footer
-            previewFooter.textContent = parsedContent.footer || 'Project data preview';
+            previewFooter.textContent = parsedContent.footer || `Saved: ${project.timestamp || 'Recently'}`;
             
             // Scroll to top
             window.scrollTo(0, 0);
@@ -1503,6 +1539,93 @@
         // NEW: Back to Main View
         function backToMainView() {
             document.body.classList.remove('projects-view-active');
+            
+            // Reset banner
+            const bannerTitle = document.querySelector('.banner-title');
+            if (bannerTitle) {
+                bannerTitle.innerHTML = `
+                    <i class="fas fa-eye"></i>
+                    <span>Public View - Read Only</span>
+                `;
+            }
+            
+            // Close projects view
+            const savedProjectsView = document.getElementById('savedProjectsView');
+            savedProjectsView.classList.remove('active');
+            
+            showNotification('Returned to main view', 'info');
+        }
+        
+        // NEW: Show notification
+        function showNotification(message, type = 'info') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.custom-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = 'custom-notification';
+            
+            // Set colors based on type
+            let bgColor, icon;
+            if (type === 'success') {
+                bgColor = 'linear-gradient(135deg, #2e8b57 0%, #1a6d38 100%)';
+                icon = 'fas fa-check-circle';
+            } else if (type === 'error') {
+                bgColor = 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)';
+                icon = 'fas fa-exclamation-circle';
+            } else {
+                bgColor = 'linear-gradient(135deg, #3498db 0%, #2980b9 100%)';
+                icon = 'fas fa-info-circle';
+            }
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 70px;
+                right: 20px;
+                background: ${bgColor};
+                color: white;
+                padding: 12px 20px;
+                border-radius: 6px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                z-index: 9999;
+                animation: slideInRight 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                max-width: 350px;
+                font-size: 13px;
+            `;
+            
+            notification.innerHTML = `
+                <i class="${icon}" style="font-size: 16px;"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Add animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideInRight 0.3s ease reverse';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.remove();
+                        }
+                    }, 300);
+                }
+            }, 3000);
         }
         
         // Disable all editing functionality
@@ -1517,13 +1640,14 @@
             
             if (refreshBtn) {
                 refreshBtn.addEventListener('click', function() {
-                    loadSavedProjects();
+                    loadLastSavedProject();
                 });
             }
             
             if (closeProjectsBtn) {
                 closeProjectsBtn.addEventListener('click', function() {
                     savedProjectsView.classList.remove('active');
+                    showNotification('Closed projects view', 'info');
                 });
             }
             
@@ -1547,7 +1671,7 @@
             });
             
             // Disable all buttons except our new ones
-            const buttons = document.querySelectorAll('button:not(.refresh-btn):not(.close-projects-btn):not(.back-to-main-btn)');
+            const buttons = document.querySelectorAll('button:not(.refresh-btn):not(.close-projects-btn):not(.back-to-main-btn):not(.admin-login-btn)');
             buttons.forEach(btn => {
                 btn.disabled = true;
                 btn.style.cursor = 'not-allowed';
@@ -1585,6 +1709,11 @@
                     showReadOnlyMessage();
                 }
             });
+            
+            // Show welcome message
+            setTimeout(() => {
+                showNotification('Welcome to Kuwait Zoo Public View', 'info');
+            }, 1000);
         });
         
         function showReadOnlyMessage() {
