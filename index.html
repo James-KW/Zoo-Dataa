@@ -22,7 +22,7 @@
             min-height: 100vh;
         }
         
-        /* Public View Banner - ENHANCED */
+        /* Public View Banner */
         .public-banner {
             position: fixed;
             top: 0;
@@ -45,7 +45,7 @@
             font-size: 16px;
         }
         
-        /* ADMIN LOGIN BUTTON - HIGHLIGHTED */
+        /* ADMIN LOGIN BUTTON */
         .admin-login-btn {
             background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
             color: white;
@@ -1166,51 +1166,61 @@
     
     <script>
         // ============================================
-        // PUBLIC VIEW - ALL EDITING DISABLED
+        // PUBLIC VIEW - FIXED VERSION
         // ============================================
         
-        // NEW: FIXED PARSER FUNCTION - সহজ এবং নির্ভুল
+        // FIXED: Parse project content function
         function parseProjectContent(contentData) {
-            console.log("Parsing project content (Fixed Version):", contentData);
+            console.log("Parsing saved project content:", contentData);
             
-            // যদি কন্টেন্ট ডেটা না থাকে, ডিফল্ট ডেটা রিটার্ন করবে
+            // Default data structure
+            const defaultData = {
+                species: [
+                    { name: 'Lemur', emoji: '🐒', male: 3, female: 4, unknown: 0, total: 7 },
+                    { name: 'Squirrel Monkey', emoji: '🐵', male: 4, female: 4, unknown: 0, total: 8 },
+                    { name: 'Baboon', emoji: '🐒', male: 2, female: 3, unknown: 0, total: 5 },
+                    { name: 'Vervets', emoji: '🐒', male: 4, female: 7, unknown: 1, total: 12 },
+                    { name: 'Rhesus', emoji: '🐒', male: 3, female: 4, unknown: 0, total: 7 },
+                    { name: 'Rhesus (Single)', emoji: '🐒', male: 0, female: 1, unknown: 0, total: 1 },
+                    { name: 'Mona', emoji: '🐒', male: 0, female: 1, unknown: 0, total: 1 },
+                    { name: 'Chimpanzee (Big)', emoji: '🦍', male: 1, female: 0, unknown: 0, total: 1 },
+                    { name: 'Chimpanzee (Small)', emoji: '🦧', male: 3, female: 1, unknown: 0, total: 4 }
+                ],
+                stats: [
+                    { title: 'Species', value: 9 },
+                    { title: 'Total Monkeys', value: 46 },
+                    { title: 'Male Population', value: 20 },
+                    { title: 'Female Population', value: 25 },
+                    { title: 'Unknown Gender', value: 1 },
+                    { title: 'Chimpanzees', value: 5 }
+                ],
+                summary: 'The Kuwait Zoo currently houses <strong>9 species</strong> of primates with a total population of <strong>46 monkeys</strong>. The gender distribution shows <strong>20 males</strong>, <strong>25 females</strong>, and <strong>1</strong> of unknown gender.',
+                note: 'Vervet includes one baby (Gender unknown).',
+                footer: 'Prepared on December 2025 | Official Document'
+            };
+            
+            // If no content data, return default
             if (!contentData) {
-                return getDefaultProjectData();
+                console.log("No content data found, using default");
+                return defaultData;
             }
             
-            // যদি কন্টেন্ট স্ট্রিং হয় (পুরানো ফরম্যাট)
+            // If content is a string, try to parse it
             if (typeof contentData === 'string') {
                 try {
                     contentData = JSON.parse(contentData);
                 } catch (e) {
                     console.error("Error parsing string content:", e);
-                    return getDefaultProjectData();
+                    return defaultData;
                 }
             }
             
-            const result = {
-                species: [],
-                stats: [],
-                summary: '',
-                note: 'Vervet includes one baby (Gender unknown).',
-                footer: 'Prepared on December 2025 | Official Document'
-            };
+            // Extract data from the saved project structure
+            const result = { ...defaultData };
             
-            // ফিক্সড ডেটা স্ট্রাকচার - zooinfo.html থেকে আসল ডেটা
-            const fixedSpeciesData = [
-                { name: 'Lemur', emoji: '🐒', male: 3, female: 4, unknown: 0, total: 7 },
-                { name: 'Squirrel Monkey', emoji: '🐵', male: 4, female: 4, unknown: 0, total: 8 },
-                { name: 'Baboon', emoji: '🐒', male: 2, female: 3, unknown: 0, total: 5 },
-                { name: 'Vervets', emoji: '🐒', male: 4, female: 7, unknown: 1, total: 12 },
-                { name: 'Rhesus', emoji: '🐒', male: 3, female: 4, unknown: 0, total: 7 },
-                { name: 'Rhesus (Single)', emoji: '🐒', male: 0, female: 1, unknown: 0, total: 1 },
-                { name: 'Mona', emoji: '🐒', male: 0, female: 1, unknown: 0, total: 1 },
-                { name: 'Chimpanzee (Big)', emoji: '🦍', male: 1, female: 0, unknown: 0, total: 1 },
-                { name: 'Chimpanzee (Small)', emoji: '🦧', male: 3, female: 1, unknown: 0, total: 4 }
-            ];
-            
-            // যদি প্রকৃত প্রজেক্ট ডেটা থাকে, সেটা ব্যবহার করবে
+            // If the saved data has species array, use it
             if (contentData.species && Array.isArray(contentData.species) && contentData.species.length > 0) {
+                console.log("Using saved species data:", contentData.species.length, "species");
                 result.species = contentData.species.map(s => ({
                     name: s.name || 'Unknown',
                     emoji: getEmojiForSpecies(s.name || ''),
@@ -1219,32 +1229,60 @@
                     unknown: parseInt(s.unknown) || 0,
                     total: parseInt(s.total) || 0
                 }));
-            } else {
-                // নাহলে ফিক্সড ডেটা ব্যবহার করবে
-                result.species = fixedSpeciesData;
             }
             
-            // স্ট্যাটিসটিক্স ক্যালকুলেট করবে
-            const totalSpecies = result.species.length;
-            const totalMonkeys = result.species.reduce((sum, s) => sum + (s.total || 0), 0);
-            const totalMale = result.species.reduce((sum, s) => sum + (s.male || 0), 0);
-            const totalFemale = result.species.reduce((sum, s) => sum + (s.female || 0), 0);
-            const totalUnknown = result.species.reduce((sum, s) => sum + (s.unknown || 0), 0);
-            const totalChimpanzees = result.species.filter(s => 
-                s.name.includes('Chimpanzee')).reduce((sum, s) => sum + (s.total || 0), 0);
+            // If the saved data has stats array, use it
+            if (contentData.stats && Array.isArray(contentData.stats) && contentData.stats.length > 0) {
+                console.log("Using saved stats data");
+                result.stats = contentData.stats.map(s => ({
+                    title: s.title || '',
+                    value: parseInt(s.value) || s.value || 0
+                }));
+            } else {
+                // Calculate stats from species data
+                const totalSpecies = result.species.length;
+                const totalMonkeys = result.species.reduce((sum, s) => sum + (s.total || 0), 0);
+                const totalMale = result.species.reduce((sum, s) => sum + (s.male || 0), 0);
+                const totalFemale = result.species.reduce((sum, s) => sum + (s.female || 0), 0);
+                const totalUnknown = result.species.reduce((sum, s) => sum + (s.unknown || 0), 0);
+                const totalChimpanzees = result.species.filter(s => 
+                    s.name.includes('Chimpanzee')).reduce((sum, s) => sum + (s.total || 0), 0);
+                
+                result.stats = [
+                    { title: 'Species', value: totalSpecies },
+                    { title: 'Total Monkeys', value: totalMonkeys },
+                    { title: 'Male Population', value: totalMale },
+                    { title: 'Female Population', value: totalFemale },
+                    { title: 'Unknown Gender', value: totalUnknown },
+                    { title: 'Chimpanzees', value: totalChimpanzees }
+                ];
+            }
             
-            result.stats = [
-                { title: 'Species', value: totalSpecies },
-                { title: 'Total Monkeys', value: totalMonkeys },
-                { title: 'Male Population', value: totalMale },
-                { title: 'Female Population', value: totalFemale },
-                { title: 'Unknown Gender', value: totalUnknown },
-                { title: 'Chimpanzees', value: totalChimpanzees }
-            ];
+            // Use saved summary if available
+            if (contentData.summary) {
+                result.summary = contentData.summary;
+            } else {
+                // Generate summary from data
+                const totalSpecies = result.stats.find(s => s.title === 'Species')?.value || 0;
+                const totalMonkeys = result.stats.find(s => s.title === 'Total Monkeys')?.value || 0;
+                const totalMale = result.stats.find(s => s.title === 'Male Population')?.value || 0;
+                const totalFemale = result.stats.find(s => s.title === 'Female Population')?.value || 0;
+                const totalUnknown = result.stats.find(s => s.title === 'Unknown Gender')?.value || 0;
+                
+                result.summary = `The Kuwait Zoo currently houses <strong>${totalSpecies} species</strong> of primates with a total population of <strong>${totalMonkeys} monkeys</strong>. The gender distribution shows <strong>${totalMale} males</strong>, <strong>${totalFemale} females</strong>, and <strong>${totalUnknown}</strong> of unknown gender.`;
+            }
             
-            // সামারি সেট করবে
-            result.summary = `The Kuwait Zoo currently houses <strong>${totalSpecies} species</strong> of primates with a total population of <strong>${totalMonkeys} monkeys</strong>. The gender distribution shows <strong>${totalMale} males</strong>, <strong>${totalFemale} females</strong>, and <strong>${totalUnknown}</strong> of unknown gender.`;
+            // Use saved note if available
+            if (contentData.note) {
+                result.note = contentData.note;
+            }
             
+            // Use saved footer if available
+            if (contentData.footer) {
+                result.footer = contentData.footer;
+            }
+            
+            console.log("Parsed result:", result);
             return result;
         }
         
@@ -1261,35 +1299,7 @@
             return '🐒';
         }
         
-        // Default Project Data
-        function getDefaultProjectData() {
-            return {
-                species: [
-                    { name: 'Lemur', emoji: '🐒', male: 3, female: 4, unknown: 0, total: 7 },
-                    { name: 'Squirrel Monkey', emoji: '🐵', male: 4, female: 4, unknown: 0, total: 8 },
-                    { name: 'Baboon', emoji: '🐒', male: 2, female: 3, unknown: 0, total: 5 },
-                    { name: 'Vervets', emoji: '🐒', male: 4, female: 7, unknown: 1, total: 12 },
-                    { name: 'Rhesus', emoji: '🐒', male: 3, female: 4, unknown: 0, total: 7 },
-                    { name: 'Rhesus (Single)', emoji: '🐒', male: 0, female: 1, unknown: 0, total: 1 },
-                    { name: 'Mona', emoji: '🐒', male: 0, female: 1, unknown: 0, total: 1 },
-                    { name: 'Chimpanzee (Big)', emoji: '🦍', male: 1, female: 0, unknown: 0, total: 1 },
-                    { name: 'Chimpanzee (Small)', emoji: '🦧', male: 3, female: 1, unknown: 0, total: 4 }
-                ],
-                stats: [
-                    { title: 'Species', value: '9' },
-                    { title: 'Total Monkeys', value: '46' },
-                    { title: 'Male Population', value: '20' },
-                    { title: 'Female Population', value: '25' },
-                    { title: 'Unknown Gender', value: '1' },
-                    { title: 'Chimpanzees', value: '5' }
-                ],
-                summary: 'The Kuwait Zoo currently houses <strong>9 species</strong> of primates with a total population of <strong>46 monkeys</strong>. The gender distribution shows <strong>20 males</strong>, <strong>25 females</strong>, and <strong>1</strong> of unknown gender.',
-                note: 'Vervet includes one baby (Gender unknown).',
-                footer: 'Prepared on December 2025 | Official Document'
-            };
-        }
-        
-        // Load ONLY the last saved project
+        // Load last saved project
         function loadLastSavedProject() {
             console.log("Loading last saved project...");
             
@@ -1302,7 +1312,14 @@
                 const savedData = localStorage.getItem('savedProjects');
                 if (savedData) {
                     projects = JSON.parse(savedData);
-                    console.log("Total projects found:", projects.length);
+                    console.log("Total projects found in localStorage:", projects.length);
+                    
+                    // Debug: Show all projects
+                    projects.forEach((p, i) => {
+                        console.log(`Project ${i}:`, p.name, p.timestamp);
+                    });
+                } else {
+                    console.log("No saved projects found in localStorage");
                 }
             } catch (error) {
                 console.error("Error loading projects:", error);
@@ -1325,9 +1342,9 @@
             
             // Get the LAST saved project (most recent)
             const lastProject = projects[projects.length - 1];
-            console.log("Last project loaded:", lastProject);
+            console.log("Last project to load:", lastProject);
             
-            // Update banner to show we're viewing the last project
+            // Update banner
             const bannerTitle = document.querySelector('.banner-title');
             if (bannerTitle) {
                 bannerTitle.innerHTML = `
@@ -1352,7 +1369,7 @@
                     <div class="content-preview">
                         <h5><i class="fas fa-clock"></i> Most Recent Project</h5>
                         <p style="font-size: 11px; margin: 8px 0; color: #666;">
-                            <i class="fas fa-info-circle"></i> This is the last saved project. Click to view full details.
+                            <i class="fas fa-info-circle"></i> Click to view full details.
                         </p>
                         <h5><i class="fas fa-table"></i> Quick Preview:</h5>
                         <table class="content-preview-table">
@@ -1382,20 +1399,17 @@
                                 ` : ''}
                             </tbody>
                         </table>
-                        <div style="margin-top: 10px; padding: 8px; background: #e6f3ff; border-radius: 4px; font-size: 11px;">
-                            <i class="fas fa-database"></i> Total Species: ${parsedContent.species.length} | Total Animals: ${parsedContent.species.reduce((sum, s) => sum + (s.total || 0), 0)}
-                        </div>
                     </div>
                 </div>
             `;
             
-            // Add click event - load the last project directly
+            // Add click event
             projectItem.addEventListener('click', function() {
                 loadProjectPreview(lastProject);
                 showNotification(`Loaded: ${lastProject.name}`, 'success');
             });
             
-            // Add hover to show/hide preview
+            // Add hover effect
             let previewTimer;
             projectItem.addEventListener('mouseenter', function() {
                 clearTimeout(previewTimer);
@@ -1419,20 +1433,16 @@
             // Show the projects view
             savedProjectsView.classList.add('active');
             
-            // Scroll to top
-            const sidePanel = document.querySelector('.side-panel');
-            sidePanel.scrollTop = 0;
-            
-            // AUTO-LOAD: Automatically show the preview of the last project
+            // AUTO-LOAD: Automatically show the preview
             setTimeout(() => {
                 loadProjectPreview(lastProject);
-                showNotification(`Loaded last project: ${lastProject.name}`, 'success');
+                showNotification(`Loaded: ${lastProject.name}`, 'success');
             }, 300);
         }
         
         // Load Project Preview
         function loadProjectPreview(project) {
-            console.log("Loading project preview:", project.name);
+            console.log("Loading project preview for:", project.name);
             
             // Enable projects view mode
             document.body.classList.add('projects-view-active');
@@ -1443,17 +1453,28 @@
             
             // Parse project content
             const parsedContent = parseProjectContent(project.content || {});
+            console.log("Parsed content for preview:", parsedContent);
             
-            // Load table data
+            // Load table data - শুধু ১ বার লোড হবে
             const tableBody = document.getElementById('previewTableBody');
             const statsGrid = document.getElementById('previewStatsGrid');
             const previewSummary = document.getElementById('previewSummary');
             const previewNote = document.getElementById('previewNote');
             const previewFooter = document.getElementById('previewFooter');
             
-            // Update table - শুধু ১বার লোড হবে
-            let tableHTML = '';
+            // Update table - শুধু unique speciesগুলো দেখাবে
+            const uniqueSpecies = [];
+            const seenNames = new Set();
+            
             parsedContent.species.forEach(species => {
+                if (!seenNames.has(species.name)) {
+                    seenNames.add(species.name);
+                    uniqueSpecies.push(species);
+                }
+            });
+            
+            let tableHTML = '';
+            uniqueSpecies.forEach(species => {
                 tableHTML += `
                     <tr>
                         <td>
@@ -1484,17 +1505,13 @@
             statsGrid.innerHTML = statsHTML;
             
             // Update summary
-            previewSummary.innerHTML = parsedContent.summary || 
-                'The Kuwait Zoo currently houses various species of primates with updated population data.';
+            previewSummary.innerHTML = parsedContent.summary;
             
             // Update note
-            previewNote.innerHTML = `<i class="fas fa-info-circle"></i> <strong>Note:</strong> ${parsedContent.note || 'Data from saved project.'}`;
+            previewNote.innerHTML = `<i class="fas fa-info-circle"></i> <strong>Note:</strong> ${parsedContent.note}`;
             
             // Update footer
-            previewFooter.textContent = parsedContent.footer || `Saved: ${project.timestamp || 'Recently'}`;
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
+            previewFooter.textContent = parsedContent.footer;
         }
         
         // Back to Main View
@@ -1513,8 +1530,6 @@
             // Close projects view
             const savedProjectsView = document.getElementById('savedProjectsView');
             savedProjectsView.classList.remove('active');
-            
-            showNotification('Returned to main view', 'info');
         }
         
         // Show notification
@@ -1576,32 +1591,25 @@
             `;
             document.head.appendChild(style);
             
-            // Remove notification after 3 seconds
+            // Remove after 3 seconds
             setTimeout(() => {
                 if (notification.parentNode) {
-                    notification.style.animation = 'slideInRight 0.3s ease reverse';
-                    setTimeout(() => {
-                        if (notification.parentNode) {
-                            notification.remove();
-                        }
-                    }, 300);
+                    notification.remove();
                 }
             }, 3000);
         }
         
-        // Disable all editing functionality
+        // Main initialization
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Public View Mode Active - All editing disabled');
+            console.log('Public View Mode Active');
             
-            // Add click handlers for buttons
+            // Add click handlers
             const refreshBtn = document.getElementById('refreshBtn');
             const closeProjectsBtn = document.getElementById('closeProjectsBtn');
             const backToMainBtn = document.getElementById('backToMainBtn');
             
             if (refreshBtn) {
-                refreshBtn.addEventListener('click', function() {
-                    loadLastSavedProject();
-                });
+                refreshBtn.addEventListener('click', loadLastSavedProject);
             }
             
             if (closeProjectsBtn) {
@@ -1613,62 +1621,15 @@
             }
             
             if (backToMainBtn) {
-                backToMainBtn.addEventListener('click', function() {
-                    backToMainView();
-                });
+                backToMainBtn.addEventListener('click', backToMainView);
             }
             
-            // Disable all click events on editable content
+            // Disable all editing
             const editables = document.querySelectorAll('.editable, [contenteditable="true"]');
             editables.forEach(el => {
                 el.setAttribute('contenteditable', 'false');
                 el.style.cursor = 'default';
-                
-                el.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    showReadOnlyMessage();
-                });
-            });
-            
-            // Disable all buttons except our new ones
-            const buttons = document.querySelectorAll('button:not(.refresh-btn):not(.close-projects-btn):not(.back-to-main-btn):not(.admin-login-btn)');
-            buttons.forEach(btn => {
-                btn.disabled = true;
-                btn.style.cursor = 'not-allowed';
-                btn.style.opacity = '0.5';
-                
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    showReadOnlyMessage();
-                });
-            });
-            
-            // Disable all form elements
-            const inputs = document.querySelectorAll('input, textarea, select');
-            inputs.forEach(input => {
-                input.disabled = true;
-                input.style.cursor = 'not-allowed';
-            });
-            
-            // Override any edit functions
-            window.toggleEditMode = showReadOnlyMessage;
-            window.downloadAsImage = showReadOnlyMessage;
-            window.saveCurrentProject = showReadOnlyMessage;
-            window.resetToDefault = showReadOnlyMessage;
-            window.changeSize = showReadOnlyMessage;
-            window.selectTableDesign = showReadOnlyMessage;
-            window.selectBackground = showReadOnlyMessage;
-            
-            // Prevent right-click
-            document.addEventListener('contextmenu', function(e) {
-                if (e.target.classList.contains('editable') || 
-                    e.target.closest('.control-btn') || 
-                    e.target.closest('.side-panel')) {
-                    e.preventDefault();
-                    showReadOnlyMessage();
-                }
+                el.addEventListener('click', showReadOnlyMessage);
             });
             
             // Show welcome message
@@ -1681,21 +1642,6 @@
             alert('This is a read-only public view.\n\nPlease login as administrator to edit content.');
             return false;
         }
-        
-        // Prevent keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            // Disable Ctrl+S, Ctrl+P, etc.
-            if (e.ctrlKey && (e.key === 's' || e.key === 'p' || e.key === 'e')) {
-                e.preventDefault();
-                showReadOnlyMessage();
-            }
-            
-            // Disable F12 for dev tools
-            if (e.key === 'F12') {
-                e.preventDefault();
-                showReadOnlyMessage();
-            }
-        });
     </script>
 </body>
 </html>
