@@ -47,38 +47,43 @@
         
         .banner-buttons {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             align-items: center;
         }
         
-        .admin-login-btn {
-            background: rgba(255, 255, 255, 0.2);
+        /* WORKSHOP বাটন - বড় ফন্ট */
+        .workshop-btn {
+            background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 15px;
-            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 12px 25px;
+            border-radius: 30px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 18px;
+            font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
         }
         
-        .admin-login-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        .workshop-btn:hover {
+            background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 87, 34, 0.5);
         }
         
-        /* নতুন Emergency বাটন */
+        /* Emergency বাটন */
         .emergency-btn {
             background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
             border-radius: 25px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: bold;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -87,8 +92,38 @@
         
         .emergency-btn:hover {
             background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        /* ADMIN PANEL বাটন - বড় ফন্ট */
+        .admin-panel-btn {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(33, 150, 243, 0.7); }
+            100% { box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4); }
+        }
+        
+        .admin-panel-btn:hover {
+            background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.6);
         }
         
         /* Side Panel - Read Only */
@@ -284,6 +319,82 @@
         .video-control-btn:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
+        }
+        
+        /* CONTACT US বাটন - WORKSHOP বাটনের কাছাকাছি */
+        .contact-us-btn {
+            background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+            margin-left: 10px;
+        }
+        
+        .contact-us-btn:hover {
+            background: linear-gradient(135deg, #673AB7 0%, #9C27B0 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.5);
+        }
+        
+        /* Side Panel এ WORKSHOP বাটন */
+        .workshop-side-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
+        }
+        
+        .workshop-side-btn:hover {
+            background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.5);
+        }
+        
+        /* Visitors Info বাটন */
+        .visitors-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        
+        .visitors-btn:hover {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
         }
         
         /* Author Information স্টাইল */
@@ -588,35 +699,6 @@
             background: #f8f9fa !important;
         }
         
-        /* Admin Login Button - Fixed Position */
-        .admin-login-fixed {
-            position: fixed;
-            top: 15px;
-            right: 20px;
-            z-index: 1001;
-        }
-        
-        .admin-login-fixed .admin-login-btn {
-            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 3px 10px rgba(245, 124, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .admin-login-fixed .admin-login-btn:hover {
-            background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(245, 124, 0, 0.4);
-        }
-        
         /* Contact Info Modal */
         .contact-modal {
             display: none;
@@ -683,42 +765,6 @@
             font-size: 16px;
             margin-top: 20px;
         }
-        
-        /* Quick Action Buttons - Side Panel এ */
-        .quick-actions {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        
-        .action-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            color: white;
-            border: none;
-            padding: 12px 15px;
-            border-radius: 8px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-        }
-        
-        .action-btn.orange {
-            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
-        }
-        
-        .action-btn.green {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-        }
     </style>
 </head>
 <body>
@@ -729,24 +775,27 @@
             <span>Public View - Read Only</span>
         </div>
         <div class="banner-buttons">
-            <a href="admin-login.html" class="admin-login-btn">
-                <i class="fas fa-lock"></i> Admin Login
+            <!-- WORKSHOP বাটন (Admin Login এর পরিবর্তে) -->
+            <a href="admin-login.html" class="workshop-btn">
+                <i class="fas fa-tools"></i> WORKSHOP
             </a>
-            <!-- নতুন Emergency বাটন -->
+            
+            <!-- Emergency বাটন -->
             <a href="tel:+96598064347" class="emergency-btn">
-                <i class="fas fa-phone-alt"></i> Emergency Contact
+                <i class="fas fa-phone-alt"></i> EMERGENCY
             </a>
-            <!-- নতুন Feedback বাটন -->
-            <a href="javascript:void(0)" class="admin-login-btn" onclick="showFeedbackForm()">
-                <i class="fas fa-comment-alt"></i> Give Feedback
+            
+            <!-- CONTACT US বাটন -->
+            <a href="javascript:void(0)" class="contact-us-btn" onclick="showContactInfo()">
+                <i class="fas fa-headset"></i> CONTACT US
             </a>
         </div>
     </div>
     
-    <!-- Fixed Admin Login Button -->
+    <!-- Fixed ADMIN PANEL বাটন - বড় ফন্ট -->
     <div class="admin-login-fixed">
-        <a href="admin-login.html" class="admin-login-btn">
-            <i class="fas fa-user-shield"></i> Admin Panel
+        <a href="admin-login.html" class="admin-panel-btn">
+            <i class="fas fa-user-shield"></i> ADMIN PANEL
         </a>
     </div>
     
@@ -763,19 +812,15 @@
             This is a public view. Admin login required for editing.
         </div>
         
-        <!-- নতুন Quick Action Buttons -->
-        <div class="quick-actions">
-            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
-            <button class="action-btn" onclick="showVisitorInfo()">
-                <i class="fas fa-users"></i> Visitor Information
-            </button>
-            <button class="action-btn orange" onclick="showZooMap()">
-                <i class="fas fa-map-marked-alt"></i> Zoo Map
-            </button>
-            <button class="action-btn green" onclick="showFeedingSchedule()">
-                <i class="fas fa-utensils"></i> Feeding Schedule
-            </button>
-        </div>
+        <!-- WORKSHOP বাটন (Side Panel এ) -->
+        <button class="workshop-side-btn" onclick="showWorkshopInfo()">
+            <i class="fas fa-tools"></i> WORKSHOP INFO
+        </button>
+        
+        <!-- VISITORS বাটন -->
+        <button class="visitors-btn" onclick="showVisitorInfo()">
+            <i class="fas fa-users"></i> VISITORS INFO
+        </button>
         
         <div class="control-group">
             <h3><i class="fas fa-download"></i> Export Options</h3>
@@ -822,7 +867,7 @@
                     <div class="header-content">
                         <!-- ভিডিও সেকশন - WORKING VIDEO -->
                         <div class="video-intro">
-                            <!-- Zoo-related ভিডিও (সরাসরি MP4 লিংক) -->
+                            <!-- Zoo-related ভিডিও -->
                             <video id="zooIntroVideo" autoplay muted loop playsinline>
                                 <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
                                 <source src="https://static.videezy.com/system/resources/previews/000/042/097/original/4K-235.mp4" type="video/mp4">
@@ -1150,7 +1195,8 @@
                 // কিছু বাটন enable রাখব
                 if (btn.classList.contains('contact-btn') || 
                     btn.classList.contains('video-control-btn') ||
-                    btn.classList.contains('action-btn') ||
+                    btn.classList.contains('workshop-side-btn') ||
+                    btn.classList.contains('visitors-btn') ||
                     btn.classList.contains('close-modal')) {
                     btn.disabled = false;
                     btn.style.cursor = 'pointer';
@@ -1240,6 +1286,16 @@
             return false;
         }
         
+        // WORKSHOP ফাংশন
+        function showWorkshopInfo() {
+            alert('🔧 WORKSHOP INFORMATION\n\n📅 Workshop Schedule:\n• Animal Care Workshop: Every Saturday 10 AM\n• Wildlife Photography: Every Sunday 2 PM\n• Kids Zoo Explorer: Weekdays 3 PM\n\n🎯 Workshop Topics:\n1. Animal Behavior Study\n2. Wildlife Conservation\n3. Zoo Management\n4. Animal Nutrition\n\n📞 Registration: +965 1234 5678\n📍 Location: Kuwait Zoo Education Center');
+        }
+        
+        // VISITORS ফাংশন
+        function showVisitorInfo() {
+            alert('👥 VISITOR INFORMATION\n\n🕒 Opening Hours:\n• Sunday - Thursday: 9:00 AM - 6:00 PM\n• Friday - Saturday: 8:00 AM - 7:00 PM\n\n💰 Ticket Prices:\n• Adults: 5 KWD\n• Children (5-12): 3 KWD\n• Children under 5: FREE\n• Family Package (4 persons): 15 KWD\n\n🎟️ Special Offers:\n• Student Discount: 20% off\n• Senior Citizen: 30% off\n• Group Booking (10+): 25% off\n\n🚗 Parking:\n• Available: 500+ spaces\n• Price: 1 KWD/day\n• Electric Charging: Available\n\n🍽️ Facilities:\n• Food Court\n• Restrooms\n• Prayer Room\n• First Aid\n• Gift Shop');
+        }
+        
         // Contact Author Modal ফাংশন
         function showContactInfo() {
             const modal = document.getElementById('contactModal');
@@ -1249,23 +1305,6 @@
         function closeContactModal() {
             const modal = document.getElementById('contactModal');
             modal.style.display = 'none';
-        }
-        
-        // নতুন Quick Action ফাংশন
-        function showVisitorInfo() {
-            alert('🦁 Visitor Information:\n\n• Opening Hours: 9:00 AM - 6:00 PM\n• Ticket Price: 5 KWD\n• Guided Tours: Every 2 hours\n• Children under 5: Free\n• Parking: Available\n• Food Court: Open 10AM-5PM');
-        }
-        
-        function showZooMap() {
-            alert('🗺️ Zoo Map:\n\n1. Entrance Gate\n2. Monkey Sanctuary (Current Location)\n3. Lion Kingdom\n4. Elephant Valley\n5. Bird Paradise\n6. Reptile House\n7. Food Court\n8. Gift Shop\n9. Restrooms\n\nFollow the green signs!');
-        }
-        
-        function showFeedingSchedule() {
-            alert('🍌 Feeding Schedule:\n\n• Monkeys: 10:00 AM & 3:00 PM\n• Chimpanzees: 11:00 AM & 4:00 PM\n• Lions: 12:00 PM\n• Elephants: 1:00 PM\n• Birds: 2:00 PM\n\n⚠️ Please do not feed animals!');
-        }
-        
-        function showFeedbackForm() {
-            alert('📝 Feedback Form:\n\nThank you for visiting Kuwait Zoo!\n\nPlease send your feedback to:\nEmail: feedback@kuwaitzoo.com\nPhone: +965 1234 5678\n\nWe appreciate your comments!');
         }
         
         // Modal বাইরে ক্লিক করলে বন্ধ হবে
