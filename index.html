@@ -98,6 +98,9 @@
         
         /* ADMIN PANEL বাটন - বড় ফন্ট */
         .admin-panel-btn {
+            position: fixed;
+            top: 15px;
+            right: 20px;
             background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
             color: white;
             border: none;
@@ -112,6 +115,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4);
             animation: pulse 2s infinite;
+            z-index: 1001;
         }
         
         @keyframes pulse {
@@ -206,7 +210,7 @@
             align-items: center;
             padding: 40px 20px;
             background: #f5f7fa;
-            min-height: 100vh;
+            min-height: calc(100vh - 60px);
         }
         
         /* A4 Container */
@@ -321,7 +325,7 @@
             transform: scale(1.05);
         }
         
-        /* CONTACT US বাটন - WORKSHOP বাটনের কাছাকাছি */
+        /* CONTACT US বাটন */
         .contact-us-btn {
             background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
             color: white;
@@ -397,20 +401,26 @@
             box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
         }
         
-        /* Author Information স্টাইল */
+        /* Footer স্টাইলস */
         .author-info {
             text-align: center;
             padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
-        
+
         .contact-author {
             margin: 15px 0;
             padding: 15px;
             background: rgba(46, 139, 87, 0.1);
             border-radius: 10px;
             border: 1px solid rgba(46, 139, 87, 0.2);
+            width: 90%;
+            max-width: 500px;
         }
-        
+
         .contact-author h4 {
             color: #2e8b57;
             margin-bottom: 15px;
@@ -420,7 +430,7 @@
             justify-content: center;
             gap: 10px;
         }
-        
+
         .social-links {
             display: flex;
             justify-content: center;
@@ -428,7 +438,7 @@
             align-items: center;
             flex-wrap: wrap;
         }
-        
+
         .social-btn {
             width: 45px;
             height: 45px;
@@ -442,24 +452,24 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        
+
         .social-btn:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
-        
+
         .social-btn.facebook {
             background: linear-gradient(135deg, #1877f2 0%, #0d5cb6 100%);
         }
-        
+
         .social-btn.github {
             background: linear-gradient(135deg, #333 0%, #000 100%);
         }
-        
+
         .social-btn.whatsapp {
             background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
         }
-        
+
         .contact-btn {
             background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
             color: white;
@@ -474,30 +484,29 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
         }
-        
+
         .contact-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
         }
-        
-        .copyright {
-            margin-top: 10px;
-            font-size: 11px;
-            color: #666;
+
+        /* নিচের দুই লাইন */
+        .footer-lines {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #eaeaea;
+            width: 100%;
         }
-        
-        /* Footer */
-        .public-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
+
+        .footer-lines p {
+            color: #666;
             font-size: 12px;
-            z-index: 1000;
+            line-height: 1.4;
+        }
+
+        .copyright {
+            font-size: 11px !important;
+            color: #666 !important;
         }
         
         /* Rest of your original CSS */
@@ -793,11 +802,9 @@
     </div>
     
     <!-- Fixed ADMIN PANEL বাটন - বড় ফন্ট -->
-    <div class="admin-login-fixed">
-        <a href="admin-login.html" class="admin-panel-btn">
-            <i class="fas fa-user-shield"></i> ADMIN PANEL
-        </a>
-    </div>
+    <a href="admin-login.html" class="admin-panel-btn">
+        <i class="fas fa-user-shield"></i> ADMIN PANEL
+    </a>
     
     <!-- Side Panel (Read Only Version) -->
     <div class="side-panel">
@@ -1072,23 +1079,33 @@
                         <div class="contact-author">
                             <h4><i class="fas fa-user-circle"></i> Author Information</h4>
                             <div class="social-links">
-                                <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-btn facebook">
+                                <!-- Facebook বাটন -->
+                                <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-btn facebook" title="Facebook">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-btn github">
+                                
+                                <!-- GitHub বাটন -->
+                                <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-btn github" title="GitHub">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://wa.me/96598064347" target="_blank" class="social-btn whatsapp">
+                                
+                                <!-- WhatsApp বাটন -->
+                                <a href="https://wa.me/96598064347" target="_blank" class="social-btn whatsapp" title="WhatsApp">
                                     <i class="fab fa-whatsapp"></i>
                                 </a>
-                                <button class="contact-btn" onclick="showContactInfo()">
+                                
+                                <!-- Contact Author বাটন -->
+                                <button class="contact-btn" onclick="showContactInfo()" title="Contact Author">
                                     <i class="fas fa-id-card"></i> Contact Author
                                 </button>
                             </div>
                         </div>
                         
-                        <p class="editable" contenteditable="false">Prepared on December 2025 | Official Document</p>
-                        <p class="copyright">© www.kuwaitzoo.com | Admin Login Required for editing</p>
+                        <!-- এই দুই লাইন উপরে থাকবে -->
+                        <div class="footer-lines">
+                            <p class="editable" contenteditable="false" style="margin-bottom: 5px;">Prepared on December 2025 | Official Document</p>
+                            <p class="copyright" style="margin-top: 0;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
+                        </div>
                     </div>
                 </footer>
             </div>
