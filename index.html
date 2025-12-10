@@ -67,40 +67,38 @@
             letter-spacing: 3px;
         }
         
-        /* Welcome Animation Area */
-        .welcome-container {
-            position: relative;
-            height: 280px;
-            background: linear-gradient(to right, rgba(30, 87, 153, 0.9), rgba(32, 124, 202, 0.8)), url('https://images.unsplash.com/photo-1514894780887-121968d00567?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            border-radius: 15px;
-            margin: 30px 0;
+        .current-date {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
             display: flex;
-            justify-content: center;
             align-items: center;
-            overflow: hidden;
+            gap: 10px;
+        }
+        
+        /* Welcome Section */
+        .welcome-section {
+            text-align: center;
+            padding: 40px 20px;
+            margin: 30px 0;
+            background: linear-gradient(to right, rgba(30, 87, 153, 0.9), rgba(32, 124, 202, 0.8));
+            border-radius: 15px;
+            color: white;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         
-        .welcome-text {
-            color: white;
-            text-align: center;
-            z-index: 2;
-            padding: 20px;
-        }
-        
-        .welcome-main {
+        .welcome-title {
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1.2s forwards 0.5s;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
         
-        .welcome-sub {
+        .welcome-subtitle {
             font-size: 1.5rem;
             font-weight: 300;
             opacity: 0;
@@ -108,128 +106,18 @@
             animation: fadeInUp 1.2s forwards 0.8s;
         }
         
-        .animation-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        
-        .animal-icon {
-            position: absolute;
-            font-size: 2.5rem;
-            opacity: 0;
-        }
-        
-        .monkey {
-            color: #8B4513;
-            top: 20%;
-            left: 10%;
-            animation: float 4s infinite ease-in-out 1s;
-        }
-        
-        .lemur {
-            color: #A0522D;
-            top: 60%;
-            left: 15%;
-            animation: float 5s infinite ease-in-out 1.5s;
-        }
-        
-        .chimpanzee {
-            color: #654321;
-            top: 30%;
-            right: 10%;
-            animation: float 4.5s infinite ease-in-out 2s;
-        }
-        
         /* Admin Login Panel */
-        .admin-panel {
+        .admin-section {
             background-color: white;
             border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
+            padding: 30px;
+            margin: 30px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
         
-        .admin-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .admin-icon {
-            font-size: 2.5rem;
+        .section-title {
             color: #1e5799;
-        }
-        
-        .admin-text h3 {
-            color: #1e5799;
-            margin-bottom: 5px;
-        }
-        
-        .admin-text p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .login-form {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .form-group label {
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 5px;
-        }
-        
-        .form-group input {
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 200px;
-        }
-        
-        .login-btn {
-            background-color: #1e5799;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: all 0.3s;
-        }
-        
-        .login-btn:hover {
-            background-color: #154279;
-            transform: translateY(-2px);
-        }
-        
-        /* Table Styles */
-        .table-container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
-            overflow-x: auto;
-        }
-        
-        .table-title {
-            color: #1e5799;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
             display: flex;
@@ -237,139 +125,166 @@
             gap: 10px;
         }
         
-        .table-title i {
+        .section-title i {
             color: #FFD700;
         }
         
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: #f9f9f9;
         }
         
-        thead {
+        .login-description {
+            color: #666;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .login-form {
+            width: 100%;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1e5799;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #1e5799;
+            box-shadow: 0 0 0 2px rgba(30, 87, 153, 0.2);
+        }
+        
+        .password-input {
+            position: relative;
+        }
+        
+        .password-input input {
+            padding-right: 40px;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+        }
+        
+        .login-btn {
+            background-color: #1e5799;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .login-btn:hover {
+            background-color: #154279;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 87, 153, 0.3);
+        }
+        
+        .login-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Primate Table Section (Initially Hidden) */
+        .table-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: none; /* Hidden by default, shown after login */
+        }
+        
+        .primate-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .primate-table thead {
             background-color: #1e5799;
             color: white;
         }
         
-        th {
+        .primate-table th {
             padding: 15px;
             text-align: left;
             font-weight: 600;
+            font-size: 1.1rem;
         }
         
-        td {
+        .primate-table td {
             padding: 15px;
             border-bottom: 1px solid #f0f0f0;
         }
         
-        tbody tr:hover {
+        .primate-table tbody tr:hover {
             background-color: #f9f9f9;
         }
         
-        tbody tr:last-child td {
+        .primate-table tbody tr:last-child td {
             border-bottom: none;
         }
         
         .species-cell {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             font-weight: 600;
+            color: #1e5799;
         }
-        
-        .species-icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.9rem;
-        }
-        
-        .lemur-icon { background-color: #A0522D; }
-        .squirrel-icon { background-color: #8B4513; }
-        .baboon-icon { background-color: #654321; }
-        .vervet-icon { background-color: #2E8B57; }
-        .chimp-icon { background-color: #333; }
         
         /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             color: #666;
             border-top: 1px solid #eee;
             margin-top: 30px;
         }
         
-        /* Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-                opacity: 0.7;
-            }
-            50% {
-                transform: translateY(-20px);
-                opacity: 1;
-            }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .admin-panel {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-            
-            .login-form {
-                width: 100%;
-                flex-wrap: wrap;
-            }
-            
-            .form-group input {
-                width: 100%;
-            }
-            
-            .welcome-main {
-                font-size: 2.8rem;
-            }
-            
-            .welcome-sub {
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            
-            .welcome-main {
-                font-size: 2.2rem;
-            }
-            
-            th, td {
-                padding: 10px;
-            }
-            
-            .animal-icon {
-                font-size: 1.8rem;
-            }
-        }
-        
         /* Login Success Message */
-        .login-message {
+        .login-success {
             position: fixed;
             top: 20px;
             right: 20px;
@@ -385,6 +300,14 @@
             animation: slideInRight 0.5s forwards;
         }
         
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         @keyframes slideInRight {
             from {
                 transform: translateX(100%);
@@ -394,6 +317,50 @@
                 transform: translateX(0);
                 opacity: 1;
             }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .welcome-title {
+                font-size: 2.8rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-title {
+                font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .admin-section, .table-section {
+                padding: 20px;
+            }
+            
+            .primate-table th, .primate-table td {
+                padding: 10px;
+            }
+        }
+        
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -410,56 +377,60 @@
                 </div>
                 <div class="current-date">
                     <i class="far fa-calendar-alt"></i>
-                    <span id="date-display"></span>
+                    <span id="date-display">Wednesday, December 10, 2025</span>
                 </div>
             </div>
         </div>
     </header>
     
     <div class="container">
-        <!-- Welcome Animation Section -->
-        <div class="welcome-container">
-            <div class="animation-elements">
-                <i class="fas fa-monkey animal-icon monkey"></i>
-                <i class="fas fa-otter animal-icon lemur"></i>
-                <i class="fas fa-kiwi-bird animal-icon chimpanzee"></i>
-            </div>
-            <div class="welcome-text">
-                <div class="welcome-main">WELCOME TO KUWAIT ZOO</div>
-                <div class="welcome-sub">Primate Population Management System</div>
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1 class="welcome-title">WELCOME TO KUWAIT ZOO</h1>
+            <p class="welcome-subtitle">Primate Population Management System</p>
+        </div>
+        
+        <!-- Admin Login Section -->
+        <div class="admin-section">
+            <h2 class="section-title">
+                <i class="fas fa-user-cog"></i> Admin Access
+            </h2>
+            <p class="login-description">
+                Login to manage primate data, add new entries, and generate reports.
+                Use username: <strong>admin</strong> and password: <strong>zoo123</strong> for demo access.
+            </p>
+            
+            <div class="login-container">
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter admin username" value="admin">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="password" placeholder="Enter password" value="zoo123">
+                            <button type="button" class="toggle-password" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="login-btn" id="loginButton">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
             </div>
         </div>
         
-        <!-- Admin Login Panel -->
-        <div class="admin-panel">
-            <div class="admin-info">
-                <i class="fas fa-user-cog admin-icon"></i>
-                <div class="admin-text">
-                    <h3>Admin Access</h3>
-                    <p>Login to manage primate data, add new entries, and generate reports</p>
-                </div>
-            </div>
-            <div class="login-form">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" placeholder="Enter admin username">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter password">
-                </div>
-                <button class="login-btn" id="loginButton">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </button>
-            </div>
-        </div>
-        
-        <!-- Primate Population Table -->
-        <div class="table-container">
-            <h2 class="table-title">
+        <!-- Primate Table Section (Hidden until login) -->
+        <div class="table-section" id="tableSection">
+            <h2 class="section-title">
                 <i class="fas fa-table"></i> Current Primate Population Overview
             </h2>
-            <table>
+            
+            <table class="primate-table">
                 <thead>
                     <tr>
                         <th>Species</th>
@@ -470,58 +441,49 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="species-cell">
-                            <div class="species-icon lemur-icon">L</div>
-                            Lemur
-                        </td>
+                        <td class="species-cell">Lemur</td>
                         <td>3</td>
                         <td>4</td>
                         <td>7</td>
                     </tr>
                     <tr>
-                        <td class="species-cell">
-                            <div class="species-icon squirrel-icon">S</div>
-                            Squirrel Monkey
-                        </td>
+                        <td class="species-cell">Squirrel Monkey</td>
                         <td>4</td>
                         <td>4</td>
                         <td>8</td>
                     </tr>
                     <tr>
-                        <td class="species-cell">
-                            <div class="species-icon baboon-icon">B</div>
-                            Baboon
-                        </td>
+                        <td class="species-cell">Baboon</td>
                         <td>2</td>
                         <td>3</td>
                         <td>5</td>
                     </tr>
                     <tr>
-                        <td class="species-cell">
-                            <div class="species-icon vervet-icon">V</div>
-                            Vervets
-                        </td>
+                        <td class="species-cell">Vervets</td>
                         <td>4</td>
                         <td>7</td>
                         <td>12</td>
                     </tr>
                     <tr>
-                        <td class="species-cell">
-                            <div class="species-icon chimp-icon">C</div>
-                            Chimpanzees
-                        </td>
+                        <td class="species-cell">Chimpanzees</td>
                         <td>4</td>
                         <td>1</td>
                         <td>5</td>
                     </tr>
                 </tbody>
             </table>
+            
+            <div class="text-center mb-20" style="margin-top: 30px;">
+                <button class="login-btn" id="logoutButton" style="width: auto; background-color: #dc3545;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
         </div>
         
         <!-- Login Success Message -->
-        <div class="login-message" id="loginMessage">
+        <div class="login-success" id="loginSuccess">
             <i class="fas fa-check-circle"></i>
-            <span>Login successful! Welcome, Admin.</span>
+            <span>Login successful! Showing primate data.</span>
         </div>
     </div>
     
@@ -532,52 +494,109 @@
     </footer>
     
     <script>
-        // Set current date
+        // Set current date (or use the static date from your screenshot)
         const dateDisplay = document.getElementById('date-display');
-        const now = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        dateDisplay.textContent = now.toLocaleDateString('en-US', options);
+        // You can keep the static date from your screenshot
+        // dateDisplay.textContent = "Wednesday, December 10, 2025";
         
-        // Animal icon animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const animalIcons = document.querySelectorAll('.animal-icon');
-            animalIcons.forEach((icon, index) => {
-                // Stagger the animation start
-                icon.style.animationDelay = `${index * 0.5}s`;
-                icon.style.opacity = '0';
-                
-                // Trigger fade in
-                setTimeout(() => {
-                    icon.style.opacity = '0.7';
-                }, 500 + (index * 500));
-            });
+        // Or use dynamic date:
+        // const now = new Date();
+        // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        // dateDisplay.textContent = now.toLocaleDateString('en-US', options);
+        
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
         });
         
         // Login functionality
         document.getElementById('loginButton').addEventListener('click', function() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const loginBtn = document.getElementById('loginButton');
             
-            // Simple validation (in a real app, this would be a server request)
-            if (username.trim() === '' || password.trim() === '') {
+            // Simple validation
+            if (username === '' || password === '') {
                 alert('Please enter both username and password');
                 return;
             }
             
-            // Show success message
-            const loginMessage = document.getElementById('loginMessage');
-            loginMessage.style.display = 'flex';
+            // Demo credentials (in real app, this would be server-side validation)
+            const validCredentials = [
+                { username: 'admin', password: 'zoo123' },
+                { username: 'admin', password: 'admin123' },
+                { username: 'zoo_admin', password: 'kuwait2025' }
+            ];
             
-            // Change button text and style
+            const isValid = validCredentials.some(cred => 
+                cred.username === username && cred.password === password
+            );
+            
+            if (isValid) {
+                // Show success message
+                const loginSuccess = document.getElementById('loginSuccess');
+                loginSuccess.style.display = 'flex';
+                
+                // Change button to show logged in state
+                loginBtn.innerHTML = '<i class="fas fa-user-check"></i> Logged In';
+                loginBtn.style.backgroundColor = '#2E8B57';
+                loginBtn.disabled = true;
+                
+                // Show the primate table (simulating zooinfo.html content)
+                const tableSection = document.getElementById('tableSection');
+                tableSection.style.display = 'block';
+                
+                // Scroll to table
+                setTimeout(() => {
+                    tableSection.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    loginSuccess.style.display = 'none';
+                }, 5000);
+                
+                // Store login state in localStorage
+                localStorage.setItem('kuwaitZooLoggedIn', 'true');
+                localStorage.setItem('kuwaitZooUsername', username);
+                
+            } else {
+                alert('Invalid username or password. Try: admin / zoo123');
+            }
+        });
+        
+        // Logout functionality
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            // Hide table section
+            const tableSection = document.getElementById('tableSection');
+            tableSection.style.display = 'none';
+            
+            // Reset login form
             const loginBtn = document.getElementById('loginButton');
-            loginBtn.innerHTML = '<i class="fas fa-user-check"></i> Logged In';
-            loginBtn.style.backgroundColor = '#2E8B57';
-            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
+            loginBtn.style.backgroundColor = '#1e5799';
+            loginBtn.disabled = false;
             
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                loginMessage.style.display = 'none';
-            }, 5000);
+            // Clear password field
+            document.getElementById('password').value = '';
+            
+            // Clear login state
+            localStorage.removeItem('kuwaitZooLoggedIn');
+            localStorage.removeItem('kuwaitZooUsername');
+            
+            // Scroll to login section
+            document.querySelector('.admin-section').scrollIntoView({ behavior: 'smooth' });
         });
         
         // Allow login with Enter key
@@ -585,6 +604,35 @@
             if (e.key === 'Enter') {
                 document.getElementById('loginButton').click();
             }
+        });
+        
+        // Check if user is already logged in (on page load)
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('kuwaitZooLoggedIn');
+            
+            if (isLoggedIn === 'true') {
+                // Auto-login
+                const username = localStorage.getItem('kuwaitZooUsername') || 'admin';
+                document.getElementById('username').value = username;
+                
+                // Simulate login click
+                document.getElementById('loginButton').click();
+            }
+        });
+        
+        // Animation for welcome text
+        document.addEventListener('DOMContentLoaded', function() {
+            const welcomeTitle = document.querySelector('.welcome-title');
+            const welcomeSubtitle = document.querySelector('.welcome-subtitle');
+            
+            // Trigger animations
+            setTimeout(() => {
+                welcomeTitle.style.animation = 'fadeInUp 1.2s forwards';
+            }, 500);
+            
+            setTimeout(() => {
+                welcomeSubtitle.style.animation = 'fadeInUp 1.2s forwards';
+            }, 800);
         });
     </script>
 </body>
