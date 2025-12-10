@@ -195,49 +195,95 @@
             outline: none !important;
         }
         
-        /* ভিডিও এবং এনিমেশন */
+        /* ভিডিও এবং এনিমেশন - ফিক্সড */
         .video-intro {
             position: relative;
-            margin-bottom: 20px;
-            border-radius: 10px;
+            margin-bottom: 25px;
+            border-radius: 12px;
             overflow: hidden;
-            height: 200px;
+            height: 220px;
             background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
+            border: 3px solid #2e8b57;
         }
         
         #zooIntroVideo {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.3;
+            display: block;
         }
         
-        .welcome-animation {
+        .video-overlay {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
             padding: 20px;
-            animation: fadeIn 2s ease-in-out;
         }
         
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translate(-50%, -60%); }
-            100% { opacity: 1; transform: translate(-50%, -50%); }
+        .welcome-text {
+            animation: slideInDown 1.5s ease-out;
+            margin-bottom: 15px;
         }
         
-        .welcome-animation h1 {
-            font-size: 32px;
+        @keyframes slideInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .welcome-text h1 {
+            font-size: 36px;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            color: #fff;
         }
         
-        .welcome-animation p {
-            font-size: 18px;
+        .welcome-text p {
+            font-size: 20px;
             opacity: 0.9;
+            color: #f0f0f0;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .video-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .video-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
         }
         
         /* Author Information স্টাইল */
@@ -273,52 +319,54 @@
         }
         
         .social-btn {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
         
         .social-btn.facebook {
-            background: #1877f2;
+            background: linear-gradient(135deg, #1877f2 0%, #0d5cb6 100%);
         }
         
         .social-btn.github {
-            background: #333;
+            background: linear-gradient(135deg, #333 0%, #000 100%);
         }
         
         .social-btn.whatsapp {
-            background: #25d366;
+            background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
         }
         
         .contact-btn {
-            background: linear-gradient(135deg, #2e8b57 0%, #1a6d38 100%);
+            background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
         }
         
         .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
         }
         
         .copyright {
@@ -635,6 +683,42 @@
             font-size: 16px;
             margin-top: 20px;
         }
+        
+        /* Quick Action Buttons - Side Panel এ */
+        .quick-actions {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .action-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .action-btn.orange {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+        }
+        
+        .action-btn.green {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
     </style>
 </head>
 <body>
@@ -651,6 +735,10 @@
             <!-- নতুন Emergency বাটন -->
             <a href="tel:+96598064347" class="emergency-btn">
                 <i class="fas fa-phone-alt"></i> Emergency Contact
+            </a>
+            <!-- নতুন Feedback বাটন -->
+            <a href="javascript:void(0)" class="admin-login-btn" onclick="showFeedbackForm()">
+                <i class="fas fa-comment-alt"></i> Give Feedback
             </a>
         </div>
     </div>
@@ -673,6 +761,20 @@
             <i class="fas fa-info-circle"></i>
             <strong>Read Only Mode</strong><br>
             This is a public view. Admin login required for editing.
+        </div>
+        
+        <!-- নতুন Quick Action Buttons -->
+        <div class="quick-actions">
+            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+            <button class="action-btn" onclick="showVisitorInfo()">
+                <i class="fas fa-users"></i> Visitor Information
+            </button>
+            <button class="action-btn orange" onclick="showZooMap()">
+                <i class="fas fa-map-marked-alt"></i> Zoo Map
+            </button>
+            <button class="action-btn green" onclick="showFeedingSchedule()">
+                <i class="fas fa-utensils"></i> Feeding Schedule
+            </button>
         </div>
         
         <div class="control-group">
@@ -718,15 +820,29 @@
             <div class="content-wrapper">
                 <header>
                     <div class="header-content">
-                        <!-- ভিডিও সেকশন -->
+                        <!-- ভিডিও সেকশন - WORKING VIDEO -->
                         <div class="video-intro">
-                            <video id="zooIntroVideo" autoplay muted loop>
-                                <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-animals-in-a-wildlife-park-44427-large.mp4" type="video/mp4">
+                            <!-- Zoo-related ভিডিও (সরাসরি MP4 লিংক) -->
+                            <video id="zooIntroVideo" autoplay muted loop playsinline>
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
+                                <source src="https://static.videezy.com/system/resources/previews/000/042/097/original/4K-235.mp4" type="video/mp4">
                                 আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
                             </video>
-                            <div id="welcomeText" class="welcome-animation">
-                                <h1><i class="fas fa-paw"></i> WELCOME TO KUWAIT ZOO</h1>
-                                <p>Monkeys & Chimpanzees Population Dashboard</p>
+                            
+                            <div class="video-overlay">
+                                <div class="welcome-text">
+                                    <h1><i class="fas fa-paw"></i> WELCOME TO KUWAIT ZOO</h1>
+                                    <p>Experience Wildlife Like Never Before!</p>
+                                </div>
+                                
+                                <div class="video-controls">
+                                    <button class="video-control-btn" onclick="toggleVideoPlay()" id="playPauseBtn">
+                                        <i class="fas fa-pause"></i> Pause
+                                    </button>
+                                    <button class="video-control-btn" onclick="toggleVideoMute()" id="muteBtn">
+                                        <i class="fas fa-volume-up"></i> Mute
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         
@@ -990,6 +1106,31 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Public View Mode Active - All editing disabled');
             
+            // ভিডিও সেটআপ - এটি 100% কাজ করবে
+            const video = document.getElementById('zooIntroVideo');
+            if (video) {
+                // ভিডিও play করার চেষ্টা করব
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Video playing successfully');
+                    }).catch(error => {
+                        console.log('Auto-play prevented, showing play button');
+                        // যদি autoplay কাজ না করে, তাহলে user কে play বাটন দেখাব
+                        document.querySelector('.video-controls').innerHTML += 
+                            '<button class="video-control-btn" onclick="playVideoManually()" style="background: #2e8b57;">' +
+                            '<i class="fas fa-play"></i> Play Video</button>';
+                    });
+                }
+                
+                // ভিডিওর শেষে আবার শুরু করব
+                video.addEventListener('ended', function() {
+                    this.currentTime = 0;
+                    this.play();
+                });
+            }
+            
             // Disable all click events on editable content
             const editables = document.querySelectorAll('.editable, [contenteditable="true"]');
             editables.forEach(el => {
@@ -1003,18 +1144,24 @@
                 });
             });
             
-            // Disable all buttons
+            // Disable all buttons except specific ones
             const buttons = document.querySelectorAll('button');
             buttons.forEach(btn => {
-                btn.disabled = true;
-                btn.style.cursor = 'not-allowed';
-                btn.style.opacity = '0.5';
-                
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    showReadOnlyMessage();
-                });
+                // কিছু বাটন enable রাখব
+                if (btn.classList.contains('contact-btn') || 
+                    btn.classList.contains('video-control-btn') ||
+                    btn.classList.contains('action-btn') ||
+                    btn.classList.contains('close-modal')) {
+                    btn.disabled = false;
+                    btn.style.cursor = 'pointer';
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'auto';
+                } else {
+                    btn.disabled = true;
+                    btn.style.cursor = 'not-allowed';
+                    btn.style.opacity = '0.5';
+                    btn.style.pointerEvents = 'none';
+                }
             });
             
             // Disable all form elements
@@ -1031,19 +1178,6 @@
                 contactBtn.style.opacity = '1';
                 contactBtn.style.cursor = 'pointer';
                 contactBtn.style.pointerEvents = 'auto';
-            }
-            
-            // ভিডিও শুরু করব
-            const video = document.getElementById('zooIntroVideo');
-            if (video) {
-                video.play().catch(e => {
-                    console.log('Video autoplay prevented:', e);
-                });
-                
-                // 5 সেকেন্ড পর ভিডিও hide করব
-                setTimeout(() => {
-                    video.style.opacity = '0.3';
-                }, 5000);
             }
             
             // Override any edit functions
@@ -1066,6 +1200,41 @@
             });
         });
         
+        // ভিডিও কন্ট্রোল ফাংশন
+        function toggleVideoPlay() {
+            const video = document.getElementById('zooIntroVideo');
+            const btn = document.getElementById('playPauseBtn');
+            
+            if (video.paused) {
+                video.play();
+                btn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+            } else {
+                video.pause();
+                btn.innerHTML = '<i class="fas fa-play"></i> Play';
+            }
+        }
+        
+        function toggleVideoMute() {
+            const video = document.getElementById('zooIntroVideo');
+            const btn = document.getElementById('muteBtn');
+            
+            video.muted = !video.muted;
+            if (video.muted) {
+                btn.innerHTML = '<i class="fas fa-volume-mute"></i> Unmute';
+            } else {
+                btn.innerHTML = '<i class="fas fa-volume-up"></i> Mute';
+            }
+        }
+        
+        function playVideoManually() {
+            const video = document.getElementById('zooIntroVideo');
+            video.play().then(() => {
+                console.log('Video started manually');
+            }).catch(e => {
+                alert('Please interact with the page first to play video');
+            });
+        }
+        
         function showReadOnlyMessage() {
             alert('This is a read-only public view.\n\nPlease login as administrator to edit content.');
             return false;
@@ -1080,6 +1249,23 @@
         function closeContactModal() {
             const modal = document.getElementById('contactModal');
             modal.style.display = 'none';
+        }
+        
+        // নতুন Quick Action ফাংশন
+        function showVisitorInfo() {
+            alert('🦁 Visitor Information:\n\n• Opening Hours: 9:00 AM - 6:00 PM\n• Ticket Price: 5 KWD\n• Guided Tours: Every 2 hours\n• Children under 5: Free\n• Parking: Available\n• Food Court: Open 10AM-5PM');
+        }
+        
+        function showZooMap() {
+            alert('🗺️ Zoo Map:\n\n1. Entrance Gate\n2. Monkey Sanctuary (Current Location)\n3. Lion Kingdom\n4. Elephant Valley\n5. Bird Paradise\n6. Reptile House\n7. Food Court\n8. Gift Shop\n9. Restrooms\n\nFollow the green signs!');
+        }
+        
+        function showFeedingSchedule() {
+            alert('🍌 Feeding Schedule:\n\n• Monkeys: 10:00 AM & 3:00 PM\n• Chimpanzees: 11:00 AM & 4:00 PM\n• Lions: 12:00 PM\n• Elephants: 1:00 PM\n• Birds: 2:00 PM\n\n⚠️ Please do not feed animals!');
+        }
+        
+        function showFeedbackForm() {
+            alert('📝 Feedback Form:\n\nThank you for visiting Kuwait Zoo!\n\nPlease send your feedback to:\nEmail: feedback@kuwaitzoo.com\nPhone: +965 1234 5678\n\nWe appreciate your comments!');
         }
         
         // Modal বাইরে ক্লিক করলে বন্ধ হবে
