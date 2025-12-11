@@ -332,10 +332,14 @@
             background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
         }
         
-        /* EMERGENCY বাটন (AUTHOR INFO এর নিচে) */
+        /* WORKSHOP বাটন (AUTHOR INFO এর নিচে, EMERGENCY এর উপরে) */
+        .action-btn.workshop {
+            background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
+        }
+        
+        /* EMERGENCY বাটন (WORKSHOP এর নিচে) */
         .action-btn.emergency {
             background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-            margin-top: 5px;
         }
         
         .action-btn:hover {
@@ -353,6 +357,11 @@
             box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
         }
         
+        .action-btn.workshop:hover {
+            background: linear-gradient(135deg, #673AB7 0%, #9C27B0 100%);
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.5);
+        }
+        
         .action-btn.emergency:hover {
             background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
             box-shadow: 0 8px 20px rgba(220, 53, 69, 0.5);
@@ -361,50 +370,51 @@
         /* Social আইকন সেকশন (নিচে) */
         .social-footer {
             position: absolute;
-            bottom: 20px;
+            bottom: 10px;
             left: 20px;
             right: 20px;
             text-align: center;
-            padding: 15px;
+            padding: 12px;
             background: rgba(46, 139, 87, 0.05);
-            border-radius: 10px;
+            border-radius: 8px;
             border: 1px solid rgba(46, 139, 87, 0.1);
+            margin-top: auto;
         }
         
         .social-footer h4 {
             color: #2e8b57;
-            margin-bottom: 15px;
-            font-size: 14px;
+            margin-bottom: 12px;
+            font-size: 13px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
         
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
         }
         
         .social-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
         }
         
         .social-icon:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
         
         .social-icon.facebook {
@@ -743,6 +753,13 @@
             font-size: 11px !important;
             color: #666 !important;
         }
+        
+        /* Side panel content wrapper */
+        .side-panel-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
@@ -772,84 +789,91 @@
             <p style="font-size: 12px; color: #666; margin-top: 5px;">Editing Disabled</p>
         </div>
         
-        <div class="readonly-notice">
-            <i class="fas fa-info-circle"></i>
-            <strong>Read Only Mode</strong><br>
-            This is a public view. Admin login required for editing.
-        </div>
-        
-        <!-- নতুন একশন বাটন গুলি (উপরের দিকে) -->
-        <div class="action-buttons">
-            <!-- VISITORS বাটন -->
-            <button class="action-btn visitors" onclick="showVisitorInfo()">
-                <i class="fas fa-users"></i> VISITORS INFO
-            </button>
-            
-            <!-- AUTHOR বাটন -->
-            <button class="action-btn author" onclick="window.location.href='authorinfo.html'">
-                <i class="fas fa-user-circle"></i> AUTHOR INFO
-            </button>
-            
-            <!-- EMERGENCY বাটন (AUTHOR INFO এর নিচে) -->
-            <button class="action-btn emergency" onclick="window.location.href='tel:+96598064347'">
-                <i class="fas fa-phone-alt"></i> EMERGENCY CONTACT
-            </button>
-        </div>
-        
-        <div class="control-group">
-            <h3><i class="fas fa-download"></i> Export Options</h3>
-            <button class="control-btn">
-                <i class="fas fa-image"></i> Download as Image (Disabled)
-            </button>
-            <button class="control-btn">
-                <i class="fas fa-print"></i> Print Document (Disabled)
-            </button>
-        </div>
-        
-        <div class="control-group">
-            <h3><i class="fas fa-edit"></i> Edit Mode</h3>
-            <button class="control-btn">
-                <i class="fas fa-edit"></i> Edit Mode (Disabled)
-            </button>
-        </div>
-        
-        <div class="control-group">
-            <h3><i class="fas fa-expand-arrows-alt"></i> Document Size</h3>
-            <div class="size-controls">
-                <button class="size-btn">Small</button>
-                <button class="size-btn">Medium</button>
-                <button class="size-btn">Large</button>
+        <div class="side-panel-content">
+            <div class="readonly-notice">
+                <i class="fas fa-info-circle"></i>
+                <strong>Read Only Mode</strong><br>
+                This is a public view. Admin login required for editing.
             </div>
-        </div>
-        
-        <div class="control-group">
-            <h3><i class="fas fa-info-circle"></i> Information</h3>
-            <div style="font-size: 12px; color: #666; line-height: 1.4;">
-                <p>• This is a read-only view</p>
-                <p>• Admin login required for editing</p>
-                <p>• All data is view-only</p>
-                <p>• Contact administrator for access</p>
+            
+            <!-- নতুন একশন বাটন গুলি (উপরের দিকে) -->
+            <div class="action-buttons">
+                <!-- VISITORS বাটন -->
+                <button class="action-btn visitors" onclick="showVisitorInfo()">
+                    <i class="fas fa-users"></i> VISITORS INFO
+                </button>
+                
+                <!-- AUTHOR বাটন -->
+                <button class="action-btn author" onclick="window.location.href='authorinfo.html'">
+                    <i class="fas fa-user-circle"></i> AUTHOR INFO
+                </button>
+                
+                <!-- WORKSHOP বাটন (AUTHOR INFO এর নিচে, EMERGENCY এর উপরে) -->
+                <button class="action-btn workshop" onclick="showWorkshopInfo()">
+                    <i class="fas fa-tools"></i> WORKSHOP
+                </button>
+                
+                <!-- EMERGENCY বাটন (WORKSHOP এর নিচে) -->
+                <button class="action-btn emergency" onclick="window.location.href='tel:+96598064347'">
+                    <i class="fas fa-phone-alt"></i> EMERGENCY CONTACT
+                </button>
             </div>
-        </div>
-        
-        <!-- Social আইকন গুলি নিচে -->
-        <div class="social-footer">
-            <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
-            <div class="social-icons">
-                <!-- Facebook আইকন -->
-                <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-icon facebook" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                
-                <!-- GitHub আইকন -->
-                <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-icon github" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                
-                <!-- WhatsApp আইকন -->
-                <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
+            
+            <div class="control-group">
+                <h3><i class="fas fa-download"></i> Export Options</h3>
+                <button class="control-btn">
+                    <i class="fas fa-image"></i> Download as Image (Disabled)
+                </button>
+                <button class="control-btn">
+                    <i class="fas fa-print"></i> Print Document (Disabled)
+                </button>
+            </div>
+            
+            <div class="control-group">
+                <h3><i class="fas fa-edit"></i> Edit Mode</h3>
+                <button class="control-btn">
+                    <i class="fas fa-edit"></i> Edit Mode (Disabled)
+                </button>
+            </div>
+            
+            <div class="control-group">
+                <h3><i class="fas fa-expand-arrows-alt"></i> Document Size</h3>
+                <div class="size-controls">
+                    <button class="size-btn">Small</button>
+                    <button class="size-btn">Medium</button>
+                    <button class="size-btn">Large</button>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3><i class="fas fa-info-circle"></i> Information</h3>
+                <div style="font-size: 12px; color: #666; line-height: 1.4;">
+                    <p>• This is a read-only view</p>
+                    <p>• Admin login required for editing</p>
+                    <p>• All data is view-only</p>
+                    <p>• Contact administrator for access</p>
+                </div>
+            </div>
+            
+            <!-- Social আইকন গুলি নিচে -->
+            <div class="social-footer">
+                <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
+                <div class="social-icons">
+                    <!-- Facebook আইকন -->
+                    <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-icon facebook" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    
+                    <!-- GitHub আইকন -->
+                    <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-icon github" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    
+                    <!-- WhatsApp আইকন -->
+                    <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -1218,6 +1242,11 @@
         // VISITORS ফাংশন
         function showVisitorInfo() {
             alert('👥 VISITOR INFORMATION\n\n🕒 Opening Hours:\n• Sunday - Thursday: 9:00 AM - 6:00 PM\n• Friday - Saturday: 8:00 AM - 7:00 PM\n\n💰 Ticket Prices:\n• Adults: 5 KWD\n• Children (5-12): 3 KWD\n• Children under 5: FREE\n• Family Package (4 persons): 15 KWD\n\n🎟️ Special Offers:\n• Student Discount: 20% off\n• Senior Citizen: 30% off\n• Group Booking (10+): 25% off\n\n🚗 Parking:\n• Available: 500+ spaces\n• Price: 1 KWD/day\n• Electric Charging: Available\n\n🍽️ Facilities:\n• Food Court\n• Restrooms\n• Prayer Room\n• First Aid\n• Gift Shop');
+        }
+        
+        // WORKSHOP ফাংশন
+        function showWorkshopInfo() {
+            alert('🔧 WORKSHOP INFORMATION\n\n🏢 Workshop Location:\n• Kuwait Zoo - Maintenance Wing\n• Building B, Ground Floor\n\n🕒 Workshop Hours:\n• Saturday - Thursday: 8:00 AM - 4:00 PM\n• Friday: Closed\n\n🔩 Services Available:\n• Animal Enclosure Maintenance\n• Veterinary Equipment Repair\n• Zoo Vehicle Maintenance\n• General Facility Repairs\n\n👷 Staff:\n• 5 Certified Technicians\n• 2 Electricians\n• 3 Carpenters\n• 1 Plumbing Specialist\n\n📞 Contact:\n• Workshop Manager: +965 9806 4347\n• Email: workshop@kuwaitzoo.com\n\n⚠️ Note:\n• Only authorized personnel allowed\n• Visitors need special permission\n• Safety gear required in workshop area');
         }
         
         // Prevent keyboard shortcuts
