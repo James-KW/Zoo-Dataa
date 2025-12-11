@@ -348,57 +348,7 @@
             transform: scale(1.05);
         }
         
-        /* CONTACT US বাটন */
-        .contact-us-btn {
-            background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
-            margin-left: 10px;
-        }
-        
-        .contact-us-btn:hover {
-            background: linear-gradient(135deg, #673AB7 0%, #9C27B0 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.5);
-        }
-        
-        /* Side Panel এ WORKSHOP বাটন */
-        .workshop-side-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
-            color: white;
-            border: none;
-            padding: 15px 20px;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
-        }
-        
-        .workshop-side-btn:hover {
-            background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.5);
-        }
-        
-        /* Visitors Info বাটন */
+        /* Side Panel এ VISITORS বাটন (নিচে) */
         .visitors-btn {
             width: 100%;
             background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
@@ -416,6 +366,10 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
         }
         
         .visitors-btn:hover {
@@ -424,112 +378,65 @@
             box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
         }
         
-        /* Footer স্টাইলস */
-        .author-info {
+        /* নিচের Social আইকন সেকশন */
+        .social-footer {
+            position: absolute;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
             text-align: center;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        .contact-author {
-            margin: 15px 0;
             padding: 15px;
-            background: rgba(46, 139, 87, 0.1);
+            background: rgba(46, 139, 87, 0.05);
             border-radius: 10px;
-            border: 1px solid rgba(46, 139, 87, 0.2);
-            width: 90%;
-            max-width: 500px;
+            border: 1px solid rgba(46, 139, 87, 0.1);
         }
-
-        .contact-author h4 {
+        
+        .social-footer h4 {
             color: #2e8b57;
             margin-bottom: 15px;
-            font-size: 16px;
+            font-size: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
-
-        .social-links {
+        
+        .social-icons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             align-items: center;
-            flex-wrap: wrap;
         }
-
-        .social-btn {
-            width: 45px;
-            height: 45px;
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-
-        .social-btn:hover {
+        
+        .social-icon:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
-
-        .social-btn.facebook {
+        
+        .social-icon.facebook {
             background: linear-gradient(135deg, #1877f2 0%, #0d5cb6 100%);
         }
-
-        .social-btn.github {
+        
+        .social-icon.github {
             background: linear-gradient(135deg, #333 0%, #000 100%);
         }
-
-        .social-btn.whatsapp {
+        
+        .social-icon.whatsapp {
             background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
-        }
-
-        .contact-btn {
-            background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
-        }
-
-        /* নিচের দুই লাইন */
-        .footer-lines {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 2px solid #eaeaea;
-            width: 100%;
-        }
-
-        .footer-lines p {
-            color: #666;
-            font-size: 12px;
-            line-height: 1.4;
-        }
-
-        .copyright {
-            font-size: 11px !important;
-            color: #666 !important;
         }
         
         /* Table Design - Fixed */
@@ -648,34 +555,6 @@
         
         .emoji {
             font-size: 18px;
-        }
-        
-        /* Statistics Cards - আগের মতো রাখছি */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 15px 0;
-        }
-        
-        .stat-card {
-            background: #f8f9fa;
-            border-radius: 6px;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #eaeaea;
-        }
-        
-        .stat-card h3 {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 8px;
-        }
-        
-        .stat-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2e8b57;
         }
         
         .note {
@@ -865,6 +744,25 @@
             font-size: 12px;
             z-index: 1000;
         }
+        
+        /* Footer লাইন */
+        .footer-lines {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #eaeaea;
+            width: 100%;
+        }
+
+        .footer-lines p {
+            color: #666;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .copyright {
+            font-size: 11px !important;
+            color: #666 !important;
+        }
     </style>
 </head>
 <body>
@@ -889,11 +787,6 @@
             <a href="authorinfo.html" class="contact-author-btn">
                 <i class="fas fa-id-card"></i> CONTACT AUTHOR
             </a>
-            
-            <!-- CONTACT US বাটন -->
-            <a href="javascript:void(0)" class="contact-us-btn" onclick="showContactInfo()">
-                <i class="fas fa-headset"></i> CONTACT US
-            </a>
         </div>
     </div>
     
@@ -914,16 +807,6 @@
             <strong>Read Only Mode</strong><br>
             This is a public view. Admin login required for editing.
         </div>
-        
-        <!-- WORKSHOP বাটন (Side Panel এ) -->
-        <button class="workshop-side-btn" onclick="showWorkshopInfo()">
-            <i class="fas fa-tools"></i> WORKSHOP INFO
-        </button>
-        
-        <!-- VISITORS বাটন -->
-        <button class="visitors-btn" onclick="showVisitorInfo()">
-            <i class="fas fa-users"></i> VISITORS INFO
-        </button>
         
         <div class="control-group">
             <h3><i class="fas fa-download"></i> Export Options</h3>
@@ -960,6 +843,32 @@
                 <p>• Contact administrator for access</p>
             </div>
         </div>
+        
+        <!-- Social আইকন গুলি নিচে -->
+        <div class="social-footer">
+            <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
+            <div class="social-icons">
+                <!-- Facebook আইকন -->
+                <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-icon facebook" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                
+                <!-- GitHub আইকন -->
+                <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-icon github" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                
+                <!-- WhatsApp আইকন -->
+                <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- VISITORS বাটন (সবচেয়ে নিচে) -->
+        <button class="visitors-btn" onclick="showVisitorInfo()">
+            <i class="fas fa-users"></i> VISITORS INFO
+        </button>
     </div>
     
     <!-- Main Content Area -->
@@ -1176,42 +1085,9 @@
                 </div>
                 
                 <footer>
-                    <div class="author-info">
-                        <div class="zoo-logo">
-                            <i class="fas fa-tree"></i>
-                            <h3 class="editable" contenteditable="false">Kuwait Zoo Management System</h3>
-                        </div>
-                        
-                        <div class="contact-author">
-                            <h4><i class="fas fa-user-circle"></i> Author Information</h4>
-                            <div class="social-links">
-                                <!-- Facebook বাটন -->
-                                <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-btn facebook" title="Facebook">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                
-                                <!-- GitHub বাটন -->
-                                <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-btn github" title="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                
-                                <!-- WhatsApp বাটন -->
-                                <a href="https://wa.me/96598064347" target="_blank" class="social-btn whatsapp" title="WhatsApp">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                                
-                                <!-- Contact Author বাটন -->
-                                <button class="contact-btn" onclick="window.location.href='authorinfo.html'" title="Contact Author">
-                                    <i class="fas fa-id-card"></i> View Full Author Info
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- এই দুই লাইন উপরে থাকবে -->
-                        <div class="footer-lines">
-                            <p class="editable" contenteditable="false" style="margin-bottom: 5px;">Prepared on December 2025 | Official Document</p>
-                            <p class="copyright" style="margin-top: 0;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
-                        </div>
+                    <div class="footer-lines">
+                        <p class="editable" contenteditable="false" style="margin-bottom: 5px;">Prepared on December 2025 | Official Document</p>
+                        <p class="copyright" style="margin-top: 0;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
                     </div>
                 </footer>
             </div>
@@ -1316,9 +1192,7 @@
             const buttons = document.querySelectorAll('button');
             buttons.forEach(btn => {
                 // কিছু বাটন enable রাখব
-                if (btn.classList.contains('contact-btn') || 
-                    btn.classList.contains('video-control-btn') ||
-                    btn.classList.contains('workshop-side-btn') ||
+                if (btn.classList.contains('video-control-btn') ||
                     btn.classList.contains('visitors-btn') ||
                     btn.classList.contains('close-modal')) {
                     btn.disabled = false;
@@ -1339,15 +1213,6 @@
                 input.disabled = true;
                 input.style.cursor = 'not-allowed';
             });
-            
-            // Contact Author button enable করব
-            const contactBtn = document.querySelector('.contact-btn');
-            if (contactBtn) {
-                contactBtn.disabled = false;
-                contactBtn.style.opacity = '1';
-                contactBtn.style.cursor = 'pointer';
-                contactBtn.style.pointerEvents = 'auto';
-            }
             
             // Override any edit functions
             window.toggleEditMode = showReadOnlyMessage;
@@ -1407,11 +1272,6 @@
         function showReadOnlyMessage() {
             alert('This is a read-only public view.\n\nPlease login as administrator to edit content.');
             return false;
-        }
-        
-        // WORKSHOP ফাংশন
-        function showWorkshopInfo() {
-            alert('🔧 WORKSHOP INFORMATION\n\n📅 Workshop Schedule:\n• Animal Care Workshop: Every Saturday 10 AM\n• Wildlife Photography: Every Sunday 2 PM\n• Kids Zoo Explorer: Weekdays 3 PM\n\n🎯 Workshop Topics:\n1. Animal Behavior Study\n2. Wildlife Conservation\n3. Zoo Management\n4. Animal Nutrition\n\n📞 Registration: +965 1234 5678\n📍 Location: Kuwait Zoo Education Center');
         }
         
         // VISITORS ফাংশন
