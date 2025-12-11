@@ -20,7 +20,6 @@
             padding: 0;
             display: flex;
             min-height: 100vh;
-            overflow-x: hidden;
         }
         
         /* Public View Banner */
@@ -47,7 +46,7 @@
             font-size: 16px;
         }
         
-        /* WORKSHOP বাটন - বড় ফন্ট (উপরে, দেখানো হবে) */
+        /* WORKSHOP বাটন */
         .workshop-btn {
             background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
             color: white;
@@ -70,7 +69,7 @@
             box-shadow: 0 8px 25px rgba(255, 87, 34, 0.5);
         }
         
-        /* ADMIN PANEL বাটন - বড় ফন্ট */
+        /* ADMIN PANEL বাটন */
         .admin-panel-btn {
             position: fixed;
             top: 15px;
@@ -114,11 +113,9 @@
             flex-direction: column;
             z-index: 1000;
             height: 100vh;
-            overflow-y: auto;
             position: fixed;
             left: 0;
             top: 60px;
-            padding-bottom: 80px; /* Social section এর জন্য space */
         }
         
         .panel-header {
@@ -173,21 +170,21 @@
             color: #856404;
         }
         
-        /* Main Content Area */
+        /* Main Content Area - FIXED */
         .main-content-area {
             flex: 1;
             margin-left: 280px;
             margin-top: 60px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 30px 20px;
+            align-items: flex-start; /* উপরে align করেছি */
+            padding: 20px;
             background: #f5f7fa;
             min-height: calc(100vh - 60px);
             overflow-y: auto;
         }
         
-        /* A4 Container */
+        /* A4 Container - উপরে তুলেছি */
         .a4-container {
             width: 21cm;
             height: 29.7cm;
@@ -195,18 +192,30 @@
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
             padding: 1.5cm;
             transform: scale(0.85);
-            transform-origin: center center;
-            margin-top: -30px; /* উপরে তুলে দেয়া */
+            transform-origin: top center; /* উপরে থেকে scale করবে */
+            margin-top: 0; /* margin-top সরিয়েছি */
         }
         
-        /* Disable editing styles */
-        .editable {
-            cursor: default !important;
+        /* Side Panel Content - FIXED */
+        .side-panel-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 60px);
         }
         
-        .editable:hover, .editable:focus {
-            background-color: transparent !important;
-            outline: none !important;
+        /* Scrollable area */
+        .scrollable-area {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        
+        /* Contact Us Section - নিচে রাখার জন্য */
+        .contact-section {
+            margin-top: auto;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
         }
         
         /* ভিডিও সেকশন */
@@ -215,7 +224,7 @@
             margin-bottom: 20px;
             border-radius: 8px;
             overflow: hidden;
-            height: 200px;
+            height: 180px; /* কমিয়েছি */
             background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
             border: 2px solid #2e8b57;
         }
@@ -243,31 +252,15 @@
             padding: 20px;
         }
         
-        .welcome-text {
-            animation: slideInDown 1.5s ease-out;
-            margin-bottom: 15px;
-        }
-        
-        @keyframes slideInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
         .welcome-text h1 {
-            font-size: 32px;
+            font-size: 28px;
             margin-bottom: 8px;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
             color: #fff;
         }
         
         .welcome-text p {
-            font-size: 18px;
+            font-size: 16px;
             opacity: 0.9;
             color: #f0f0f0;
         }
@@ -295,12 +288,7 @@
             transition: all 0.3s ease;
         }
         
-        .video-control-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-        
-        /* Side Panel এ Action বাটন গুলি */
+        /* Action Buttons */
         .action-buttons {
             display: flex;
             flex-direction: column;
@@ -335,12 +323,10 @@
             background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
         }
         
-        /* WORKSHOP বাটন */
         .action-btn.workshop {
             background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
         }
         
-        /* EMERGENCY বাটন */
         .action-btn.emergency {
             background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
         }
@@ -350,42 +336,15 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
         
-        .action-btn.visitors:hover {
-            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
-            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
-        }
-        
-        .action-btn.author:hover {
-            background: linear-gradient(135deg, #FF5722 0%, #FF9800 100%);
-            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
-        }
-        
-        .action-btn.workshop:hover {
-            background: linear-gradient(135deg, #673AB7 0%, #9C27B0 100%);
-            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.5);
-        }
-        
-        .action-btn.emergency:hover {
-            background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
-            box-shadow: 0 8px 20px rgba(220, 53, 69, 0.5);
-        }
-        
-        /* Social আইকন সেকশন (সাইড প্যানেলের নিচে) */
+        /* Social Icons - Contact Us Section */
         .social-footer {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
             text-align: center;
-            padding: 15px;
-            background: rgba(46, 139, 87, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(46, 139, 87, 0.1);
+            padding: 15px 0;
         }
         
         .social-footer h4 {
             color: #2e8b57;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             font-size: 14px;
             display: flex;
             align-items: center;
@@ -401,22 +360,17 @@
         }
         
         .social-icon {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-4px) scale(1.1);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .social-icon.facebook {
@@ -429,6 +383,11 @@
         
         .social-icon.whatsapp {
             background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
         
         /* Table Design */
@@ -456,19 +415,11 @@
             border-right: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .table-editable th:last-child {
-            border-right: none;
-        }
-        
         .table-editable td {
             padding: 12px 10px;
             text-align: center;
             border-bottom: 1px solid #eaeaea;
             border-right: 1px solid #f0f0f0;
-        }
-        
-        .table-editable td:last-child {
-            border-right: none;
         }
         
         .table-editable tr:hover {
@@ -496,17 +447,6 @@
             padding: 12px 10px;
             text-align: left;
             font-weight: 600;
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .stats-table th:nth-child(1) {
-            width: 70%;
-            padding-left: 20px;
-        }
-        
-        .stats-table th:nth-child(2) {
-            width: 30%;
-            text-align: center;
         }
         
         .stats-table td {
@@ -514,20 +454,11 @@
             border-bottom: 1px solid #eaeaea;
         }
         
-        .stats-table td:nth-child(1) {
-            padding-left: 20px;
-            text-align: left;
-        }
-        
         .stats-table td:nth-child(2) {
             text-align: center;
             font-weight: bold;
             color: #2e8b57;
             font-size: 15px;
-        }
-        
-        .stats-table tr:hover {
-            background-color: rgba(46, 139, 87, 0.1);
         }
         
         .species-name {
@@ -553,19 +484,19 @@
         header {
             background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
             color: white;
-            padding: 20px 25px;
+            padding: 15px 20px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
         }
         
         .header-content h1 {
-            font-size: 24px;
+            font-size: 22px;
             margin-bottom: 5px;
         }
         
         .header-content p {
-            font-size: 14px;
+            font-size: 13px;
             opacity: 0.9;
         }
         
@@ -582,23 +513,23 @@
             display: grid;
             grid-template-columns: 1.5fr 1fr;
             gap: 20px;
-            height: calc(100% - 120px);
+            margin-top: 10px;
         }
         
         .card {
             background: white;
             border-radius: 6px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            padding: 18px;
+            padding: 15px;
             border: 1px solid #eaeaea;
         }
         
         .card h2 {
             color: #2e8b57;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             padding-bottom: 8px;
             border-bottom: 1px solid #eaeaea;
-            font-size: 18px;
+            font-size: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -610,7 +541,7 @@
             border-top: 2px solid #eaeaea;
             text-align: center;
             color: #666;
-            font-size: 12px;
+            font-size: 11px;
         }
         
         /* Size Controls */
@@ -629,12 +560,6 @@
             font-size: 12px;
         }
         
-        /* Disable interactions */
-        button:not(.action-btn):not(.video-control-btn):not(.close-modal) {
-            pointer-events: none;
-            opacity: 0.5;
-        }
-        
         /* Public Footer */
         .public-footer {
             position: fixed;
@@ -643,24 +568,10 @@
             right: 0;
             background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 10px 20px;
+            padding: 8px 20px;
             text-align: center;
             font-size: 12px;
             z-index: 1000;
-        }
-        
-        /* Side panel content wrapper */
-        .side-panel-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Scrollable area */
-        .scrollable-area {
-            flex: 1;
-            overflow-y: auto;
-            padding-right: 5px;
         }
         
         /* Custom scrollbar */
@@ -670,17 +581,11 @@
         
         .scrollable-area::-webkit-scrollbar-track {
             background: #f1f1f1;
-            border-radius: 3px;
         }
         
         .scrollable-area::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 3px;
-        }
-        
-        /* Adjust spacing for alignment */
-        .spacing-fix {
-            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -692,7 +597,7 @@
             <span>Public View - Read Only</span>
         </div>
         <div>
-            <!-- WORKSHOP বাটন (উপরে, এখন দেখাবে) -->
+            <!-- WORKSHOP বাটন -->
             <a href="admin-login.html" class="workshop-btn">
                 <i class="fas fa-tools"></i> WORKSHOP
             </a>
@@ -719,29 +624,25 @@
             </div>
             
             <!-- Action Buttons -->
-            <div class="action-buttons spacing-fix">
-                <!-- VISITORS বাটন -->
+            <div class="action-buttons">
                 <button class="action-btn visitors" onclick="showVisitorInfo()">
                     <i class="fas fa-users"></i> VISITORS INFO
                 </button>
                 
-                <!-- AUTHOR বাটন -->
                 <a href="authorinfo.html" class="action-btn author">
                     <i class="fas fa-user-circle"></i> AUTHOR INFO
                 </a>
                 
-                <!-- WORKSHOP বাটন -->
                 <a href="admin-login.html" class="action-btn workshop">
                     <i class="fas fa-tools"></i> WORKSHOP
                 </a>
                 
-                <!-- EMERGENCY বাটন -->
                 <button class="action-btn emergency" onclick="window.location.href='tel:+96598064347'">
                     <i class="fas fa-phone-alt"></i> EMERGENCY CONTACT
                 </button>
             </div>
             
-            <!-- Scrollable area for controls -->
+            <!-- Scrollable area -->
             <div class="scrollable-area">
                 <div class="control-group">
                     <h3><i class="fas fa-download"></i> Export Options</h3>
@@ -780,30 +681,29 @@
                 </div>
             </div>
             
-            <!-- Social Icons Section -->
-            <div class="social-footer">
-                <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
-                <div class="social-icons">
-                    <!-- Facebook আইকন -->
-                    <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-icon facebook" title="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    
-                    <!-- GitHub আইকন -->
-                    <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-icon github" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    
-                    <!-- WhatsApp আইকন -->
-                    <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp" title="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
+            <!-- Contact Us Section - একদম নিচে -->
+            <div class="contact-section">
+                <div class="social-footer">
+                    <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-icon facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        
+                        <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-icon github" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        
+                        <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Main Content Area -->
+    <!-- Main Content Area - FIXED -->
     <div class="main-content-area">
         <div class="a4-container">
             <div class="content-wrapper">
@@ -1004,7 +904,7 @@
                             </table>
                         </div>
                         
-                        <div style="margin-top: 20px; padding: 12px; background: #f8f9fa; border-radius: 6px;">
+                        <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
                             <h3 style="color: #2e8b57; margin-bottom: 8px; font-size: 14px;">
                                 <i class="fas fa-chart-pie"></i> Population Summary
                             </h3>
@@ -1031,40 +931,29 @@
     </div>
     
     <script>
-        // ============================================
-        // PUBLIC VIEW - ALL EDITING DISABLED
-        // ============================================
-        
-        // Disable all editing functionality
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Public View Mode Active - All editing disabled');
             
             // ভিডিও সেটআপ
             const video = document.getElementById('zooIntroVideo');
             if (video) {
-                // ভিডিও play করার চেষ্টা করব
                 const playPromise = video.play();
                 
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
                         console.log('Video playing successfully');
                     }).catch(error => {
-                        console.log('Auto-play prevented, showing play button');
-                        // যদি autoplay কাজ না করে, তাহলে user কে play বাটন দেখাব
-                        document.querySelector('.video-controls').innerHTML += 
-                            '<button class="video-control-btn" onclick="playVideoManually()" style="background: #2e8b57;">' +
-                            '<i class="fas fa-play"></i> Play Video</button>';
+                        console.log('Auto-play prevented');
                     });
                 }
                 
-                // ভিডিওর শেষে আবার শুরু করব
                 video.addEventListener('ended', function() {
                     this.currentTime = 0;
                     this.play();
                 });
             }
             
-            // Disable all click events on editable content
+            // Disable all editable content
             const editables = document.querySelectorAll('.editable, [contenteditable="true"]');
             editables.forEach(el => {
                 el.setAttribute('contenteditable', 'false');
@@ -1080,10 +969,8 @@
             // Disable all buttons except specific ones
             const buttons = document.querySelectorAll('button');
             buttons.forEach(btn => {
-                // কিছু বাটন enable রাখব
                 if (btn.classList.contains('video-control-btn') ||
-                    btn.classList.contains('action-btn') ||
-                    btn.classList.contains('close-modal')) {
+                    btn.classList.contains('action-btn')) {
                     btn.disabled = false;
                     btn.style.cursor = 'pointer';
                     btn.style.opacity = '1';
@@ -1095,28 +982,8 @@
                     btn.style.pointerEvents = 'none';
                 }
             });
-            
-            // Override any edit functions
-            window.toggleEditMode = showReadOnlyMessage;
-            window.downloadAsImage = showReadOnlyMessage;
-            window.saveCurrentProject = showReadOnlyMessage;
-            window.resetToDefault = showReadOnlyMessage;
-            window.changeSize = showReadOnlyMessage;
-            window.selectTableDesign = showReadOnlyMessage;
-            window.selectBackground = showReadOnlyMessage;
-            
-            // Prevent right-click
-            document.addEventListener('contextmenu', function(e) {
-                if (e.target.classList.contains('editable') || 
-                    e.target.closest('.control-btn') || 
-                    e.target.closest('.side-panel')) {
-                    e.preventDefault();
-                    showReadOnlyMessage();
-                }
-            });
         });
         
-        // ভিডিও কন্ট্রোল ফাংশন
         function toggleVideoPlay() {
             const video = document.getElementById('zooIntroVideo');
             const btn = document.getElementById('playPauseBtn');
@@ -1142,15 +1009,6 @@
             }
         }
         
-        function playVideoManually() {
-            const video = document.getElementById('zooIntroVideo');
-            video.play().then(() => {
-                console.log('Video started manually');
-            }).catch(e => {
-                alert('Please interact with the page first to play video');
-            });
-        }
-        
         function showReadOnlyMessage() {
             alert('This is a read-only public view.\n\nPlease login as administrator to edit content.');
             return false;
@@ -1160,21 +1018,6 @@
         function showVisitorInfo() {
             alert('👥 VISITOR INFORMATION\n\n🕒 Opening Hours:\n• Sunday - Thursday: 9:00 AM - 6:00 PM\n• Friday - Saturday: 8:00 AM - 7:00 PM\n\n💰 Ticket Prices:\n• Adults: 5 KWD\n• Children (5-12): 3 KWD\n• Children under 5: FREE\n• Family Package (4 persons): 15 KWD\n\n🎟️ Special Offers:\n• Student Discount: 20% off\n• Senior Citizen: 30% off\n• Group Booking (10+): 25% off\n\n🚗 Parking:\n• Available: 500+ spaces\n• Price: 1 KWD/day\n• Electric Charging: Available\n\n🍽️ Facilities:\n• Food Court\n• Restrooms\n• Prayer Room\n• First Aid\n• Gift Shop');
         }
-        
-        // Prevent keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            // Disable Ctrl+S, Ctrl+P, etc.
-            if (e.ctrlKey && (e.key === 's' || e.key === 'p' || e.key === 'e')) {
-                e.preventDefault();
-                showReadOnlyMessage();
-            }
-            
-            // Disable F12 for dev tools
-            if (e.key === 'F12') {
-                e.preventDefault();
-                showReadOnlyMessage();
-            }
-        });
     </script>
 </body>
 </html>
