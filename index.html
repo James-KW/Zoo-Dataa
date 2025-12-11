@@ -45,13 +45,7 @@
             font-size: 16px;
         }
         
-        .banner-buttons {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        
-        /* WORKSHOP বাটন - বড় ফন্ট */
+        /* WORKSHOP বাটন - বড় ফন্ট (উপরে) */
         .workshop-btn {
             background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
             color: white;
@@ -66,6 +60,7 @@
             gap: 10px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+            margin-right: 10px;
         }
         
         .workshop-btn:hover {
@@ -74,7 +69,7 @@
             box-shadow: 0 8px 25px rgba(255, 87, 34, 0.5);
         }
         
-        /* Emergency বাটন */
+        /* Emergency বাটন (উপরে) */
         .emergency-btn {
             background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
             color: white;
@@ -88,35 +83,13 @@
             align-items: center;
             gap: 8px;
             transition: all 0.3s ease;
+            margin-right: 10px;
         }
         
         .emergency-btn:hover {
             background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(220, 53, 69, 0.4);
-        }
-        
-        /* CONTACT AUTHOR বাটন - Emergency বাটনের নিচে */
-        .contact-author-btn {
-            background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
-        }
-        
-        .contact-author-btn:hover {
-            background: linear-gradient(135deg, #FF5722 0%, #FF9800 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
         }
         
         /* ADMIN PANEL বাটন - বড় ফন্ট */
@@ -348,8 +321,15 @@
             transform: scale(1.05);
         }
         
-        /* Side Panel এ VISITORS বাটন (নিচে) */
-        .visitors-btn {
+        /* Side Panel এ নতুন বাটন গুলি (উপরের দিকে) */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .action-btn {
             width: 100%;
             background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
             color: white;
@@ -362,26 +342,38 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
         }
         
-        .visitors-btn:hover {
-            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+        .action-btn.visitors {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+        }
+        
+        .action-btn.author {
+            background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
+        }
+        
+        .action-btn:hover {
             transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .action-btn.visitors:hover {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
             box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
         }
         
-        /* নিচের Social আইকন সেকশন */
+        .action-btn.author:hover {
+            background: linear-gradient(135deg, #FF5722 0%, #FF9800 100%);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
+        }
+        
+        /* Social আইকন সেকশন (নিচে) */
         .social-footer {
             position: absolute;
-            bottom: 80px;
+            bottom: 20px;
             left: 20px;
             right: 20px;
             text-align: center;
@@ -772,20 +764,15 @@
             <i class="fas fa-eye"></i>
             <span>Public View - Read Only</span>
         </div>
-        <div class="banner-buttons">
-            <!-- WORKSHOP বাটন -->
+        <div>
+            <!-- WORKSHOP বাটন (উপরে) -->
             <a href="admin-login.html" class="workshop-btn">
                 <i class="fas fa-tools"></i> WORKSHOP
             </a>
             
-            <!-- Emergency বাটন -->
+            <!-- Emergency বাটন (উপরে) -->
             <a href="tel:+96598064347" class="emergency-btn">
                 <i class="fas fa-phone-alt"></i> EMERGENCY
-            </a>
-            
-            <!-- CONTACT AUTHOR বাটন (Emergency বাটনের নিচে) -->
-            <a href="authorinfo.html" class="contact-author-btn">
-                <i class="fas fa-id-card"></i> CONTACT AUTHOR
             </a>
         </div>
     </div>
@@ -806,6 +793,19 @@
             <i class="fas fa-info-circle"></i>
             <strong>Read Only Mode</strong><br>
             This is a public view. Admin login required for editing.
+        </div>
+        
+        <!-- নতুন একশন বাটন গুলি (উপরের দিকে) -->
+        <div class="action-buttons">
+            <!-- VISITORS বাটন -->
+            <button class="action-btn visitors" onclick="showVisitorInfo()">
+                <i class="fas fa-users"></i> VISITORS INFO
+            </button>
+            
+            <!-- AUTHOR বাটন -->
+            <button class="action-btn author" onclick="window.location.href='authorinfo.html'">
+                <i class="fas fa-user-circle"></i> AUTHOR INFO
+            </button>
         </div>
         
         <div class="control-group">
@@ -864,11 +864,6 @@
                 </a>
             </div>
         </div>
-        
-        <!-- VISITORS বাটন (সবচেয়ে নিচে) -->
-        <button class="visitors-btn" onclick="showVisitorInfo()">
-            <i class="fas fa-users"></i> VISITORS INFO
-        </button>
     </div>
     
     <!-- Main Content Area -->
@@ -1094,48 +1089,6 @@
         </div>
     </div>
     
-    <!-- Contact Info Modal -->
-    <div class="contact-modal" id="contactModal">
-        <div class="contact-modal-content">
-            <h3><i class="fas fa-address-card"></i> Contact Information</h3>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-user"></i>
-                    <div>
-                        <strong>Author:</strong> Mr. James
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-facebook"></i>
-                    <div>
-                        <strong>Facebook:</strong> 
-                        <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank">James Facebook Profile</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <div>
-                        <strong>GitHub:</strong> 
-                        <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank">James404-cyber</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <div>
-                        <strong>WhatsApp:</strong> +965 9806 4347
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <strong>Email:</strong> james@kuwaitzoo.com
-                    </div>
-                </div>
-            </div>
-            <button class="close-modal" onclick="closeContactModal()">Close</button>
-        </div>
-    </div>
-    
     <!-- Public Footer -->
     <div class="public-footer">
         <i class="fas fa-eye"></i> Public Read-Only View | Admin Login Required for Editing
@@ -1193,7 +1146,7 @@
             buttons.forEach(btn => {
                 // কিছু বাটন enable রাখব
                 if (btn.classList.contains('video-control-btn') ||
-                    btn.classList.contains('visitors-btn') ||
+                    btn.classList.contains('action-btn') ||
                     btn.classList.contains('close-modal')) {
                     btn.disabled = false;
                     btn.style.cursor = 'pointer';
@@ -1277,25 +1230,6 @@
         // VISITORS ফাংশন
         function showVisitorInfo() {
             alert('👥 VISITOR INFORMATION\n\n🕒 Opening Hours:\n• Sunday - Thursday: 9:00 AM - 6:00 PM\n• Friday - Saturday: 8:00 AM - 7:00 PM\n\n💰 Ticket Prices:\n• Adults: 5 KWD\n• Children (5-12): 3 KWD\n• Children under 5: FREE\n• Family Package (4 persons): 15 KWD\n\n🎟️ Special Offers:\n• Student Discount: 20% off\n• Senior Citizen: 30% off\n• Group Booking (10+): 25% off\n\n🚗 Parking:\n• Available: 500+ spaces\n• Price: 1 KWD/day\n• Electric Charging: Available\n\n🍽️ Facilities:\n• Food Court\n• Restrooms\n• Prayer Room\n• First Aid\n• Gift Shop');
-        }
-        
-        // Contact Author Modal ফাংশন
-        function showContactInfo() {
-            const modal = document.getElementById('contactModal');
-            modal.style.display = 'flex';
-        }
-        
-        function closeContactModal() {
-            const modal = document.getElementById('contactModal');
-            modal.style.display = 'none';
-        }
-        
-        // Modal বাইরে ক্লিক করলে বন্ধ হবে
-        window.onclick = function(event) {
-            const modal = document.getElementById('contactModal');
-            if (event.target == modal) {
-                closeContactModal();
-            }
         }
         
         // Prevent keyboard shortcuts
