@@ -46,27 +46,10 @@
             font-size: 16px;
         }
         
-        /* WORKSHOP বাটন */
-        .workshop-btn {
-            background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            padding: 10px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
-        }
-        
-        .workshop-btn:hover {
-            background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 87, 34, 0.5);
+        /* WORKSHOP বাটন - Public Banner থেকে সরানো হয়েছে */
+        .public-banner > div:last-child {
+            visibility: hidden;
+            width: 0;
         }
         
         /* ADMIN PANEL বাটন */
@@ -74,33 +57,33 @@
             position: fixed;
             top: 15px;
             right: 20px;
-            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            background: linear-gradient(135deg, #2196F3 0%, #0d47a1 100%);
             color: white;
-            border: none;
-            padding: 12px 30px;
+            border: 3px solid white;
+            padding: 14px 30px;
             border-radius: 30px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             display: flex;
             align-items: center;
             gap: 12px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4);
+            box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(0,0,0,0.3);
             animation: pulse 2s infinite;
             z-index: 1001;
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4); }
-            50% { box-shadow: 0 5px 25px rgba(33, 150, 243, 0.7); }
-            100% { box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4); }
+            0% { box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(33, 150, 243, 0.4); }
+            50% { box-shadow: 0 0 0 3px #2196F3, 0 8px 30px rgba(33, 150, 243, 0.8); }
+            100% { box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(33, 150, 243, 0.4); }
         }
         
         .admin-panel-btn:hover {
-            background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+            background: linear-gradient(135deg, #0d47a1 0%, #1565C0 100%);
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.6);
+            box-shadow: 0 0 0 3px #0d47a1, 0 12px 35px rgba(33, 150, 243, 0.6);
         }
         
         /* Side Panel - Read Only */
@@ -170,21 +153,21 @@
             color: #856404;
         }
         
-        /* Main Content Area - FIXED */
+        /* Main Content Area */
         .main-content-area {
             flex: 1;
             margin-left: 280px;
             margin-top: 60px;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* উপরে align করেছি */
+            align-items: flex-start;
             padding: 20px;
             background: #f5f7fa;
             min-height: calc(100vh - 60px);
             overflow-y: auto;
         }
         
-        /* A4 Container - উপরে তুলেছি */
+        /* A4 Container */
         .a4-container {
             width: 21cm;
             height: 29.7cm;
@@ -192,11 +175,11 @@
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
             padding: 1.5cm;
             transform: scale(0.85);
-            transform-origin: top center; /* উপরে থেকে scale করবে */
-            margin-top: 0; /* margin-top সরিয়েছি */
+            transform-origin: top center;
+            margin-top: 0;
         }
         
-        /* Side Panel Content - FIXED */
+        /* Side Panel Content */
         .side-panel-content {
             flex: 1;
             display: flex;
@@ -209,13 +192,20 @@
             flex: 1;
             overflow-y: auto;
             padding-right: 5px;
+            min-height: 400px;
         }
         
-        /* Contact Us Section - নিচে রাখার জন্য */
+        /* Contact Us Section */
         .contact-section {
             margin-top: auto;
             padding: 15px 0;
             border-top: 1px solid #eee;
+            background: white;
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
         }
         
         /* ভিডিও সেকশন */
@@ -224,7 +214,7 @@
             margin-bottom: 20px;
             border-radius: 8px;
             overflow: hidden;
-            height: 180px; /* কমিয়েছি */
+            height: 150px;
             background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
             border: 2px solid #2e8b57;
         }
@@ -597,14 +587,14 @@
             <span>Public View - Read Only</span>
         </div>
         <div>
-            <!-- WORKSHOP বাটন -->
+            <!-- WORKSHOP বাটন - লুকানো আছে -->
             <a href="admin-login.html" class="workshop-btn">
                 <i class="fas fa-tools"></i> WORKSHOP
             </a>
         </div>
     </div>
     
-    <!-- Fixed ADMIN PANEL বাটন -->
+    <!-- Fixed ADMIN PANEL বাটন - একটাই, পরিষ্কারভাবে দেখা যাবে -->
     <a href="admin-login.html" class="admin-panel-btn">
         <i class="fas fa-user-shield"></i> ADMIN PANEL
     </a>
@@ -681,7 +671,7 @@
                 </div>
             </div>
             
-            <!-- Contact Us Section - একদম নিচে -->
+            <!-- Contact Us Section - ঠিক জায়গায় -->
             <div class="contact-section">
                 <div class="social-footer">
                     <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
@@ -703,7 +693,7 @@
         </div>
     </div>
     
-    <!-- Main Content Area - FIXED -->
+    <!-- Main Content Area -->
     <div class="main-content-area">
         <div class="a4-container">
             <div class="content-wrapper">
