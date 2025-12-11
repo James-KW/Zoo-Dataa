@@ -52,12 +52,12 @@
             width: 0;
         }
         
-        /* ADMIN PANEL বাটন */
+        /* ADMIN PANEL বাটন - Orange Color */
         .admin-panel-btn {
             position: fixed;
-            top: 15px;
+            top: 85px; /* 60px (banner height) + 25px gap */
             right: 20px;
-            background: linear-gradient(135deg, #2196F3 0%, #0d47a1 100%);
+            background: linear-gradient(135deg, #FF5722 0%, #FF9800 100%);
             color: white;
             border: 3px solid white;
             padding: 14px 30px;
@@ -69,21 +69,21 @@
             align-items: center;
             gap: 12px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 0 0 3px #FF5722, 0 8px 25px rgba(255, 87, 34, 0.3);
             animation: pulse 2s infinite;
             z-index: 1001;
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(33, 150, 243, 0.4); }
-            50% { box-shadow: 0 0 0 3px #2196F3, 0 8px 30px rgba(33, 150, 243, 0.8); }
-            100% { box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(33, 150, 243, 0.4); }
+            0% { box-shadow: 0 0 0 3px #FF5722, 0 8px 25px rgba(255, 87, 34, 0.4); }
+            50% { box-shadow: 0 0 0 3px #FF5722, 0 8px 30px rgba(255, 87, 34, 0.7); }
+            100% { box-shadow: 0 0 0 3px #FF5722, 0 8px 25px rgba(255, 87, 34, 0.4); }
         }
         
         .admin-panel-btn:hover {
-            background: linear-gradient(135deg, #0d47a1 0%, #1565C0 100%);
+            background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 0 3px #0d47a1, 0 12px 35px rgba(33, 150, 243, 0.6);
+            box-shadow: 0 0 0 3px #FF9800, 0 12px 35px rgba(255, 87, 34, 0.6);
         }
         
         /* Side Panel - Read Only */
@@ -193,18 +193,18 @@
             overflow-y: auto;
             padding-right: 5px;
             min-height: 400px;
+            margin-bottom: 60px; /* Social icon-এর জন্য জায়গা রাখা */
         }
         
-        /* Contact Us Section */
+        /* Contact Us Section - উপরে তুলা হয়েছে */
         .contact-section {
-            margin-top: auto;
+            position: absolute;
+            bottom: 20px; /* নিচ থেকে 20px উপরে */
+            left: 20px;
+            right: 20px;
             padding: 15px 0;
             border-top: 1px solid #eee;
             background: white;
-            position: sticky;
-            bottom: 0;
-            left: 0;
-            right: 0;
             z-index: 10;
         }
         
@@ -329,12 +329,12 @@
         /* Social Icons - Contact Us Section */
         .social-footer {
             text-align: center;
-            padding: 15px 0;
+            padding: 10px 0;
         }
         
         .social-footer h4 {
             color: #2e8b57;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-size: 14px;
             display: flex;
             align-items: center;
@@ -594,7 +594,7 @@
         </div>
     </div>
     
-    <!-- Fixed ADMIN PANEL বাটন - একটাই, পরিষ্কারভাবে দেখা যাবে -->
+    <!-- ADMIN PANEL বাটন - Orange Color, সঠিক জায়গায় -->
     <a href="admin-login.html" class="admin-panel-btn">
         <i class="fas fa-user-shield"></i> ADMIN PANEL
     </a>
@@ -671,7 +671,7 @@
                 </div>
             </div>
             
-            <!-- Contact Us Section - ঠিক জায়গায় -->
+            <!-- Contact Us Section - উপরে তুলা হয়েছে -->
             <div class="contact-section">
                 <div class="social-footer">
                     <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
