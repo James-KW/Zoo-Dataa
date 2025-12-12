@@ -173,7 +173,7 @@
             height: 29.7cm;
             background: white;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
-            padding: 1.5cm;
+            padding: 1.2cm;
             transform: scale(0.85);
             transform-origin: top center;
             margin-top: 0;
@@ -208,15 +208,15 @@
             z-index: 10;
         }
         
-        /* ভিডিও সেকশন */
+        /* ভিডিও সেকশন - বড় করা হয়েছে */
         .video-intro {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-radius: 8px;
             overflow: hidden;
-            height: 150px;
+            height: 250px;
             background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
-            border: 2px solid #2e8b57;
+            border: 3px solid #2e8b57;
         }
         
         #zooIntroVideo {
@@ -243,16 +243,17 @@
         }
         
         .welcome-text h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
             color: #fff;
         }
         
         .welcome-text p {
-            font-size: 16px;
-            opacity: 0.9;
+            font-size: 20px;
+            opacity: 0.95;
             color: #f0f0f0;
+            font-weight: 500;
         }
         
         .video-controls {
@@ -265,17 +266,25 @@
         }
         
         .video-control-btn {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.35);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 8px 15px;
-            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            padding: 12px 22px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: all 0.3s ease;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+        }
+        
+        .video-control-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.15);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
         /* Action Buttons */
@@ -384,7 +393,7 @@
         .table-wrapper {
             width: 100%;
             overflow-x: auto;
-            margin: 15px 0;
+            margin: 10px 0;
         }
         
         .table-editable {
@@ -399,14 +408,14 @@
         }
         
         .table-editable th {
-            padding: 12px 10px;
+            padding: 11px 8px;
             text-align: center;
             font-weight: 600;
             border-right: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .table-editable td {
-            padding: 12px 10px;
+            padding: 10px 8px;
             text-align: center;
             border-bottom: 1px solid #eaeaea;
             border-right: 1px solid #f0f0f0;
@@ -425,7 +434,7 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
-            margin: 15px 0;
+            margin: 10px 0;
         }
         
         .stats-table thead {
@@ -434,13 +443,13 @@
         }
         
         .stats-table th {
-            padding: 12px 10px;
+            padding: 11px 8px;
             text-align: left;
             font-weight: 600;
         }
         
         .stats-table td {
-            padding: 12px 10px;
+            padding: 10px 8px;
             border-bottom: 1px solid #eaeaea;
         }
         
@@ -465,8 +474,8 @@
         .note {
             background: #e8f4fd;
             border-left: 4px solid #2e8b57;
-            padding: 10px 15px;
-            margin-top: 15px;
+            padding: 8px 12px;
+            margin-top: 10px;
             font-size: 12px;
             color: #333;
         }
@@ -474,9 +483,9 @@
         header {
             background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
             color: white;
-            padding: 15px 20px;
+            padding: 12px 15px;
             border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-align: center;
         }
         
@@ -499,11 +508,10 @@
             margin-top: 8px;
         }
         
-        /* চেঞ্জ করা হয়েছে: 1.5fr 1fr → 1fr 1fr */
         .document-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 15px;
             margin-top: 10px;
         }
         
@@ -511,24 +519,25 @@
             background: white;
             border-radius: 6px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            padding: 15px;
+            padding: 12px;
             border: 1px solid #eaeaea;
+            min-height: 400px;
         }
         
         .card h2 {
             color: #2e8b57;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
             border-bottom: 1px solid #eaeaea;
-            font-size: 16px;
+            font-size: 15px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
         
         footer {
-            margin-top: 20px;
-            padding-top: 15px;
+            margin-top: 15px;
+            padding-top: 12px;
             border-top: 2px solid #eaeaea;
             text-align: center;
             color: #666;
@@ -577,6 +586,28 @@
         .scrollable-area::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 3px;
+        }
+        
+        /* Population Summary সেকশন */
+        .population-summary {
+            margin-top: 12px;
+            padding: 8px 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .population-summary h3 {
+            color: #2e8b57;
+            margin-bottom: 6px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .population-summary p {
+            font-size: 12px;
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -700,7 +731,7 @@
             <div class="content-wrapper">
                 <header>
                     <div class="header-content">
-                        <!-- ভিডিও সেকশন -->
+                        <!-- ভিডিও সেকশন - বড় করা হয়েছে -->
                         <div class="video-intro">
                             <video id="zooIntroVideo" autoplay muted loop playsinline>
                                 <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
@@ -895,11 +926,9 @@
                             </table>
                         </div>
                         
-                        <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
-                            <h3 style="color: #2e8b57; margin-bottom: 8px; font-size: 14px;">
-                                <i class="fas fa-chart-pie"></i> Population Summary
-                            </h3>
-                            <p style="font-size: 12px; line-height: 1.5;">
+                        <div class="population-summary">
+                            <h3><i class="fas fa-chart-pie"></i> Population Summary</h3>
+                            <p>
                                 The Kuwait Zoo currently houses <strong>8 species</strong> of primates with a total population of <strong>34 monkeys</strong>. The gender distribution shows <strong>16 males</strong>, <strong>18 females</strong>, and <strong>0</strong> of unknown gender.
                             </p>
                         </div>
