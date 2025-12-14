@@ -612,17 +612,19 @@
             line-height: 1.4;
         }
         
-        /* NEW CSS FOR FLOWER SECTION */
+        /* NEW IMPROVED FLOWER SECTION */
         .flower-section {
             text-align: center;
             margin: 40px 0 20px 0;
             padding: 30px;
-            background: linear-gradient(135deg, rgba(255,245,245,0.9) 0%, rgba(255,240,240,0.9) 100%);
-            border-radius: 20px;
-            border: 2px solid #ff6b6b;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.15);
+            background: linear-gradient(135deg, rgba(255, 245, 245, 0.95) 0%, rgba(255, 240, 240, 0.95) 100%);
+            border-radius: 15px;
+            border: 3px solid #ff6b6b;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
             position: relative;
             overflow: hidden;
+            border-top: 1px solid #ffcccc;
+            border-bottom: 1px solid #ffcccc;
         }
         
         .flower-section::before {
@@ -631,8 +633,18 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #ff6b6b, #ff8e8e, #ff6b6b);
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
+        }
+        
+        .flower-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
         }
         
         .flower-image-container {
@@ -641,96 +653,170 @@
             align-items: center;
             margin-bottom: 25px;
             position: relative;
+            padding: 10px;
         }
         
         .round-flower-image {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 8px solid white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 10px solid white;
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.3);
             transition: all 0.5s ease;
-            animation: float 3s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
+            background: linear-gradient(135deg, #fff5f5, #ffe6e6);
+            padding: 5px;
         }
         
         .round-flower-image:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 0 12px 30px rgba(220, 20, 60, 0.5);
+            border-color: #ffcccc;
         }
         
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
         
         .flower-caption {
             font-family: 'Italianno', cursive;
-            font-size: 42px;
+            font-size: 48px;
             color: #d32f2f;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            line-height: 1.2;
-            letter-spacing: 1px;
+            margin: 10px 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+            line-height: 1.1;
+            letter-spacing: 1.5px;
             position: relative;
             display: inline-block;
-            padding: 0 20px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            border: 2px solid #ffcccc;
         }
         
-        .flower-caption::before,
-        .flower-caption::after {
-            content: "❦";
-            font-size: 24px;
+        .flower-caption::before {
+            content: "🌸";
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 28px;
             color: #ff6b6b;
-            margin: 0 15px;
-            position: relative;
-            top: -5px;
+        }
+        
+        .flower-caption::after {
+            content: "🌸";
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 28px;
+            color: #ff6b6b;
         }
         
         .flower-subtitle {
             font-family: 'Dancing Script', cursive;
-            font-size: 24px;
-            color: #ff6b6b;
-            margin-top: 10px;
+            font-size: 26px;
+            color: #ff3333;
+            margin-top: 8px;
             opacity: 0.9;
-            font-weight: 500;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 15px;
         }
         
         .flower-decoration {
             position: absolute;
-            font-size: 24px;
-            color: #ff8e8e;
-            opacity: 0.3;
+            font-size: 22px;
+            color: #ff6b6b;
+            opacity: 0.4;
             z-index: 0;
+            animation: spin 20s linear infinite;
         }
         
-        .decoration-1 { top: 20px; left: 20px; }
-        .decoration-2 { top: 20px; right: 20px; }
-        .decoration-3 { bottom: 20px; left: 20px; }
-        .decoration-4 { bottom: 20px; right: 20px; }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .decoration-1 { top: 15px; left: 15px; animation-delay: 0s; }
+        .decoration-2 { top: 15px; right: 15px; animation-delay: -5s; }
+        .decoration-3 { bottom: 15px; left: 15px; animation-delay: -10s; }
+        .decoration-4 { bottom: 15px; right: 15px; animation-delay: -15s; }
         
         .heart-pulse {
             position: absolute;
-            font-size: 20px;
-            color: #ff6b6b;
-            animation: pulse-heart 1.5s infinite;
+            font-size: 18px;
+            color: #ff3333;
+            animation: pulse-heart 2s infinite;
+            z-index: 1;
         }
         
         @keyframes pulse-heart {
-            0% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.7; }
+            0% { transform: scale(0.8); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.8); opacity: 0.6; }
         }
         
-        .heart-1 { top: 50px; left: 50px; }
-        .heart-2 { top: 50px; right: 50px; }
-        .heart-3 { bottom: 50px; left: 50px; }
-        .heart-4 { bottom: 50px; right: 50px; }
+        .heart-1 { top: 40px; left: 40px; animation-delay: 0s; }
+        .heart-2 { top: 40px; right: 40px; animation-delay: 0.5s; }
+        .heart-3 { bottom: 40px; left: 40px; animation-delay: 1s; }
+        .heart-4 { bottom: 40px; right: 40px; animation-delay: 1.5s; }
+        
+        .rose-decoration {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4d4d;
+            opacity: 0.3;
+            animation: float-rose 6s ease-in-out infinite;
+        }
+        
+        @keyframes float-rose {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+        
+        .rose-1 { top: 25%; left: 10%; animation-delay: 0s; }
+        .rose-2 { top: 25%; right: 10%; animation-delay: 2s; }
+        .rose-3 { bottom: 25%; left: 10%; animation-delay: 1s; }
+        .rose-4 { bottom: 25%; right: 10%; animation-delay: 3s; }
         
         /* Responsive design for flower section */
         @media (max-width: 768px) {
             .flower-caption {
-                font-size: 32px;
+                font-size: 36px;
+                padding: 8px 20px;
+            }
+            
+            .flower-caption::before,
+            .flower-caption::after {
+                font-size: 22px;
+            }
+            
+            .flower-subtitle {
+                font-size: 22px;
+            }
+            
+            .round-flower-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .flower-section {
+                padding: 20px;
+                margin: 30px 0 15px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .flower-caption {
+                font-size: 30px;
             }
             
             .flower-subtitle {
@@ -738,8 +824,8 @@
             }
             
             .round-flower-image {
-                width: 150px;
-                height: 150px;
+                width: 130px;
+                height: 130px;
             }
         }
     </style>
@@ -1068,18 +1154,27 @@
                     </div>
                 </div>
                 
-                <!-- NEW FLOWER SECTION ADDED BELOW THE TABLES -->
+                <!-- IMPROVED FLOWER SECTION - SEPARATED FROM TABLES -->
                 <div class="flower-section">
-                    <div class="flower-decoration decoration-1">❀</div>
-                    <div class="flower-decoration decoration-2">✿</div>
+                    <!-- Decorations -->
+                    <div class="flower-decoration decoration-1">✿</div>
+                    <div class="flower-decoration decoration-2">❀</div>
                     <div class="flower-decoration decoration-3">❁</div>
                     <div class="flower-decoration decoration-4">✾</div>
                     
+                    <!-- Hearts -->
                     <div class="heart-pulse heart-1">❤️</div>
                     <div class="heart-pulse heart-2">❤️</div>
                     <div class="heart-pulse heart-3">❤️</div>
                     <div class="heart-pulse heart-4">❤️</div>
                     
+                    <!-- Roses -->
+                    <div class="rose-decoration rose-1">🌹</div>
+                    <div class="rose-decoration rose-2">🌹</div>
+                    <div class="rose-decoration rose-3">🌹</div>
+                    <div class="rose-decoration rose-4">🌹</div>
+                    
+                    <!-- Flower Image -->
                     <div class="flower-image-container">
                         <img src="https://raw.githubusercontent.com/James-KW/Zoo-Dataa/refs/heads/main/image/flower.png" 
                              alt="Beautiful Flower for Romantic Souls" 
@@ -1087,6 +1182,7 @@
                              onerror="this.src='https://images.unsplash.com/photo-1526040652367-ac003a0475fe?w=400&h=400&fit=crop&crop=face';">
                     </div>
                     
+                    <!-- Main Text -->
                     <h2 class="flower-caption">Flowers for romantic souls.</h2>
                     <p class="flower-subtitle">Where petals whisper love's sweet tales</p>
                 </div>
