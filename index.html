@@ -544,6 +544,21 @@
             text-align: center;
             color: #666;
             font-size: 11px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .footer-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .footer-lines p {
+            margin: 0;
+            line-height: 1.4;
         }
         
         /* Size Controls */
@@ -612,15 +627,15 @@
             line-height: 1.4;
         }
         
-        /* NEW IMPROVED FLOWER SECTION */
+        /* NEW IMPROVED FLOWER SECTION - BEFORE FOOTER */
         .flower-section {
             text-align: center;
-            margin: 40px 0 20px 0;
-            padding: 30px;
+            margin: 30px 0 25px 0;
+            padding: 25px;
             background: linear-gradient(135deg, rgba(255, 245, 245, 0.95) 0%, rgba(255, 240, 240, 0.95) 100%);
-            border-radius: 15px;
-            border: 3px solid #ff6b6b;
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
+            border-radius: 12px;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.15);
             position: relative;
             overflow: hidden;
             border-top: 1px solid #ffcccc;
@@ -633,7 +648,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
         }
         
@@ -643,7 +658,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
         }
         
@@ -651,93 +666,93 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             position: relative;
-            padding: 10px;
+            padding: 8px;
         }
         
         .round-flower-image {
-            width: 180px;
-            height: 180px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 10px solid white;
-            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.3);
-            transition: all 0.5s ease;
+            border: 8px solid white;
+            box-shadow: 0 6px 15px rgba(220, 20, 60, 0.25);
+            transition: all 0.4s ease;
             animation: float 4s ease-in-out infinite;
             background: linear-gradient(135deg, #fff5f5, #ffe6e6);
-            padding: 5px;
+            padding: 4px;
         }
         
         .round-flower-image:hover {
-            transform: scale(1.08) rotate(3deg);
-            box-shadow: 0 12px 30px rgba(220, 20, 60, 0.5);
+            transform: scale(1.06) rotate(3deg);
+            box-shadow: 0 10px 25px rgba(220, 20, 60, 0.4);
             border-color: #ffcccc;
         }
         
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
         }
         
         .flower-caption {
             font-family: 'Italianno', cursive;
-            font-size: 48px;
+            font-size: 40px;
             color: #d32f2f;
-            margin: 10px 0;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+            margin: 8px 0;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
             line-height: 1.1;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             position: relative;
             display: inline-block;
-            padding: 10px 25px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            border: 2px solid #ffcccc;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            border: 1px solid #ffcccc;
         }
         
         .flower-caption::before {
             content: "🌸";
             position: absolute;
-            left: -15px;
+            left: -12px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 28px;
+            font-size: 24px;
             color: #ff6b6b;
         }
         
         .flower-caption::after {
             content: "🌸";
             position: absolute;
-            right: -15px;
+            right: -12px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 28px;
+            font-size: 24px;
             color: #ff6b6b;
         }
         
         .flower-subtitle {
             font-family: 'Dancing Script', cursive;
-            font-size: 26px;
+            font-size: 22px;
             color: #ff3333;
-            margin-top: 8px;
+            margin-top: 6px;
             opacity: 0.9;
             font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
             background: rgba(255, 255, 255, 0.7);
-            padding: 5px 15px;
-            border-radius: 8px;
+            padding: 4px 12px;
+            border-radius: 6px;
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 12px;
         }
         
         .flower-decoration {
             position: absolute;
-            font-size: 22px;
+            font-size: 20px;
             color: #ff6b6b;
-            opacity: 0.4;
+            opacity: 0.3;
             z-index: 0;
-            animation: spin 20s linear infinite;
+            animation: spin 25s linear infinite;
         }
         
         @keyframes spin {
@@ -745,14 +760,14 @@
             100% { transform: rotate(360deg); }
         }
         
-        .decoration-1 { top: 15px; left: 15px; animation-delay: 0s; }
-        .decoration-2 { top: 15px; right: 15px; animation-delay: -5s; }
-        .decoration-3 { bottom: 15px; left: 15px; animation-delay: -10s; }
-        .decoration-4 { bottom: 15px; right: 15px; animation-delay: -15s; }
+        .decoration-1 { top: 12px; left: 12px; animation-delay: 0s; }
+        .decoration-2 { top: 12px; right: 12px; animation-delay: -6s; }
+        .decoration-3 { bottom: 12px; left: 12px; animation-delay: -12s; }
+        .decoration-4 { bottom: 12px; right: 12px; animation-delay: -18s; }
         
         .heart-pulse {
             position: absolute;
-            font-size: 18px;
+            font-size: 16px;
             color: #ff3333;
             animation: pulse-heart 2s infinite;
             z-index: 1;
@@ -764,59 +779,41 @@
             100% { transform: scale(0.8); opacity: 0.6; }
         }
         
-        .heart-1 { top: 40px; left: 40px; animation-delay: 0s; }
-        .heart-2 { top: 40px; right: 40px; animation-delay: 0.5s; }
-        .heart-3 { bottom: 40px; left: 40px; animation-delay: 1s; }
-        .heart-4 { bottom: 40px; right: 40px; animation-delay: 1.5s; }
+        .heart-1 { top: 35px; left: 35px; animation-delay: 0s; }
+        .heart-2 { top: 35px; right: 35px; animation-delay: 0.5s; }
+        .heart-3 { bottom: 35px; left: 35px; animation-delay: 1s; }
+        .heart-4 { bottom: 35px; right: 35px; animation-delay: 1.5s; }
         
         .rose-decoration {
             position: absolute;
-            font-size: 20px;
+            font-size: 18px;
             color: #ff4d4d;
-            opacity: 0.3;
-            animation: float-rose 6s ease-in-out infinite;
+            opacity: 0.25;
+            animation: float-rose 7s ease-in-out infinite;
         }
         
         @keyframes float-rose {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(10deg); }
+            50% { transform: translateY(-12px) rotate(8deg); }
         }
         
-        .rose-1 { top: 25%; left: 10%; animation-delay: 0s; }
-        .rose-2 { top: 25%; right: 10%; animation-delay: 2s; }
-        .rose-3 { bottom: 25%; left: 10%; animation-delay: 1s; }
-        .rose-4 { bottom: 25%; right: 10%; animation-delay: 3s; }
+        .rose-1 { top: 20%; left: 8%; animation-delay: 0s; }
+        .rose-2 { top: 20%; right: 8%; animation-delay: 2s; }
+        .rose-3 { bottom: 20%; left: 8%; animation-delay: 1s; }
+        .rose-4 { bottom: 20%; right: 8%; animation-delay: 3s; }
         
         /* Responsive design for flower section */
         @media (max-width: 768px) {
             .flower-caption {
-                font-size: 36px;
-                padding: 8px 20px;
+                font-size: 32px;
+                padding: 6px 16px;
             }
             
             .flower-caption::before,
             .flower-caption::after {
-                font-size: 22px;
-            }
-            
-            .flower-subtitle {
-                font-size: 22px;
-            }
-            
-            .round-flower-image {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .flower-section {
-                padding: 20px;
-                margin: 30px 0 15px 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .flower-caption {
-                font-size: 30px;
+                font-size: 20px;
+                left: -10px;
+                right: -10px;
             }
             
             .flower-subtitle {
@@ -824,8 +821,32 @@
             }
             
             .round-flower-image {
-                width: 130px;
-                height: 130px;
+                width: 140px;
+                height: 140px;
+            }
+            
+            .flower-section {
+                padding: 20px;
+                margin: 25px 0 20px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .flower-caption {
+                font-size: 28px;
+            }
+            
+            .flower-subtitle {
+                font-size: 18px;
+            }
+            
+            .round-flower-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .flower-section {
+                padding: 15px;
             }
         }
     </style>
@@ -1154,7 +1175,7 @@
                     </div>
                 </div>
                 
-                <!-- IMPROVED FLOWER SECTION - SEPARATED FROM TABLES -->
+                <!-- FLOWER SECTION - ADDED BEFORE FOOTER -->
                 <div class="flower-section">
                     <!-- Decorations -->
                     <div class="flower-decoration decoration-1">✿</div>
@@ -1187,10 +1208,11 @@
                     <p class="flower-subtitle">Where petals whisper love's sweet tales</p>
                 </div>
                 
+                <!-- FOOTER - AFTER FLOWER SECTION -->
                 <footer>
                     <div class="footer-lines">
-                        <p class="editable" contenteditable="false" style="margin-bottom: 5px;">Prepared on December 2025 | Official Document</p>
-                        <p class="copyright" style="margin-top: 0;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
+                        <p class="editable" contenteditable="false" style="margin-bottom: 5px; color: #2e8b57; font-weight: 600;">Prepared on December 2025 | Official Document</p>
+                        <p class="copyright" style="margin-top: 0; color: #666;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
                     </div>
                 </footer>
             </div>
