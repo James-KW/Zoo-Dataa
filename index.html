@@ -22,6 +22,7 @@
             padding: 0;
             display: flex;
             min-height: 100vh;
+            flex-direction: column;
         }
         
         /* Public View Banner */
@@ -548,7 +549,7 @@
             border-radius: 6px;
             padding: 15px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
         
         .footer-lines {
@@ -628,11 +629,11 @@
             line-height: 1.4;
         }
         
-        /* FLOWER SECTION - AFTER FOOTER */
+        /* FLOWER SECTION - VERY BOTTOM OF PAGE */
         .flower-section {
             text-align: center;
-            margin: 0 0 10px 0;
-            padding: 25px;
+            margin: 0;
+            padding: 30px 25px;
             background: linear-gradient(135deg, rgba(255, 245, 245, 0.95) 0%, rgba(255, 240, 240, 0.95) 100%);
             border-radius: 12px;
             border: 2px solid #ff6b6b;
@@ -641,6 +642,8 @@
             overflow: hidden;
             border-top: 1px solid #ffcccc;
             border-bottom: 1px solid #ffcccc;
+            width: 100%;
+            margin-top: 0;
         }
         
         .flower-section::before {
@@ -1182,40 +1185,40 @@
                         <p class="copyright" style="margin-top: 0; color: #666;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
                     </div>
                 </footer>
-                
-                <!-- FLOWER SECTION - AFTER FOOTER (নিচে) -->
-                <div class="flower-section">
-                    <!-- Decorations -->
-                    <div class="flower-decoration decoration-1">✿</div>
-                    <div class="flower-decoration decoration-2">❀</div>
-                    <div class="flower-decoration decoration-3">❁</div>
-                    <div class="flower-decoration decoration-4">✾</div>
-                    
-                    <!-- Hearts -->
-                    <div class="heart-pulse heart-1">❤️</div>
-                    <div class="heart-pulse heart-2">❤️</div>
-                    <div class="heart-pulse heart-3">❤️</div>
-                    <div class="heart-pulse heart-4">❤️</div>
-                    
-                    <!-- Roses -->
-                    <div class="rose-decoration rose-1">🌹</div>
-                    <div class="rose-decoration rose-2">🌹</div>
-                    <div class="rose-decoration rose-3">🌹</div>
-                    <div class="rose-decoration rose-4">🌹</div>
-                    
-                    <!-- Flower Image -->
-                    <div class="flower-image-container">
-                        <img src="https://raw.githubusercontent.com/James-KW/Zoo-Dataa/refs/heads/main/image/flower.png" 
-                             alt="Beautiful Flower for Romantic Souls" 
-                             class="round-flower-image"
-                             onerror="this.src='https://images.unsplash.com/photo-1526040652367-ac003a0475fe?w=400&h=400&fit=crop&crop=face';">
-                    </div>
-                    
-                    <!-- Main Text -->
-                    <h2 class="flower-caption">Flowers for romantic souls.</h2>
-                    <p class="flower-subtitle">Where petals whisper love's sweet tales</p>
-                </div>
             </div>
+        </div>
+        
+        <!-- FLOWER SECTION - VERY BOTTOM OF PAGE (পেজের একদম নিচে) -->
+        <div class="flower-section" style="margin-top: 20px; margin-bottom: 20px; width: 21cm; margin-left: auto; margin-right: auto;">
+            <!-- Decorations -->
+            <div class="flower-decoration decoration-1">✿</div>
+            <div class="flower-decoration decoration-2">❀</div>
+            <div class="flower-decoration decoration-3">❁</div>
+            <div class="flower-decoration decoration-4">✾</div>
+            
+            <!-- Hearts -->
+            <div class="heart-pulse heart-1">❤️</div>
+            <div class="heart-pulse heart-2">❤️</div>
+            <div class="heart-pulse heart-3">❤️</div>
+            <div class="heart-pulse heart-4">❤️</div>
+            
+            <!-- Roses -->
+            <div class="rose-decoration rose-1">🌹</div>
+            <div class="rose-decoration rose-2">🌹</div>
+            <div class="rose-decoration rose-3">🌹</div>
+            <div class="rose-decoration rose-4">🌹</div>
+            
+            <!-- Flower Image -->
+            <div class="flower-image-container">
+                <img src="https://raw.githubusercontent.com/James-KW/Zoo-Dataa/refs/heads/main/image/flower.png" 
+                     alt="Beautiful Flower for Romantic Souls" 
+                     class="round-flower-image"
+                     onerror="this.src='https://images.unsplash.com/photo-1526040652367-ac003a0475fe?w=400&h=400&fit=crop&crop=face';">
+            </div>
+            
+            <!-- Main Text -->
+            <h2 class="flower-caption">Flowers for romantic souls.</h2>
+            <p class="flower-subtitle">Where petals whisper love's sweet tales</p>
         </div>
     </div>
     
