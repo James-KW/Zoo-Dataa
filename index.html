@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=1100">
     <title>Kuwait Zoo - Monkey Population 2025 (Public View)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Italian style -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Italianno&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,7 +14,6 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
         body {
             background-color: #f5f7fa;
             color: #333;
@@ -22,7 +22,7 @@
             display: flex;
             min-height: 100vh;
         }
-        
+        /* Public View Banner */
         .public-banner {
             position: fixed;
             top: 0;
@@ -38,19 +38,18 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             height: 60px;
         }
-        
         .banner-title {
             display: flex;
             align-items: center;
             gap: 10px;
             font-size: 16px;
         }
-        
+        /* WORKSHOP বাটন - Public Banner থেকে সরানো হয়েছে */
         .public-banner > div:last-child {
             visibility: hidden;
             width: 0;
         }
-        
+        /* ADMIN PANEL বাটন */
         .admin-panel-btn {
             position: fixed;
             top: 15px;
@@ -71,19 +70,17 @@
             animation: pulse 2s infinite;
             z-index: 1001;
         }
-        
         @keyframes pulse {
             0% { box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(33, 150, 243, 0.4); }
             50% { box-shadow: 0 0 0 3px #2196F3, 0 8px 30px rgba(33, 150, 243, 0.8); }
             100% { box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(33, 150, 243, 0.4); }
         }
-        
         .admin-panel-btn:hover {
             background: linear-gradient(135deg, #0d47a1 0%, #1565C0 100%);
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 0 0 3px #0d47a1, 0 12px 35px rgba(33, 150, 243, 0.6);
         }
-        
+        /* Side Panel - Read Only */
         .side-panel {
             width: 280px;
             background: white;
@@ -97,23 +94,19 @@
             left: 0;
             top: 60px;
         }
-        
         .panel-header {
             text-align: center;
             padding-bottom: 15px;
             border-bottom: 2px solid #2e8b57;
             margin-bottom: 15px;
         }
-        
         .panel-header h2 {
             color: #2e8b57;
             font-size: 18px;
         }
-        
         .control-group {
             margin-bottom: 15px;
         }
-        
         .control-group h3 {
             color: #666;
             font-size: 14px;
@@ -122,7 +115,6 @@
             align-items: center;
             gap: 8px;
         }
-        
         .control-btn {
             width: 100%;
             background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
@@ -137,7 +129,7 @@
             margin-bottom: 8px;
             cursor: not-allowed;
         }
-        
+        /* Read Only Notice */
         .readonly-notice {
             background: #fff3cd;
             border: 1px solid #ffeaa7;
@@ -148,7 +140,7 @@
             font-size: 13px;
             color: #856404;
         }
-        
+        /* Main Content Area */
         .main-content-area {
             flex: 1;
             margin-left: 280px;
@@ -161,7 +153,7 @@
             min-height: calc(100vh - 60px);
             overflow-y: auto;
         }
-        
+        /* A4 Container */
         .a4-container {
             width: 21cm;
             height: 29.7cm;
@@ -172,21 +164,21 @@
             transform-origin: top center;
             margin-top: 0;
         }
-        
+        /* Side Panel Content */
         .side-panel-content {
             flex: 1;
             display: flex;
             flex-direction: column;
             height: calc(100vh - 60px);
         }
-        
+        /* Scrollable area */
         .scrollable-area {
             flex: 1;
             overflow-y: auto;
             padding-right: 5px;
             min-height: 400px;
         }
-        
+        /* Contact Us Section */
         .contact-section {
             margin-top: auto;
             padding: 15px 0;
@@ -198,7 +190,7 @@
             right: 0;
             z-index: 10;
         }
-        
+        /* ভিডিও সেকশন - বড় করা হয়েছে */
         .video-intro {
             position: relative;
             margin-bottom: 15px;
@@ -208,14 +200,12 @@
             background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
             border: 3px solid #2e8b57;
         }
-        
         #zooIntroVideo {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-        
         .video-overlay {
             position: absolute;
             top: 0;
@@ -231,21 +221,18 @@
             text-align: center;
             padding: 20px;
         }
-        
         .welcome-text h1 {
             font-size: 36px;
             margin-bottom: 10px;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
             color: #fff;
         }
-        
         .welcome-text p {
             font-size: 20px;
             opacity: 0.95;
             color: #f0f0f0;
             font-weight: 500;
         }
-        
         .video-controls {
             position: absolute;
             bottom: 15px;
@@ -254,7 +241,6 @@
             gap: 10px;
             z-index: 10;
         }
-        
         .video-control-btn {
             background: rgba(255, 255, 255, 0.35);
             color: white;
@@ -270,20 +256,18 @@
             font-weight: bold;
             backdrop-filter: blur(5px);
         }
-        
         .video-control-btn:hover {
             background: rgba(255, 255, 255, 0.5);
             transform: scale(1.15);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        
+        /* Action Buttons */
         .action-buttons {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin: 15px 0;
         }
-        
         .action-btn {
             width: 100%;
             background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
@@ -302,22 +286,27 @@
             box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
             text-decoration: none;
         }
-        
-        .action-btn.visitors { background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); }
-        .action-btn.author { background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%); }
-        .action-btn.workshop { background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%); }
-        .action-btn.emergency { background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); }
-        
+        .action-btn.visitors {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+        }
+        .action-btn.author {
+            background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
+        }
+        .action-btn.workshop {
+            background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
+        }
+        .action-btn.emergency {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        }
         .action-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
-        
+        /* Social Icons - Contact Us Section */
         .social-footer {
             text-align: center;
             padding: 15px 0;
         }
-        
         .social-footer h4 {
             color: #2e8b57;
             margin-bottom: 15px;
@@ -327,14 +316,12 @@
             justify-content: center;
             gap: 8px;
         }
-        
         .social-icons {
             display: flex;
             justify-content: center;
             gap: 20px;
             align-items: center;
         }
-        
         .social-icon {
             width: 40px;
             height: 40px;
@@ -348,92 +335,87 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        
-        .social-icon.facebook { background: linear-gradient(135deg, #1877f2 0%, #0d5cb6 100%); }
-        .social-icon.github { background: linear-gradient(135deg, #333 0%, #000 100%); }
-        .social-icon.whatsapp { background: linear-gradient(135deg, #25d366 0%, #1da851 100%); }
-        
+        .social-icon.facebook {
+            background: linear-gradient(135deg, #1877f2 0%, #0d5cb6 100%);
+        }
+        .social-icon.github {
+            background: linear-gradient(135deg, #333 0%, #000 100%);
+        }
+        .social-icon.whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+        }
         .social-icon:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
-        
+        /* Table Design */
         .table-wrapper {
             width: 100%;
             overflow-x: auto;
             margin: 10px 0;
         }
-        
         .table-editable {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
         }
-        
         .table-editable thead {
             background: #2e8b57;
             color: white;
         }
-        
         .table-editable th {
             padding: 11px 8px;
             text-align: center;
             font-weight: 600;
             border-right: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
         .table-editable td {
             padding: 10px 8px;
             text-align: center;
             border-bottom: 1px solid #eaeaea;
             border-right: 1px solid #f0f0f0;
         }
-        
         .table-editable tr:hover {
             background-color: #f9f9f9;
         }
-        
         .table-editable tr:nth-child(even) {
             background-color: #f8f9fa;
         }
-        
+        /* Population Statistics Table */
         .stats-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
             margin: 10px 0;
         }
-        
         .stats-table thead {
             background: #2e8b57;
             color: white;
         }
-        
         .stats-table th {
             padding: 11px 8px;
             text-align: left;
             font-weight: 600;
         }
-        
         .stats-table td {
             padding: 10px 8px;
             border-bottom: 1px solid #eaeaea;
         }
-        
         .stats-table td:nth-child(2) {
             text-align: center;
             font-weight: bold;
             color: #2e8b57;
             font-size: 15px;
         }
-        
         .species-name {
             display: flex;
             align-items: center;
             gap: 10px;
             justify-content: flex-start;
         }
-        
+        .emoji {
+            font-size: 18px;
+        }
         .note {
             background: #e8f4fd;
             border-left: 4px solid #2e8b57;
@@ -442,7 +424,6 @@
             font-size: 12px;
             color: #333;
         }
-        
         header {
             background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
             color: white;
@@ -451,17 +432,14 @@
             margin-bottom: 12px;
             text-align: center;
         }
-        
         .header-content h1 {
             font-size: 22px;
             margin-bottom: 5px;
         }
-        
         .header-content p {
             font-size: 13px;
             opacity: 0.9;
         }
-        
         .date-badge {
             background-color: rgba(255, 255, 255, 0.2);
             padding: 5px 12px;
@@ -470,14 +448,12 @@
             display: inline-block;
             margin-top: 8px;
         }
-        
         .document-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-top: 10px;
         }
-        
         .card {
             background: white;
             border-radius: 6px;
@@ -486,7 +462,6 @@
             border: 1px solid #eaeaea;
             min-height: 400px;
         }
-        
         .card h2 {
             color: #2e8b57;
             margin-bottom: 8px;
@@ -497,7 +472,6 @@
             align-items: center;
             gap: 8px;
         }
-        
         footer {
             margin-top: 15px;
             padding-top: 12px;
@@ -510,18 +484,20 @@
             padding: 15px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        
         .footer-lines {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
-        
+        .footer-lines p {
+            margin: 0;
+            line-height: 1.4;
+        }
+        /* Size Controls */
         .size-controls {
             display: flex;
             gap: 5px;
         }
-        
         .size-btn {
             flex: 1;
             padding: 8px;
@@ -531,7 +507,7 @@
             cursor: not-allowed;
             font-size: 12px;
         }
-        
+        /* Public Footer */
         .public-footer {
             position: fixed;
             bottom: 0;
@@ -544,27 +520,24 @@
             font-size: 12px;
             z-index: 1000;
         }
-        
+        /* Custom scrollbar */
         .scrollable-area::-webkit-scrollbar {
             width: 6px;
         }
-        
         .scrollable-area::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
-        
         .scrollable-area::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 3px;
         }
-        
+        /* Population Summary সেকশন */
         .population-summary {
             margin-top: 12px;
             padding: 8px 10px;
             background: #f8f9fa;
             border-radius: 6px;
         }
-        
         .population-summary h3 {
             color: #2e8b57;
             margin-bottom: 6px;
@@ -573,17 +546,15 @@
             align-items: center;
             gap: 8px;
         }
-        
         .population-summary p {
             font-size: 12px;
             line-height: 1.4;
         }
-        
-        /* Flower Section - আরও নিচে */
+        /* NEW IMPROVED FLOWER SECTION - NOW BEFORE FOOTER */
         .flower-section {
             text-align: center;
-            margin: 80px 0 50px 0;
-            padding: 35px;
+            margin: 30px 0 25px 0;
+            padding: 25px;
             background: linear-gradient(135deg, rgba(255, 245, 245, 0.95) 0%, rgba(255, 240, 240, 0.95) 100%);
             border-radius: 12px;
             border: 2px solid #ff6b6b;
@@ -593,27 +564,32 @@
             border-top: 1px solid #ffcccc;
             border-bottom: 1px solid #ffcccc;
         }
-        
-        .flower-section::before, .flower-section::after {
+        .flower-section::before {
             content: "";
             position: absolute;
+            top: 0;
             left: 0;
             right: 0;
             height: 3px;
             background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
         }
-        
-        .flower-section::before { top: 0; }
-        .flower-section::after { bottom: 0; }
-        
+        .flower-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
+        }
         .flower-image-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 20px;
+            position: relative;
             padding: 8px;
         }
-        
         .round-flower-image {
             width: 220px;
             height: 220px;
@@ -626,24 +602,21 @@
             background: linear-gradient(135deg, #fff5f5, #ffe6e6);
             padding: 4px;
         }
-        
         .round-flower-image:hover {
             transform: scale(1.06) rotate(3deg);
             box-shadow: 0 10px 25px rgba(220, 20, 60, 0.4);
             border-color: #ffcccc;
         }
-        
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
+            0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-6px); }
         }
-        
         .flower-caption {
             font-family: 'Italianno', cursive;
             font-size: 40px;
             color: #d32f2f;
             margin: 8px 0;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
             line-height: 1.1;
             letter-spacing: 1px;
             position: relative;
@@ -653,69 +626,102 @@
             border-radius: 8px;
             border: 1px solid #ffcccc;
         }
-        
-        .flower-caption::before, .flower-caption::after {
+        .flower-caption::before {
             content: "🌸";
             position: absolute;
+            left: -12px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 24px;
             color: #ff6b6b;
         }
-        
-        .flower-caption::before { left: -12px; }
-        .flower-caption::after { right: -12px; }
-        
+        .flower-caption::after {
+            content: "🌸";
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #ff6b6b;
+        }
         .flower-subtitle {
             font-family: 'Dancing Script', cursive;
             font-size: 22px;
             color: #ff3333;
-            margin-top: 12px;
+            margin-top: 6px;
             opacity: 0.9;
             font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
             background: rgba(255, 255, 255, 0.7);
             padding: 4px 12px;
             border-radius: 6px;
             display: inline-block;
+            margin-top: 12px;
         }
-        
         .flower-decoration {
             position: absolute;
             font-size: 20px;
             color: #ff6b6b;
             opacity: 0.3;
+            z-index: 0;
             animation: spin 25s linear infinite;
         }
-        
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
-        .decoration-1 { top: 12px; left: 12px; }
-        .decoration-2 { top: 12px; right: 12px; animation-delay: -6s; }
-        .decoration-3 { bottom: 12px; left: 12px; animation-delay: -12s; }
-        .decoration-4 { bottom: 12px; right: 12px; animation-delay: -18s; }
-        
+        .decoration-1 {
+            top: 12px;
+            left: 12px;
+            animation-delay: 0s;
+        }
+        .decoration-2 {
+            top: 12px;
+            right: 12px;
+            animation-delay: -6s;
+        }
+        .decoration-3 {
+            bottom: 12px;
+            left: 12px;
+            animation-delay: -12s;
+        }
+        .decoration-4 {
+            bottom: 12px;
+            right: 12px;
+            animation-delay: -18s;
+        }
         .heart-pulse {
             position: absolute;
             font-size: 16px;
             color: #ff3333;
             animation: pulse-heart 2s infinite;
+            z-index: 1;
         }
-        
         @keyframes pulse-heart {
             0% { transform: scale(0.8); opacity: 0.6; }
             50% { transform: scale(1.1); opacity: 1; }
             100% { transform: scale(0.8); opacity: 0.6; }
         }
-        
-        .heart-1 { top: 35px; left: 35px; }
-        .heart-2 { top: 35px; right: 35px; animation-delay: 0.5s; }
-        .heart-3 { bottom: 35px; left: 35px; animation-delay: 1s; }
-        .heart-4 { bottom: 35px; right: 35px; animation-delay: 1.5s; }
-        
+        .heart-1 {
+            top: 35px;
+            left: 35px;
+            animation-delay: 0s;
+        }
+        .heart-2 {
+            top: 35px;
+            right: 35px;
+            animation-delay: 0.5s;
+        }
+        .heart-3 {
+            bottom: 35px;
+            left: 35px;
+            animation-delay: 1s;
+        }
+        .heart-4 {
+            bottom: 35px;
+            right: 35px;
+            animation-delay: 1.5s;
+        }
         .rose-decoration {
             position: absolute;
             font-size: 18px;
@@ -723,58 +729,105 @@
             opacity: 0.25;
             animation: float-rose 7s ease-in-out infinite;
         }
-        
         @keyframes float-rose {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-12px) rotate(8deg); }
         }
-        
-        .rose-1 { top: 20%; left: 8%; }
-        .rose-2 { top: 20%; right: 8%; animation-delay: 2s; }
-        .rose-3 { bottom: 20%; left: 8%; animation-delay: 1s; }
-        .rose-4 { bottom: 20%; right: 8%; animation-delay: 3s; }
-        
-        @media (max-width: 768px) {
-            .round-flower-image { width: 180px; height: 180px; }
-            .flower-caption { font-size: 32px; }
-            .flower-subtitle { font-size: 20px; }
-            .flower-section { margin: 60px 0 40px 0; padding: 25px; }
+        .rose-1 {
+            top: 20%;
+            left: 8%;
+            animation-delay: 0s;
         }
-        
+        .rose-2 {
+            top: 20%;
+            right: 8%;
+            animation-delay: 2s;
+        }
+        .rose-3 {
+            bottom: 20%;
+            left: 8%;
+            animation-delay: 1s;
+        }
+        .rose-4 {
+            bottom: 20%;
+            right: 8%;
+            animation-delay: 3s;
+        }
+        /* Responsive design for flower section */
+        @media (max-width: 768px) {
+            .round-flower-image {
+                width: 180px;
+                height: 180px;
+            }
+            .flower-caption {
+                font-size: 32px;
+                padding: 6px 16px;
+            }
+            .flower-caption::before, .flower-caption::after {
+                font-size: 20px;
+                left: -10px;
+                right: -10px;
+            }
+            .flower-subtitle {
+                font-size: 20px;
+            }
+            .flower-section {
+                padding: 20px;
+                margin: 25px 0 20px 0;
+            }
+        }
         @media (max-width: 480px) {
-            .round-flower-image { width: 160px; height: 160px; }
-            .flower-caption { font-size: 28px; }
-            .flower-subtitle { font-size: 18px; }
-            .flower-section { margin: 50px 0 30px 0; padding: 20px; }
+            .round-flower-image {
+                width: 160px;
+                height: 160px;
+            }
+            .flower-caption {
+                font-size: 28px;
+            }
+            .flower-subtitle {
+                font-size: 18px;
+            }
+            .flower-section {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Public View Banner -->
     <div class="public-banner">
         <div class="banner-title">
             <i class="fas fa-eye"></i>
             <span>Public View - Read Only</span>
         </div>
-        <div></div>
+        <div>
+            <!-- WORKSHOP বাটন - লুকানো আছে -->
+            <a href="admin-login.html" class="workshop-btn">
+                <i class="fas fa-tools"></i> WORKSHOP
+            </a>
+        </div>
     </div>
-    
+
+    <!-- Fixed ADMIN PANEL বাটন -->
     <a href="admin-login.html" class="admin-panel-btn">
         <i class="fas fa-user-shield"></i> ADMIN PANEL
     </a>
-    
+
+    <!-- Side Panel (Read Only Version) -->
     <div class="side-panel">
         <div class="side-panel-content">
             <div class="panel-header">
                 <h2><i class="fas fa-eye"></i> View Only Mode</h2>
                 <p style="font-size: 12px; color: #666; margin-top: 5px;">Editing Disabled</p>
             </div>
-            
+
             <div class="readonly-notice">
                 <i class="fas fa-info-circle"></i>
                 <strong>Read Only Mode</strong><br>
                 This is a public view. Admin login required for editing.
             </div>
-            
+
+            <!-- Action Buttons -->
             <div class="action-buttons">
                 <button class="action-btn visitors" onclick="showVisitorInfo()">
                     <i class="fas fa-users"></i> VISITORS INFO
@@ -789,19 +842,26 @@
                     <i class="fas fa-phone-alt"></i> EMERGENCY CONTACT
                 </button>
             </div>
-            
+
+            <!-- Scrollable area -->
             <div class="scrollable-area">
                 <div class="control-group">
                     <h3><i class="fas fa-download"></i> Export Options</h3>
-                    <button class="control-btn"><i class="fas fa-image"></i> Download as Image (Disabled)</button>
-                    <button class="control-btn"><i class="fas fa-print"></i> Print Document (Disabled)</button>
+                    <button class="control-btn">
+                        <i class="fas fa-image"></i> Download as Image (Disabled)
+                    </button>
+                    <button class="control-btn">
+                        <i class="fas fa-print"></i> Print Document (Disabled)
+                    </button>
                 </div>
-                
+
                 <div class="control-group">
                     <h3><i class="fas fa-edit"></i> Edit Mode</h3>
-                    <button class="control-btn"><i class="fas fa-edit"></i> Edit Mode (Disabled)</button>
+                    <button class="control-btn">
+                        <i class="fas fa-edit"></i> Edit Mode (Disabled)
+                    </button>
                 </div>
-                
+
                 <div class="control-group">
                     <h3><i class="fas fa-expand-arrows-alt"></i> Document Size</h3>
                     <div class="size-controls">
@@ -810,7 +870,7 @@
                         <button class="size-btn">Large</button>
                     </div>
                 </div>
-                
+
                 <div class="control-group">
                     <h3><i class="fas fa-info-circle"></i> Information</h3>
                     <div style="font-size: 12px; color: #666; line-height: 1.4;">
@@ -821,30 +881,39 @@
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Contact Us Section -->
             <div class="contact-section">
                 <div class="social-footer">
                     <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-icon github"><i class="fab fa-github"></i></a>
-                        <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-icon facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-icon github" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <!-- Main Content Area -->
     <div class="main-content-area">
         <div class="a4-container">
             <div class="content-wrapper">
                 <header>
                     <div class="header-content">
+                        <!-- ভিডিও সেকশন -->
                         <div class="video-intro">
                             <video id="zooIntroVideo" autoplay muted loop playsinline>
                                 <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
                                 <source src="https://static.videezy.com/system/resources/previews/000/042/097/original/4K-235.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
+                                আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
                             </video>
                             <div class="video-overlay">
                                 <div class="welcome-text">
@@ -852,8 +921,12 @@
                                     <p>Experience Wildlife Like Never Before!</p>
                                 </div>
                                 <div class="video-controls">
-                                    <button class="video-control-btn" onclick="toggleVideoPlay()" id="playPauseBtn"><i class="fas fa-pause"></i> Pause</button>
-                                    <button class="video-control-btn" onclick="toggleVideoMute()" id="muteBtn"><i class="fas fa-volume-up"></i> Mute</button>
+                                    <button class="video-control-btn" onclick="toggleVideoPlay()" id="playPauseBtn">
+                                        <i class="fas fa-pause"></i> Pause
+                                    </button>
+                                    <button class="video-control-btn" onclick="toggleVideoMute()" id="muteBtn">
+                                        <i class="fas fa-volume-up"></i> Mute
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -866,7 +939,7 @@
                         </div>
                     </div>
                 </header>
-                
+
                 <div class="document-content">
                     <div class="card">
                         <h2><i class="fas fa-list-ul"></i> Species Population Overview</h2>
@@ -921,7 +994,7 @@
                             <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Vervet includes one baby (Gender unknown).</p>
                         </div>
                     </div>
-                    
+
                     <div class="card">
                         <h2><i class="fas fa-chart-bar"></i> Population Statistics</h2>
                         <div class="table-wrapper">
@@ -944,18 +1017,14 @@
                         </div>
                         <div class="population-summary">
                             <h3><i class="fas fa-chart-pie"></i> Population Summary</h3>
-                            <p>The Kuwait Zoo currently houses <strong>8 species</strong> of primates with a total population of <strong>34 monkeys</strong>. The gender distribution shows <strong>16 males</strong>, <strong>18 females</strong>, and <strong>0</strong> of unknown gender.</p>
+                            <p>
+                                The Kuwait Zoo currently houses <strong>8 species</strong> of primates with a total population of <strong>34 monkeys</strong>. The gender distribution shows <strong>16 males</strong>, <strong>18 females</strong>, and <strong>0</strong> of unknown gender.
+                            </p>
                         </div>
                     </div>
                 </div>
-                
-                <footer>
-                    <div class="footer-lines">
-                        <p style="margin-bottom: 5px; color: #2e8b57; font-weight: 600;">Prepared on December 15, 2025 | Official Document</p>
-                        <p style="margin-top: 0; color: #666;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
-                    </div>
-                </footer>
-                
+
+                <!-- Flower Section - এখন Footer-এর আগে -->
                 <div class="flower-section">
                     <div class="flower-decoration decoration-1">✿</div>
                     <div class="flower-decoration decoration-2">❀</div>
@@ -973,46 +1042,70 @@
                     <div class="rose-decoration rose-4">🌹</div>
                     
                     <div class="flower-image-container">
-                        <img src="https://raw.githubusercontent.com/James-KW/Zoo-Dataa/refs/heads/main/image/flower.png" 
-                             alt="Beautiful Flower for Romantic Souls" 
-                             class="round-flower-image"
-                             onerror="this.src='https://images.pexels.com/photos/791845/pexels-photo-791845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';">
+                        <img src="https://raw.githubusercontent.com/James-KW/Zoo-Dataa/refs/heads/main/image/flower.png" alt="Beautiful Flower for Romantic Souls" class="round-flower-image" onerror="this.src='https://images.pexels.com/photos/791845/pexels-photo-791845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';">
                     </div>
                     
                     <h2 class="flower-caption">Flowers for romantic souls.</h2>
                     <p class="flower-subtitle">Where petals whisper love's sweet tales</p>
                 </div>
+
+                <!-- Footer - এখন Flower Section-এর পরে -->
+                <footer>
+                    <div class="footer-lines">
+                        <p class="editable" contenteditable="false" style="margin-bottom: 5px; color: #2e8b57; font-weight: 600;">Prepared on December 15, 2025 | Official Document</p>
+                        <p class="copyright" style="margin-top: 0; color: #666;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
+                    </div>
+                </footer>
             </div>
         </div>
     </div>
-    
+
+    <!-- Public Footer -->
     <div class="public-footer">
         <i class="fas fa-eye"></i> Public Read-Only View | Admin Login Required for Editing
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Public View Mode Active - All editing disabled');
             
             const video = document.getElementById('zooIntroVideo');
             if (video) {
-                video.play().catch(() => {});
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {}).catch(error => {
+                        console.log('Auto-play prevented');
+                    });
+                }
                 video.addEventListener('ended', function() {
                     this.currentTime = 0;
                     this.play();
                 });
             }
             
-            document.querySelectorAll('.editable').forEach(el => {
+            const editables = document.querySelectorAll('.editable, [contenteditable="true"]');
+            editables.forEach(el => {
                 el.setAttribute('contenteditable', 'false');
-                el.addEventListener('click', showReadOnlyMessage);
+                el.style.cursor = 'default';
+                el.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showReadOnlyMessage();
+                });
             });
             
-            document.querySelectorAll('button').forEach(btn => {
-                if (!btn.classList.contains('video-control-btn') && !btn.classList.contains('action-btn')) {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                if (btn.classList.contains('video-control-btn') || btn.classList.contains('action-btn')) {
+                    btn.disabled = false;
+                    btn.style.cursor = 'pointer';
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'auto';
+                } else {
                     btn.disabled = true;
-                    btn.style.opacity = '0.5';
                     btn.style.cursor = 'not-allowed';
+                    btn.style.opacity = '0.5';
+                    btn.style.pointerEvents = 'none';
                 }
             });
             
@@ -1020,10 +1113,11 @@
             if (flowerImage) {
                 flowerImage.addEventListener('error', function() {
                     this.src = 'https://images.pexels.com/photos/791845/pexels-photo-791845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+                    console.log('Using high-quality fallback rose image');
                 });
             }
         });
-        
+
         function toggleVideoPlay() {
             const video = document.getElementById('zooIntroVideo');
             const btn = document.getElementById('playPauseBtn');
@@ -1035,18 +1129,22 @@
                 btn.innerHTML = '<i class="fas fa-play"></i> Play';
             }
         }
-        
+
         function toggleVideoMute() {
             const video = document.getElementById('zooIntroVideo');
             const btn = document.getElementById('muteBtn');
             video.muted = !video.muted;
-            btn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i> Unmute' : '<i class="fas fa-volume-up"></i> Mute';
+            if (video.muted) {
+                btn.innerHTML = '<i class="fas fa-volume-mute"></i> Unmute';
+            } else {
+                btn.innerHTML = '<i class="fas fa-volume-up"></i> Mute';
+            }
         }
-        
+
         function showReadOnlyMessage() {
             alert('This is a read-only public view.\n\nPlease login as administrator to edit content.');
         }
-        
+
         function showVisitorInfo() {
             alert('👥 VISITOR INFORMATION\n\n🕒 Opening Hours:\n• Sunday - Thursday: 9:00 AM - 6:00 PM\n• Friday - Saturday: 8:00 AM - 7:00 PM\n\n💰 Ticket Prices:\n• Adults: 5 KWD\n• Children (5-12): 3 KWD\n• Children under 5: FREE\n• Family Package (4 persons): 15 KWD\n\n🎟️ Special Offers:\n• Student Discount: 20% off\n• Senior Citizen: 30% off\n• Group Booking (10+): 25% off\n\n🚗 Parking:\n• Available: 500+ spaces\n• Price: 1 KWD/day\n• Electric Charging: Available\n\n🍽️ Facilities:\n• Food Court\n• Restrooms\n• Prayer Room\n• First Aid\n• Gift Shop');
         }
