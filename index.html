@@ -162,7 +162,7 @@
             min-height: calc(100vh - 60px);
             overflow-y: auto;
             position: relative;
-            padding-bottom: 180px;
+            padding-bottom: 200px;
         }
         
         .a4-container {
@@ -171,7 +171,7 @@
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
             padding: 1.2cm;
             margin-top: 0;
-            margin-bottom: 30px;
+            margin-bottom: 80px;
         }
         
         .side-panel-content {
@@ -422,7 +422,6 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
         
-        /* Rate My Work Section */
         .rate-section {
             margin-top: 20px;
             text-align: center;
@@ -459,17 +458,6 @@
         
         .rating-stars .star {
             transition: color 0.2s ease;
-        }
-        
-        .rating-stars .star.selected,
-        .rating-stars .star:hover ~ .star {
-            color: #ccc;
-        }
-        
-        .rating-stars .star.selected,
-        .rating-stars .star:hover,
-        .rating-stars .star:hover ~ .star:not(:hover) {
-            color: #FFD700 !important;
         }
         
         .send-rating-btn {
@@ -818,28 +806,20 @@
         .heart-3 { bottom: 20px; left: 20px; animation-delay: 1s; }
         .heart-4 { bottom: 20px; right: 20px; animation-delay: 1.5s; }
         
-        @media (max-width: 768px) {
-            .flower-section {
-                width: 90%;
-                padding: 12px 15px;
-                min-height: 150px;
-                top: 15px;
-            }
-            .flower-caption { font-size: 26px; }
-            .flower-subtitle { font-size: 16px; }
-            .round-flower-image { width: 80px; height: 80px; margin-right: 15px; }
-            .flower-text-container { max-width: 65%; }
-        }
-        
-        @media (max-width: 480px) {
-            .flower-section {
-                padding: 10px 12px;
-                min-height: 130px;
-                top: 10px;
-            }
-            .flower-caption { font-size: 22px; }
-            .flower-subtitle { font-size: 14px; }
-            .round-flower-image { width: 70px; height: 70px; margin-right: 10px; }
+        /* Dataset note – A4 পেজের বাইরে নিচে */
+        .dataset-note {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #000000;
+            line-height: 1.6;
+            margin: 60px auto 80px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 3px solid #2e8b57;
+            border-radius: 12px;
+            max-width: 21cm;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -928,7 +908,6 @@
                         <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                     
-                    <!-- Rate My Work Section -->
                     <div class="rate-section">
                         <button class="rate-btn" id="rate-btn">
                             <i class="fas fa-star"></i> Rate My Work
@@ -1105,6 +1084,13 @@
                 </footer>
             </div>
         </div>
+        
+        <!-- A4 পেজের বাইরে নিচে লেখা -->
+        <div class="dataset-note">
+            🐒🦍 Chimpanzee & Monkey Behavioral, Ecological, And Biological Dataset.<br>
+            📊 Observational Data · Individual Records · Codebook. 🌿<br>
+            📚 𝗧𝗵𝗶𝘀 𝘀𝗶𝘁𝗲 𝗵𝗮𝘀 𝗯𝗲𝗲𝗻 𝗰𝗿𝗲𝗮𝘁𝗲𝗱 𝗳𝗼𝗿 𝗹𝗲𝗮𝗿𝗻𝗶𝗻𝗴 𝗮𝗻𝗱 𝗲𝗱𝘂𝗰𝗮𝘁𝗶𝗼𝗻𝗮𝗹 𝗽𝘂𝗿𝗽𝗼𝘀𝗲𝘀 𝗼𝗻𝗹𝘆.. 💻
+        </div>
     </div>
     
     <div class="public-footer">
@@ -1125,7 +1111,6 @@
         let selectedRating = 0;
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Dynamic current date
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             const today = new Date();
             const formattedDate = today.toLocaleDateString('en-US', options);
@@ -1133,17 +1118,14 @@
             document.getElementById('current-date').textContent = formattedDate;
             document.getElementById('footer-date').textContent = formattedDate;
             
-            // Load video
             setTimeout(() => loadVideo(currentVideoIndex), 100);
             
-            // Disable editing
             document.querySelectorAll('.editable, [contenteditable="true"]').forEach(el => {
                 el.setAttribute('contenteditable', 'false');
                 el.style.cursor = 'default';
                 el.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); showReadOnlyMessage(); });
             });
             
-            // Disable buttons
             document.querySelectorAll('button').forEach(btn => {
                 if (btn.classList.contains('video-control-btn') || btn.classList.contains('action-btn') || btn.id === 'rate-btn' || btn.id === 'send-rating') {
                     btn.disabled = false;
@@ -1158,7 +1140,6 @@
                 }
             });
             
-            // Flower image fallback
             const flowerImg = document.querySelector('.round-flower-image');
             if (flowerImg) {
                 flowerImg.addEventListener('error', function() {
@@ -1166,7 +1147,6 @@
                 });
             }
             
-            // Rate My Work functionality
             document.getElementById('rate-btn').addEventListener('click', function() {
                 document.getElementById('rating-modal').style.display = 'block';
             });
@@ -1194,7 +1174,7 @@
                     if (starValue <= value) {
                         s.style.color = '#FFD700';
                     } else {
-                        s.style.color = isHover ? '#ccc' : (starValue <= selectedRating ? '#FFD700' : '#ccc');
+                        s.style.color = '#ccc';
                     }
                 });
             }
