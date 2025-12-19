@@ -446,11 +446,15 @@
             box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
         }
         
+        #rating-modal {
+            margin-top: 20px;
+        }
+        
         .rating-stars {
-            margin: 15px 0;
             font-size: 40px;
             color: #ccc;
             cursor: pointer;
+            letter-spacing: 5px;
         }
         
         .rating-stars .star {
@@ -458,9 +462,14 @@
         }
         
         .rating-stars .star.selected,
-        .rating-stars .star:hover,
         .rating-stars .star:hover ~ .star {
-            color: #FFD700;
+            color: #ccc;
+        }
+        
+        .rating-stars .star.selected,
+        .rating-stars .star:hover,
+        .rating-stars .star:hover ~ .star:not(:hover) {
+            color: #FFD700 !important;
         }
         
         .send-rating-btn {
@@ -472,7 +481,7 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             transition: all 0.3s ease;
         }
@@ -835,11 +844,80 @@
     </style>
 </head>
 <body>
-    <!-- ... (উপরের সব অংশ অপরিবর্তিত – public banner, admin button, side panel, flower section, main content, video, table, date ইত্যাদি) ... -->
-
+    <div class="public-banner">
+        <div class="banner-title">
+            <i class="fas fa-eye"></i>
+            <span>Public View - Read Only</span>
+        </div>
+        <div></div>
+    </div>
+    
+    <a href="admin-login.html" class="admin-panel-btn">
+        <i class="fas fa-user-shield"></i> ADMIN PANEL
+    </a>
+    
     <div class="side-panel">
         <div class="side-panel-content">
-            <!-- ... (উপরের side panel content অপরিবর্তিত) ... -->
+            <div class="panel-header">
+                <h2><i class="fas fa-eye"></i> View Only Mode</h2>
+                <p style="font-size: 12px; color: #666; margin-top: 5px;">Editing Disabled</p>
+            </div>
+            
+            <div class="readonly-notice">
+                <i class="fas fa-info-circle"></i>
+                <strong>Read Only Mode</strong><br>
+                This is a public view. Admin login required for editing.
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn visitors" onclick="showVisitorInfo()">
+                    <i class="fas fa-users"></i> VISITORS INFO
+                </button>
+                
+                <a href="authorinfo.html" class="action-btn author">
+                    <i class="fas fa-user-circle"></i> AUTHOR INFO
+                </a>
+                
+                <a href="admin-login.html" class="action-btn workshop">
+                    <i class="fas fa-tools"></i> WORKSHOP
+                </a>
+                
+                <button class="action-btn emergency" onclick="window.location.href='tel:+96598064347'">
+                    <i class="fas fa-phone-alt"></i> EMERGENCY CONTACT
+                </button>
+            </div>
+            
+            <div class="scrollable-area">
+                <div class="control-group">
+                    <h3><i class="fas fa-download"></i> Export Options</h3>
+                    <button class="control-btn"><i class="fas fa-image"></i> Download as Image (Disabled)</button>
+                    <button class="control-btn"><i class="fas fa-print"></i> Print Document (Disabled)</button>
+                </div>
+                
+                <div class="control-group">
+                    <h3><i class="fas fa-edit"></i> Edit Mode</h3>
+                    <button class="control-btn"><i class="fas fa-edit"></i> Edit Mode (Disabled)</button>
+                </div>
+                
+                <div class="control-group">
+                    <h3><i class="fas fa-expand-arrows-alt"></i> Document Size</h3>
+                    <div class="size-controls">
+                        <button class="size-btn">Small</button>
+                        <button class="size-btn">Medium</button>
+                        <button class="size-btn">Large</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3><i class="fas fa-info-circle"></i> Information</h3>
+                    <div style="font-size: 12px; color: #666; line-height: 1.4;">
+                        <p>• This is a read-only view</p>
+                        <p>• Admin login required for editing</p>
+                        <p>• All data is view-only</p>
+                        <p>• Contact administrator for access</p>
+                    </div>
+                </div>
+            </div>
             
             <div class="contact-section">
                 <div class="social-footer">
@@ -850,13 +928,13 @@
                         <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                     
-                    <!-- নতুন Rate My Work সেকশন -->
+                    <!-- Rate My Work Section -->
                     <div class="rate-section">
-                        <button class="rate-btn" onclick="openRating()">
+                        <button class="rate-btn" id="rate-btn">
                             <i class="fas fa-star"></i> Rate My Work
                         </button>
                         
-                        <div id="rating-modal" style="display:none; margin-top:20px;">
+                        <div id="rating-modal" style="display: none;">
                             <div class="rating-stars" id="rating-stars">
                                 <span class="star" data-value="1">★</span>
                                 <span class="star" data-value="2">★</span>
@@ -873,57 +951,305 @@
             </div>
         </div>
     </div>
-
-    <!-- ... (main content, a4 container, table, footer অপরিবর্তিত) ... -->
-
+    
+    <div class="main-content-area">
+        <div class="flower-section">
+            <div class="flower-decoration decoration-1">✿</div>
+            <div class="flower-decoration decoration-2">❀</div>
+            <div class="flower-decoration decoration-3">❁</div>
+            <div class="flower-decoration decoration-4">✾</div>
+            
+            <div class="heart-pulse heart-1">❤️</div>
+            <div class="heart-pulse heart-2">❤️</div>
+            <div class="heart-pulse heart-3">❤️</div>
+            <div class="heart-pulse heart-4">❤️</div>
+            
+            <div class="flower-image-container">
+                <img src="https://raw.githubusercontent.com/James-KW/Zoo-Dataa/refs/heads/main/image/flower.png" 
+                     alt="Beautiful Flower for Romantic Souls" 
+                     class="round-flower-image"
+                     onerror="this.src='https://images.unsplash.com/photo-1587474260584-0b2c6a3c4e88?w=400&h=400&fit=crop';">
+            </div>
+            
+            <div class="flower-text-container">
+                <h2 class="unicode-style" style="color: red;">𝐹𝑙𝑜𝑤𝑒𝑟 𝑓𝑜𝑟 𝑟𝑜𝑚𝑎𝑛𝑡𝑖𝑐 𝑠𝑜𝑢𝑙𝑠</h2>
+                <p class="flower-subtitle">Where petals whisper love's sweet tales</p>
+            </div>
+        </div>
+        
+        <div class="a4-container" style="margin-top: 200px;">
+            <div class="content-wrapper">
+                <header>
+                    <div class="header-content">
+                        <div class="video-intro">
+                            <iframe id="youtubeIframe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Kuwait Zoo Video"></iframe>
+                            <div class="video-loading" id="videoLoading">
+                                <div class="loader"></div>
+                                <div>Loading video...</div>
+                            </div>
+                            <div class="video-overlay" id="videoOverlay">
+                                <div class="welcome-text">
+                                    <h1><i class="fas fa-paw"></i> WELCOME TO KUWAIT ZOO</h1>
+                                    <p>Experience Wildlife Like Never Before!</p>
+                                </div>
+                            </div>
+                            <div class="video-info" id="videoInfo">Video 1 of 3</div>
+                            <div class="video-controls">
+                                <button class="video-control-btn" onclick="toggleVideoMute()" id="muteBtn"><i class="fas fa-volume-mute"></i> Sound Off</button>
+                                <button class="video-control-btn" onclick="nextVideo()" id="nextBtn"><i class="fas fa-forward"></i> Next</button>
+                            </div>
+                        </div>
+                        
+                        <h1 class="editable" contenteditable="false"><i class="fas fa-paw"></i> Kuwait Zoo - Monkeys & Chimpanzees Population</h1>
+                        <p class="editable" contenteditable="false">Comprehensive overview of primate species population</p>
+                        <div class="date-badge">
+                            <i class="far fa-calendar-alt"></i>
+                            <span id="current-date">Loading date...</span>
+                        </div>
+                    </div>
+                </header>
+                
+                <div class="document-content">
+                    <div class="card">
+                        <h2><i class="fas fa-list-ul"></i> Species Population Overview</h2>
+                        <div class="table-wrapper">
+                            <table class="table-editable">
+                                <thead>
+                                    <tr>
+                                        <th>Species Name</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Gender Unknown</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><div class="species-name"><span class="emoji">🦝</span><span class="species-text">Lemur</span></div></td>
+                                        <td>3</td><td>4</td><td>0</td><td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="species-name"><span class="emoji">🐒</span><span class="species-text">Squirrel Monkey</span></div></td>
+                                        <td>4</td><td>4</td><td>0</td><td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="species-name"><span class="emoji">🐒</span><span class="species-text">Baboon</span></div></td>
+                                        <td>2</td><td>3</td><td>0</td><td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="species-name"><span class="emoji">🐒</span><span class="species-text">Vervets</span></div></td>
+                                        <td>4</td><td>7</td><td>1</td><td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="species-name"><span class="emoji">🐒</span><span class="species-text">Rhesus</span></div></td>
+                                        <td>3</td><td>4</td><td>0</td><td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="species-name"><span class="emoji">🐒</span><span class="species-text">Rhesus (Single)</span></div></td>
+                                        <td>0</td><td>1</td><td>0</td><td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="species-name"><span class="emoji">🐒</span><span class="species-text">Mona</span></div></td>
+                                        <td>0</td><td>1</td><td>0</td><td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="species-name"><span class="emoji">🦍</span><span class="species-text">Chimpanzee (Big)</span></div></td>
+                                        <td>1</td><td>0</td><td>0</td><td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="species-name"><span class="emoji">🦍</span><span class="species-text">Chimpanzee (Small)</span></div></td>
+                                        <td>3</td><td>1</td><td>0</td><td>4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="note">
+                            <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Vervet includes one baby (Gender unknown).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h2><i class="fas fa-chart-bar"></i> Population Statistics</h2>
+                        <div class="table-wrapper">
+                            <table class="stats-table">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>Total Species</strong></td><td>9</td></tr>
+                                    <tr><td><strong>Total Monkeys</strong></td><td>46</td></tr>
+                                    <tr><td><strong>Male Population</strong></td><td>20</td></tr>
+                                    <tr><td><strong>Female Population</strong></td><td>25</td></tr>
+                                    <tr><td><strong>Unknown Gender</strong></td><td>1</td></tr>
+                                    <tr><td><strong>Chimpanzees</strong></td><td>5</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="population-summary">
+                            <h3><i class="fas fa-chart-pie"></i> Population Summary</h3>
+                            <p>The Kuwait Zoo currently houses <strong>9 species</strong> of primates with a total population of <strong>46 monkeys</strong>. The gender distribution shows <strong>20 males</strong>, <strong>25 females</strong>, and <strong>1</strong> of unknown gender.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <footer>
+                    <div class="footer-lines">
+                        <p class="editable" contenteditable="false" style="margin-bottom: 5px; color: #2e8b57; font-weight: 600;">
+                            Prepared on <span id="footer-date">Loading...</span> | Official Document
+                        </p>
+                        <p class="copyright" style="margin-top: 0; color: #666;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    
+    <div class="public-footer">
+        <i class="fas fa-eye"></i> Public Read-Only View | Admin Login Required for Editing
+    </div>
+    
     <script>
-        // তোমার আগের সব script (video, date, read-only ইত্যাদি) অপরিবর্তিত
-
-        // নতুন Rating ফিচার
-        let selectedRating = 0;
-
-        function openRating() {
-            document.getElementById('rating-modal').style.display = 'block';
-        }
-
-        document.querySelectorAll('.star').forEach(star => {
-            star.addEventListener('click', function() {
-                selectedRating = this.dataset.value;
-                document.querySelectorAll('.star').forEach(s => {
-                    s.classList.remove('selected');
-                    if (s.dataset.value <= selectedRating) {
-                        s.classList.add('selected');
-                    }
-                });
-                document.getElementById('send-rating').disabled = false;
-            });
-
-            star.addEventListener('mouseover', function() {
-                document.querySelectorAll('.star').forEach(s => {
-                    if (s.dataset.value <= this.dataset.value) {
-                        s.style.color = '#FFD700';
-                    }
-                });
-            });
-        });
-
-        document.querySelector('.rating-stars').addEventListener('mouseout', function() {
-            document.querySelectorAll('.star').forEach(s => {
-                s.style.color = s.classList.contains('selected') ? '#FFD700' : '#ccc';
-            });
-        });
-
-        document.getElementById('send-rating').addEventListener('click', function() {
-            if (selectedRating > 0) {
-                const message = encodeURIComponent(`I rated your work ${selectedRating} out of 5 stars! ⭐⭐⭐⭐⭐`.slice(0, `I rated your work ${selectedRating} out of 5 `.length) + '⭐'.repeat(selectedRating));
-                const whatsappUrl = `https://wa.me/96598064347?text=${message}`;
-                window.open(whatsappUrl, '_blank');
+        const videoSources = [
+            {
+                id: "video1",
+                src: "https://youtu.be/s-vP7WgMkpA?si=UXgobCf4eTv07FpD",
+                embedSrc: "https://www.youtube.com/embed/s-vP7WgMkpA?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&loop=0"
             }
+        ];
+        
+        let currentVideoIndex = 0;
+        let isMuted = true;
+        let selectedRating = 0;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dynamic current date
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString('en-US', options);
+            
+            document.getElementById('current-date').textContent = formattedDate;
+            document.getElementById('footer-date').textContent = formattedDate;
+            
+            // Load video
+            setTimeout(() => loadVideo(currentVideoIndex), 100);
+            
+            // Disable editing
+            document.querySelectorAll('.editable, [contenteditable="true"]').forEach(el => {
+                el.setAttribute('contenteditable', 'false');
+                el.style.cursor = 'default';
+                el.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); showReadOnlyMessage(); });
+            });
+            
+            // Disable buttons
+            document.querySelectorAll('button').forEach(btn => {
+                if (btn.classList.contains('video-control-btn') || btn.classList.contains('action-btn') || btn.id === 'rate-btn' || btn.id === 'send-rating') {
+                    btn.disabled = false;
+                    btn.style.cursor = 'pointer';
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'auto';
+                } else {
+                    btn.disabled = true;
+                    btn.style.cursor = 'not-allowed';
+                    btn.style.opacity = '0.5';
+                    btn.style.pointerEvents = 'none';
+                }
+            });
+            
+            // Flower image fallback
+            const flowerImg = document.querySelector('.round-flower-image');
+            if (flowerImg) {
+                flowerImg.addEventListener('error', function() {
+                    this.src = 'https://images.unsplash.com/photo-1587474260584-0b2c6a3c4e88?w=400&h=400&fit=crop';
+                });
+            }
+            
+            // Rate My Work functionality
+            document.getElementById('rate-btn').addEventListener('click', function() {
+                document.getElementById('rating-modal').style.display = 'block';
+            });
+            
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.dataset.value);
+                    updateStars(selectedRating);
+                    document.getElementById('send-rating').disabled = false;
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const hoverValue = parseInt(this.dataset.value);
+                    updateStars(hoverValue, true);
+                });
+            });
+            
+            document.getElementById('rating-stars').addEventListener('mouseout', function() {
+                updateStars(selectedRating);
+            });
+            
+            function updateStars(value, isHover = false) {
+                document.querySelectorAll('.star').forEach(s => {
+                    const starValue = parseInt(s.dataset.value);
+                    if (starValue <= value) {
+                        s.style.color = '#FFD700';
+                    } else {
+                        s.style.color = isHover ? '#ccc' : (starValue <= selectedRating ? '#FFD700' : '#ccc');
+                    }
+                });
+            }
+            
+            document.getElementById('send-rating').addEventListener('click', function() {
+                if (selectedRating > 0) {
+                    const stars = '⭐'.repeat(selectedRating);
+                    const message = encodeURIComponent(`I rated your work ${selectedRating} out of 5! ${stars}\nThank you!`);
+                    const whatsappUrl = `https://wa.me/96598064347?text=${message}`;
+                    window.open(whatsappUrl, '_blank');
+                }
+            });
         });
-
-        // বাকি তোমার আগের সব script (video, date ইত্যাদি)
-        const videoSources = [ /* ... */ ];
-        // ... (আগের সব function)
+        
+        function loadVideo(index) {
+            const iframe = document.getElementById('youtubeIframe');
+            const loading = document.getElementById('videoLoading');
+            const overlay = document.getElementById('videoOverlay');
+            const info = document.getElementById('videoInfo');
+            
+            info.textContent = `Video ${index + 1} of ${videoSources.length}`;
+            loading.classList.remove('hidden');
+            overlay.style.display = 'flex';
+            overlay.classList.remove('fade-out');
+            
+            iframe.src = videoSources[index].embedSrc;
+            
+            iframe.onload = () => {
+                loading.classList.add('hidden');
+                setTimeout(() => {
+                    overlay.classList.add('fade-out');
+                    setTimeout(() => overlay.style.display = 'none', 1000);
+                }, 3000);
+            };
+        }
+        
+        function nextVideo() {
+            currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+            loadVideo(currentVideoIndex);
+        }
+        
+        function toggleVideoMute() {
+            const iframe = document.getElementById('youtubeIframe');
+            isMuted = !isMuted;
+            iframe.src = iframe.src.replace(/mute=(0|1)/, `mute=${isMuted ? 1 : 0}`);
+            document.getElementById('muteBtn').innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i> Sound Off' : '<i class="fas fa-volume-up"></i> Sound On';
+        }
+        
+        function showReadOnlyMessage() {
+            alert('This is a read-only public view.\n\nPlease login as administrator to edit content.');
+        }
+        
+        function showVisitorInfo() {
+            alert('👥 VISITOR INFORMATION\n\n🕒 Opening Hours:\n• Sunday - Thursday: 9:00 AM - 6:00 PM\n• Friday - Saturday: 8:00 AM - 7:00 PM\n\n💰 Ticket Prices:\n• Adults: 5 KWD\n• Children (5-12): 3 KWD\n• Children under 5: FREE\n• Family Package (4 persons): 15 KWD\n\n🎟️ Special Offers:\n• Student Discount: 20% off\n• Senior Citizen: 30% off\n• Group Booking (10+): 25% off\n\n🚗 Parking:\n• Available: 500+ spaces\n• Price: 1 KWD/day\n• Electric Charging: Available\n\n🍽️ Facilities:\n• Food Court\n• Restrooms\n• Prayer Room\n• First Aid\n• Gift Shop');
+        }
     </script>
 </body>
 </html>
