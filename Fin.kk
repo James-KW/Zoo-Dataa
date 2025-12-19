@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1100">
+    <title>Kuwait Zoo - Monkey Population 2025 (Public View)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Italian style -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Italianno&family=Parisienne&family=Great+Vibes&family=Alex+Brush&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.4;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        /* Public View Banner */
+        .public-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #2e8b57 0%, #1a6d38 100%);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 60px;
+        }
+        
+        .banner-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+        
+        /* WORKSHOP বাটন - Public Banner থেকে সরানো হয়েছে */
+        .public-banner > div:last-child {
+            visibility: hidden;
+            width: 0;
+        }
+        
+        /* ADMIN PANEL বাটন */
+        .admin-panel-btn {
+            position: fixed;
+            top: 4px;
+            right: 5px;
+            background: linear-gradient(135deg, #2196F3 0%, #0d47a1 100%);
+            color: white;
+            border: 3px solid white;
+            padding: 10px 5px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+            z-index: 1001;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(33, 150, 243, 0.4); }
+            50% { box-shadow: 0 0 0 3px #2196F3, 0 8px 30px rgba(33, 150, 243, 0.8); }
+            100% { box-shadow: 0 0 0 3px #2196F3, 0 8px 25px rgba(33, 150, 243, 0.4); }
+        }
+        
+        .admin-panel-btn:hover {
+            background: linear-gradient(135deg, #0d47a1 0%, #1565C0 100%);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 0 3px #0d47a1, 0 12px 35px rgba(33, 150, 243, 0.6);
+        }
+        
+        /* Side Panel - Read Only */
+        .side-panel {
+            width: 280px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 60px;
+        }
+        
+        .panel-header {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2e8b57;
+            margin-bottom: 15px;
+        }
+        
+        .panel-header h2 {
+            color: #2e8b57;
+            font-size: 18px;
+        }
+        
+        .control-group {
+            margin-bottom: 15px;
+        }
+        
+        .control-group h3 {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
+            color: #666;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            cursor: not-allowed;
+        }
+        
+        /* Read Only Notice */
+        .readonly-notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 13px;
+            color: #856404;
+        }
+        
+        /* Main Content Area */
+        .main-content-area {
+            flex: 1;
+            margin-left: 280px;
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px;
+            background: #f5f7fa;
+            min-height: calc(100vh - 60px);
+            overflow-y: auto;
+            position: relative;
+            padding-bottom: 180px; /* Flower section-এর জন্য জায়গা */
+        }
+        
+        /* A4 Container */
+        .a4-container {
+            width: 21cm;
+            background: white;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+            padding: 1.2cm;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        
+        /* Side Panel Content */
+        .side-panel-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 60px);
+        }
+        
+        /* Scrollable area */
+        .scrollable-area {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 5px;
+            min-height: 400px;
+        }
+        
+        /* Contact Us Section */
+        .contact-section {
+            margin-top: auto;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            background: white;
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+        
+        /* ভিডিও সেকশন - বড় করা হয়েছে */
+        .video-intro {
+            position: relative;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+            background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
+            border: 3px solid #2e8b57;
+        }
+        
+        #youtubeIframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .welcome-text {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .welcome-text h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            color: #fff;
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        .welcome-text p {
+            font-size: 20px;
+            opacity: 0.95;
+            color: #f0f0f0;
+            font-weight: 500;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+        
+        .video-overlay.fade-out {
+            animation: fadeOut 1s ease-out forwards;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .video-control-btn {
+            background: rgba(255, 255, 255, 0.35);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            padding: 12px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+            z-index: 3;
+        }
+        
+        .video-control-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.15);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* ভিডিও লোডিং ইন্ডিকেটর */
+        .video-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            flex-direction: column;
+            color: white;
+        }
+        
+        .video-loading.hidden {
+            display: none;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #2e8b57;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 15px;
+        }
+        
+        .video-info {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 3;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .action-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+            text-decoration: none;
+        }
+        
+        .action-btn.visitors {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+        }
+        
+        .action-btn.author {
+            background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);
+        }
+        
+        .action-btn.workshop {
+            background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
+        }
+        
+        .action-btn.emergency {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Social Icons - Contact Us Section */
+        .social-footer {
+            text-align: center;
+            padding: 15px 0;
+        }
+        
+        .social-footer h4 {
+            color: #2e8b57;
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .social-icon.facebook {
+            background: linear-gradient(135deg, #1877f2 0%, #0d5cb6 100%);
+        }
+        
+        .social-icon.github {
+            background: linear-gradient(135deg, #333 0%, #000 100%);
+        }
+        
+        .social-icon.whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        
+        /* Table Design */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .table-editable {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        .table-editable thead {
+            background: #2e8b57;
+            color: white;
+        }
+        
+        .table-editable th {
+            padding: 11px 8px;
+            text-align: center;
+            font-weight: 600;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .table-editable td {
+            padding: 10px 8px;
+            text-align: center;
+            border-bottom: 1px solid #eaeaea;
+            border-right: 1px solid #f0f0f0;
+        }
+        
+        .table-editable tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .table-editable tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Population Statistics Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin: 10px 0;
+        }
+        
+        .stats-table thead {
+            background: #2e8b57;
+            color: white;
+        }
+        
+        .stats-table th {
+            padding: 11px 8px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .stats-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .stats-table td:nth-child(2) {
+            text-align: center;
+            font-weight: bold;
+            color: #2e8b57;
+            font-size: 15px;
+        }
+        
+        .species-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+        
+        .emoji {
+            font-size: 18px;
+        }
+        
+        .note {
+            background: #e8f4fd;
+            border-left: 4px solid #2e8b57;
+            padding: 8px 12px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a6d38 0%, #2e8b57 100%);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .header-content p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        .date-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+        
+        .document-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 12px;
+            border: 1px solid #eaeaea;
+            min-height: 400px;
+        }
+        
+        .card h2 {
+            color: #2e8b57;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        footer {
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 2px solid #eaeaea;
+            text-align: center;
+            color: #666;
+            font-size: 11px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 0;
+        }
+        
+        .footer-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .footer-lines p {
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        /* Size Controls */
+        .size-controls {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .size-btn {
+            flex: 1;
+            padding: 8px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 4px;
+            cursor: not-allowed;
+            font-size: 12px;
+        }
+        
+        /* Public Footer */
+        .public-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 20px;
+            text-align: center;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        
+        /* Custom scrollbar */
+        .scrollable-area::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .scrollable-area::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .scrollable-area::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+        
+        /* Population Summary সেকশন */
+        .population-summary {
+            margin-top: 12px;
+            padding: 8px 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .population-summary h3 {
+            color: #2e8b57;
+            margin-bottom: 6px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .population-summary p {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        /* FLOWER SECTION - UPORER DICHE (উপরে তুলেছি) */
+        .flower-section {
+            text-align: center;
+            margin: 0;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, rgba(255, 245, 245, 0.95) 0%, rgba(255, 240, 240, 0.95) 100%);
+            border-radius: 8px;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.1);
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid #ffcccc;
+            border-bottom: 1px solid #ffcccc;
+            width: 18cm;
+            height: auto;
+            min-height: 180px;
+            position: absolute;
+            top: 20px; /* উপরে তুলেছি */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+        }
+        
+        .flower-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
+        }
+        
+        .flower-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
+        }
+        
+        .flower-image-container {
+            display: inline-block;
+            margin-bottom: 10px;
+            position: relative;
+            vertical-align: middle;
+            margin-right: 20px;
+        }
+        
+        .round-flower-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 3px 8px rgba(220, 20, 60, 0.15);
+            transition: all 0.4s ease;
+            animation: float 4s ease-in-out infinite;
+            background: linear-gradient(135deg, #fff5f5, #ffe6e6);
+        }
+        
+        .round-flower-image:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.25);
+            border-color: #ffcccc;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+        }
+        
+        .flower-text-container {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+            max-width: 60%;
+        }
+        
+        /* আরা আরা ফন্ট (Alex Brush - হাতের লেখা কিন্তু ইটালিক না) */
+        .flower-caption {
+            font-family: 'italic', cursive;
+            font-size: 35px;
+            color: #d32f2f;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0;
+            background: none;
+            border: none;
+            font-weight: 400;
+            font-style: normal;
+            text-transform: none;
+        }
+        
+        .flower-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+            color: #ff3333;
+            margin-top: 5px;
+            opacity: 0.9;
+            font-weight: 500;
+            text-shadow: none;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            display: block;
+            font-style: normal;
+        }
+        
+        .flower-decoration {
+            position: absolute;
+            font-size: 14px;
+            color: #ff6b6b;
+            opacity: 0.15;
+            z-index: 0;
+            animation: spin 40s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .decoration-1 { top: 8px; left: 8px; animation-delay: 0s; }
+        .decoration-2 { top: 8px; right: 8px; animation-delay: -10s; }
+        .decoration-3 { bottom: 8px; left: 8px; animation-delay: -20s; }
+        .decoration-4 { bottom: 8px; right: 8px; animation-delay: -30s; }
+        
+        .heart-pulse {
+            position: absolute;
+            font-size: 12px;
+            color: #ff3333;
+            animation: pulse-heart 2s infinite;
+            z-index: 1;
+            opacity: 0.6;
+        }
+        
+        @keyframes pulse-heart {
+            0% { transform: scale(0.8); opacity: 0.4; }
+            50% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(0.8); opacity: 0.4; }
+        }
+        
+        .heart-1 { top: 20px; left: 20px; animation-delay: 0s; }
+        .heart-2 { top: 20px; right: 20px; animation-delay: 0.5s; }
+        .heart-3 { bottom: 20px; left: 20px; animation-delay: 1s; }
+        .heart-4 { bottom: 20px; right: 20px; animation-delay: 1.5s; }
+        
+        /* Responsive design for flower section */
+        @media (max-width: 768px) {
+            .flower-section {
+                width: 90%;
+                padding: 12px 15px;
+                min-height: 150px;
+                top: 15px;
+            }
+            
+            .flower-caption {
+                font-size: 26px;
+            }
+            
+            .flower-subtitle {
+                font-size: 16px;
+            }
+            
+            .round-flower-image {
+                width: 80px;
+                height: 80px;
+                margin-right: 15px;
+            }
+            
+            .flower-text-container {
+                max-width: 65%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .flower-section {
+                padding: 10px 12px;
+                min-height: 130px;
+                top: 10px;
+            }
+            
+            .flower-caption {
+                font-size: 22px;
+            }
+            
+            .flower-subtitle {
+                font-size: 14px;
+            }
+            
+            .round-flower-image {
+                width: 70px;
+                height: 70px;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Public View Banner -->
+    <div class="public-banner">
+        <div class="banner-title">
+            <i class="fas fa-eye"></i>
+            <span>Public View - Read Only</span>
+        </div>
+        <div>
+            <!-- WORKSHOP বাটন - লুকানো আছে -->
+            <a href="admin-login.html" class="workshop-btn">
+                <i class="fas fa-tools"></i> WORKSHOP
+            </a>
+        </div>
+    </div>
+    
+    <!-- Fixed ADMIN PANEL বাটন -->
+    <a href="admin-login.html" class="admin-panel-btn">
+        <i class="fas fa-user-shield"></i> ADMIN PANEL
+    </a>
+    
+    <!-- Side Panel (Read Only Version) -->
+    <div class="side-panel">
+        <div class="side-panel-content">
+            <div class="panel-header">
+                <h2><i class="fas fa-eye"></i> View Only Mode</h2>
+                <p style="font-size: 12px; color: #666; margin-top: 5px;">Editing Disabled</p>
+            </div>
+            
+            <div class="readonly-notice">
+                <i class="fas fa-info-circle"></i>
+                <strong>Read Only Mode</strong><br>
+                This is a public view. Admin login required for editing.
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn visitors" onclick="showVisitorInfo()">
+                    <i class="fas fa-users"></i> VISITORS INFO
+                </button>
+                
+                <a href="authorinfo.html" class="action-btn author">
+                    <i class="fas fa-user-circle"></i> AUTHOR INFO
+                </a>
+                
+                <a href="admin-login.html" class="action-btn workshop">
+                    <i class="fas fa-tools"></i> WORKSHOP
+                </a>
+                
+                <button class="action-btn emergency" onclick="window.location.href='tel:+96598064347'">
+                    <i class="fas fa-phone-alt"></i> EMERGENCY CONTACT
+                </button>
+            </div>
+            
+            <!-- Scrollable area -->
+            <div class="scrollable-area">
+                <div class="control-group">
+                    <h3><i class="fas fa-download"></i> Export Options</h3>
+                    <button class="control-btn">
+                        <i class="fas fa-image"></i> Download as Image (Disabled)
+                    </button>
+                    <button class="control-btn">
+                        <i class="fas fa-print"></i> Print Document (Disabled)
+                    </button>
+                </div>
+                
+                <div class="control-group">
+                    <h3><i class="fas fa-edit"></i> Edit Mode</h3>
+                    <button class="control-btn">
+                        <i class="fas fa-edit"></i> Edit Mode (Disabled)
+                    </button>
+                </div>
+                
+                <div class="control-group">
+                    <h3><i class="fas fa-expand-arrows-alt"></i> Document Size</h3>
+                    <div class="size-controls">
+                        <button class="size-btn">Small</button>
+                        <button class="size-btn">Medium</button>
+                        <button class="size-btn">Large</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3><i class="fas fa-info-circle"></i> Information</h3>
+                    <div style="font-size: 12px; color: #666; line-height: 1.4;">
+                        <p>• This is a read-only view</p>
+                        <p>• Admin login required for editing</p>
+                        <p>• All data is view-only</p>
+                        <p>• Contact administrator for access</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Us Section -->
+            <div class="contact-section">
+                <div class="social-footer">
+                    <h4><i class="fas fa-share-alt"></i> Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1QJ5CEGc5z/" target="_blank" class="social-icon facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        
+                        <a href="https://github.com/James404-cyber/James404-cyber.git" target="_blank" class="social-icon github" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        
+                        <a href="https://wa.me/96598064347" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content Area -->
+    <div class="main-content-area">
+        <!-- FLOWER SECTION - উপরে (A4 Container এর উপরে) -->
+        <div class="flower-section">
+            <!-- Decorations -->
+            <div class="flower-decoration decoration-1">✿</div>
+            <div class="flower-decoration decoration-2">❀</div>
+            <div class="flower-decoration decoration-3">❁</div>
+            <div class="flower-decoration decoration-4">✾</div>
+            
+            <!-- Hearts -->
+            <div class="heart-pulse heart-1">❤️</div>
+            <div class="heart-pulse heart-2">❤️</div>
+            <div class="heart-pulse heart-3">❤️</div>
+            <div class="heart-pulse heart-4">❤️</div>
+            
+            <!-- Flower Image -->
+            <div class="flower-image-container">
+                <img src="https://raw.githubusercontent.com/James-KW/Zoo-Dataa/refs/heads/main/image/flower.png" 
+                     alt="Beautiful Flower for Romantic Souls" 
+                     class="round-flower-image"
+                     onerror="this.src='https://images.unsplash.com/photo-1526040652367-ac003a0475fe?w=400&h=400&fit=crop&crop=face';">
+            </div>
+            
+            <!-- Main Text Container -->
+            <div class="flower-text-container">
+                <h2 class="unicode-style" style="color: red;">𝐹𝑙𝑜𝑤𝑒𝑟 𝑓𝑜𝑟 𝑟𝑜𝑚𝑎𝑛𝑡𝑖𝑐 𝑠𝑜𝑢𝑙𝑠</h2>
+                <p class="flower-subtitle">Where petals whisper love's sweet tales</p>
+            </div>
+        </div>
+        
+        <!-- A4 Container -->
+        <div class="a4-container" style="margin-top: 200px;">
+            <div class="content-wrapper">
+                <header>
+                    <div class="header-content">
+                        <!-- ভিডিও সেকশন - বড় করা হয়েছে -->
+                        <div class="video-intro">
+                            <!-- YouTube iframe -->
+                            <iframe id="youtubeIframe" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen
+                                    title="Kuwait Zoo Video">
+                            </iframe>
+                            
+                            <!-- লোডিং ইন্ডিকেটর -->
+                            <div class="video-loading" id="videoLoading">
+                                <div class="loader"></div>
+                                <div>Loading video...</div>
+                            </div>
+                            
+                            <!-- ভিডিও ওভারলে -->
+                            <div class="video-overlay" id="videoOverlay">
+                                <div class="welcome-text">
+                                    <h1><i class="fas fa-paw"></i> WELCOME TO KUWAIT ZOO</h1>
+                                    <p>Experience Wildlife Like Never Before!</p>
+                                </div>
+                            </div>
+                            
+                            <!-- ভিডিও তথ্য -->
+                            <div class="video-info" id="videoInfo">
+                                Video 1 of 3
+                            </div>
+                            
+                            <!-- ভিডিও কন্ট্রোল -->
+                            <div class="video-controls">
+                                <button class="video-control-btn" onclick="toggleVideoMute()" id="muteBtn">
+                                    <i class="fas fa-volume-mute"></i> Sound Off
+                                </button>
+                                <button class="video-control-btn" onclick="nextVideo()" id="nextBtn">
+                                    <i class="fas fa-forward"></i> Next
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <h1 class="editable" contenteditable="false"><i class="fas fa-paw"></i> Kuwait Zoo - Monkeys & Chimpanzees Population</h1>
+                        <p class="editable" contenteditable="false">Comprehensive overview of primate species population</p>
+                        <div class="date-badge">
+                            <i class="far fa-calendar-alt"></i>
+                            <span class="editable" contenteditable="false">December 18, 2025</span>
+                        </div>
+                    </div>
+                </header>
+                
+                <div class="document-content">
+                    <div class="card">
+                        <h2><i class="fas fa-list-ul"></i> Species Population Overview</h2>
+                        
+                        <div class="table-wrapper">
+                            <table class="table-editable">
+                                <thead>
+                                    <tr>
+                                        <th>Species Name</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Gender Unknown</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Squirrel Monkey</strong>
+                                            </div>
+                                        </td>
+                                        <td>4</td>
+                                        <td>4</td>
+                                        <td>0</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Baboon</strong>
+                                            </div>
+                                        </td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>0</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Vervets</strong>
+                                            </div>
+                                        </td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>0</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Rhesus</strong>
+                                            </div>
+                                        </td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>0</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Plateau</strong>
+                                            </div>
+                                        </td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🐒</span>
+                                                <strong>Mona</strong>
+                                            </div>
+                                        </td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🦍</span>
+                                                <strong>Chimpanzee</strong>
+                                            </div>
+                                        </td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="species-name">
+                                                <span class="emoji">🦧</span>
+                                                <strong>Chimpanzee</strong>
+                                            </div>
+                                        </td>
+                                        <td>3</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="note">
+                            <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Vervet includes one baby (Gender unknown).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h2><i class="fas fa-chart-bar"></i> Population Statistics</h2>
+                        
+                        <div class="table-wrapper">
+                            <table class="stats-table">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Total Species</strong></td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total Monkeys</strong></td>
+                                        <td>34</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Male Population</strong></td>
+                                        <td>16</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Female Population</strong></td>
+                                        <td>18</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Unknown Gender</strong></td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Chimpanzees</strong></td>
+                                        <td>5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="population-summary">
+                            <h3><i class="fas fa-chart-pie"></i> Population Summary</h3>
+                            <p>
+                                The Kuwait Zoo currently houses <strong>8 species</strong> of primates with a total population of <strong>34 monkeys</strong>. The gender distribution shows <strong>16 males</strong>, <strong>18 females</strong>, and <strong>0</strong> of unknown gender.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FOOTER - A4 Container এর ভিতরে -->
+                <footer>
+                    <div class="footer-lines">
+                        <p class="editable" contenteditable="false" style="margin-bottom: 5px; color: #2e8b57; font-weight: 600;">Prepared on December 18, 2025 | Official Document</p>
+                        <p class="copyright" style="margin-top: 0; color: #666;">© www.kuwaitzoo.com | Admin Login Required for editing</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Public Footer -->
+    <div class="public-footer">
+        <i class="fas fa-eye"></i> Public Read-Only View | Admin Login Required for Editing
+    </div>
+    
+    <script>
+        // আপনার YouTube লিঙ্কগুলি এখানে বসানো হয়েছে
+        const videoSources = [
+            {
+                id: "video1",
+                src: "https://youtu.be/s-vP7WgMkpA?si=UXgobCf4eTv07FpD",
+                embedSrc: "https://www.youtube.com/embed/s-vP7WgMkpA?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&loop=0"
+            }
+        ];
+        
+        let currentVideoIndex = 0;
+        let isMuted = true; // প্রথমে মিউট করা থাকবে
+        let videoCheckInterval;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Public View Mode Active - All editing disabled');
+            
+            // পেজ লোড হওয়ার সাথে সাথে ভিডিও শুরু করুন
+            setTimeout(function() {
+                loadVideo(currentVideoIndex);
+            }, 100); // 100ms delay to ensure DOM is ready
+            
+            // Disable all editable content
+            const editables = document.querySelectorAll('.editable, [contenteditable="true"]');
+            editables.forEach(el => {
+                el.setAttribute('contenteditable', 'false');
+                el.style.cursor = 'default';
+                
+                el.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showReadOnlyMessage();
+                });
+            });
+            
+            // Disable all buttons except specific ones
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                if (btn.classList.contains('video-control-btn') ||
+                    btn.classList.contains('action-btn')) {
+                    btn.disabled = false;
+                    btn.style.cursor = 'pointer';
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'auto';
+                } else {
+                    btn.disabled = true;
+                    btn.style.cursor = 'not-allowed';
+                    btn.style.opacity = '0.5';
+                    btn.style.pointerEvents = 'none';
+                }
+            });
+            
+            // Flower image error handling
+            const flowerImage = document.querySelector('.round-flower-image');
+            if (flowerImage) {
+                flowerImage.addEventListener('error', function() {
+                    this.src = 'https://images.unsplash.com/photo-1526040652367-ac003a0475fe?w=400&h=400&fit=crop&crop=face';
+                    this.alt = 'Beautiful Flower';
+                    console.log('Using fallback flower image');
+                });
+            }
+        });
+        
+        function loadVideo(index) {
+            const iframe = document.getElementById('youtubeIframe');
+            const videoLoading = document.getElementById('videoLoading');
+            const videoInfo = document.getElementById('videoInfo');
+            const videoOverlay = document.getElementById('videoOverlay');
+            
+            // ভিডিও ইনফো আপডেট করুন
+            videoInfo.textContent = `Video ${index + 1} of ${videoSources.length}`;
+            
+            // লোডিং শো করুন
+            videoLoading.classList.remove('hidden');
+            
+            // ওভারলে শো করুন
+            videoOverlay.style.display = 'flex';
+            videoOverlay.classList.remove('fade-out');
+            
+            // ভিডিও সোর্স সেট করুন
+            const videoSrc = videoSources[index].embedSrc;
+            
+            // iframe এর src সেট করুন
+            iframe.src = videoSrc;
+            
+            // ভিডিও লোড হলে
+            iframe.onload = function() {
+                videoLoading.classList.add('hidden');
+                console.log(`Video ${index + 1} loaded and playing`);
+                
+                // 3 সেকেন্ড পর টেক্সট ফেড আউট হবে
+                setTimeout(function() {
+                    videoOverlay.classList.add('fade-out');
+                    
+                    // 1 সেকেন্ড পর সম্পূর্ণভাবে হাইড হবে
+                    setTimeout(function() {
+                        videoOverlay.style.display = 'none';
+                    }, 1000);
+                    
+                }, 3000); // 3 seconds display time
+                
+                // ভিডিও শেষ হওয়ার জন্য চেক শুরু করুন
+                startVideoEndCheck();
+            };
+            
+            // ভিডিও ত্রুটি হলে
+            iframe.onerror = function() {
+                console.log(`Error loading video ${index + 1}`);
+                videoLoading.classList.add('hidden');
+                // ত্রুটি হলে পরের ভিডিও লোড করুন
+                setTimeout(function() {
+                    nextVideo();
+                }, 2000);
+            };
+        }
+        
+        function startVideoEndCheck() {
+            // আগের ইন্টারভাল ক্লিয়ার করুন
+            if (videoCheckInterval) {
+                clearInterval(videoCheckInterval);
+            }
+            
+            // প্রতি 10 সেকেন্ড পর পরবর্তী ভিডিওতে যান (fallback)
+            videoCheckInterval = setInterval(function() {
+                console.log("Checking for next video...");
+                // 3টি ভিডিওর জন্য প্রিডিফাইনড টাইম
+                const videoDurations = [30, 45, 35]; // সেকেন্ডে আনুমানিক ডিউরেশন
+                const currentDuration = videoDurations[currentVideoIndex] || 30;
+                
+                // বর্তমান ভিডিওর আনুমানিক শেষ সময়ে পরবর্তী ভিডিওতে যান
+                setTimeout(function() {
+                    nextVideo();
+                }, currentDuration * 1000);
+                
+            }, 10000);
+        }
+        
+        function nextVideo() {
+            currentVideoIndex++;
+            
+            // যদি শেষ ভিডিও শেষ হয়ে যায়, তবে প্রথম ভিডিওতে ফিরে যান
+            if (currentVideoIndex >= videoSources.length) {
+                currentVideoIndex = 0;
+            }
+            
+            loadVideo(currentVideoIndex);
+            
+            // মিউট স্টেট মেইনটেইন করুন
+            const muteBtn = document.getElementById('muteBtn');
+            if (isMuted) {
+                muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i> Sound Off';
+            } else {
+                muteBtn.innerHTML = '<i class="fas fa-volume-up"></i> Sound On';
+            }
+        }
+        
+        function toggleVideoMute() {
+            const iframe = document.getElementById('youtubeIframe');
+            const muteBtn = document.getElementById('muteBtn');
+            
+            isMuted = !isMuted;
+            
+            if (isMuted) {
+                // মিউট করতে
+                iframe.src = iframe.src.replace('mute=0', 'mute=1');
+                muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i> Sound Off';
+            } else {
+                // আনমিউট করতে
+                iframe.src = iframe.src.replace('mute=1', 'mute=0');
+                muteBtn.innerHTML = '<i class="fas fa-volume-up"></i> Sound On';
+            }
+        }
+        
+        function showReadOnlyMessage() {
+            alert('This is a read-only public view.\n\nPlease login as administrator to edit content.');
+            return false;
+        }
+        
+        // VISITORS ফাংশন
+        function showVisitorInfo() {
+            alert('👥 VISITOR INFORMATION\n\n🕒 Opening Hours:\n• Sunday - Thursday: 9:00 AM - 6:00 PM\n• Friday - Saturday: 8:00 AM - 7:00 PM\n\n💰 Ticket Prices:\n• Adults: 5 KWD\n• Children (5-12): 3 KWD\n• Children under 5: FREE\n• Family Package (4 persons): 15 KWD\n\n🎟️ Special Offers:\n• Student Discount: 20% off\n• Senior Citizen: 30% off\n• Group Booking (10+): 25% off\n\n🚗 Parking:\n• Available: 500+ spaces\n• Price: 1 KWD/day\n• Electric Charging: Available\n\n🍽️ Facilities:\n• Food Court\n• Restrooms\n• Prayer Room\n• First Aid\n• Gift Shop');
+        }
+    </script>
+</body>
+</html>
